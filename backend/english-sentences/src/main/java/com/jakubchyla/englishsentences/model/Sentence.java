@@ -1,15 +1,16 @@
 package com.jakubchyla.englishsentences.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class Sentence {
 
     @Id
@@ -17,4 +18,7 @@ public class Sentence {
     private Long id;
 
     private String text;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    final private Date timestamp = new Date(System.currentTimeMillis());
 }
