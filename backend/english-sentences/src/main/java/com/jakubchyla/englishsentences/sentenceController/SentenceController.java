@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.xml.crypto.dsig.SignatureProperties;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class SentenceController {
@@ -17,7 +19,7 @@ public class SentenceController {
     private SentenceService sentenceService;
 
     @PostMapping("/")
-    public ResponseEntity<Sentence> saveArticle( @RequestBody Sentence article) {
+    public ResponseEntity<Sentence> saveSentence( @RequestBody Sentence article) {
         Sentence newSentence = sentenceService.saveSentence(article);
         return new ResponseEntity<>(newSentence, HttpStatus.CREATED);
     }
@@ -26,6 +28,13 @@ public class SentenceController {
     public ResponseEntity<List<Sentence>> getSentence() {
         List<Sentence> sentence = sentenceService.findAllSentence();
         return new ResponseEntity<>(sentence, HttpStatus.OK);
+    }
+
+    @GetMapping("/simple")
+    public ResponseEntity<List<SimpleDto>> simpleGetSentence() {
+        return new ResponseEntity<>(sentenceService.findAllSentence().stream()
+                .map(sentence -> new SimpleDto(sentence.getId(), sentence.getText()))
+                .collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
