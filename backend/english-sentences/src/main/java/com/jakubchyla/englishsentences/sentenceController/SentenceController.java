@@ -1,6 +1,7 @@
 package com.jakubchyla.englishsentences.sentenceController;
 
 import com.jakubchyla.englishsentences.model.Sentence;
+import com.jakubchyla.englishsentences.sentenceController.dto.SimpleDto;
 import com.jakubchyla.englishsentences.sentenceService.SentenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,9 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.xml.crypto.dsig.SignatureProperties;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static com.jakubchyla.englishsentences.sentenceController.mapper.SentenceDtoMapper.mapSentenceToSimpleDto;
 
 @RestController
 public class SentenceController {
@@ -32,9 +33,7 @@ public class SentenceController {
 
     @GetMapping("/simple")
     public ResponseEntity<List<SimpleDto>> simpleGetSentence() {
-        return new ResponseEntity<>(sentenceService.findAllSentence().stream()
-                .map(sentence -> new SimpleDto(sentence.getId(), sentence.getText()))
-                .collect(Collectors.toList()), HttpStatus.OK);
+        return mapSentenceToSimpleDto(sentenceService.findAllSentence());
     }
 
     @GetMapping("/{id}")
@@ -57,10 +56,7 @@ public class SentenceController {
     }
 
     @PutMapping("/")
-    public ResponseEntity<Sentence> updateSentence(@RequestBody Sentence article) {
-        return new ResponseEntity<>(sentenceService.updateSentence(article), HttpStatus.OK);
+    public ResponseEntity<Sentence> updateSentence(@RequestBody Sentence sentence) {
+        return new ResponseEntity<>(sentenceService.updateSentence(sentence), HttpStatus.OK);
     }
-
-
-
 }
