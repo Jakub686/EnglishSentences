@@ -8,9 +8,11 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SentenceDtoMapper {
+public class SentencesDtoMapper {
 
-//    public static ResponseEntity<SimpleDto> mapSentenceToSimpleDto(Sentence sentence) {
-//        return new ResponseEntity<>(new SimpleDto().text(sentence.getText())), HttpStatus.OK);
-//    }
+    public static ResponseEntity<List<SimpleDto>> mapSentencesToSimpleDto(List<Sentence> allSentence) {
+        return new ResponseEntity<>(allSentence.stream()
+                .map(sentence -> new SimpleDto(sentence.getId(), sentence.getText()))
+                .collect(Collectors.toList()), HttpStatus.OK);
+    }
 }

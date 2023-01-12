@@ -2,6 +2,7 @@ package com.jakubchyla.englishsentences.sentenceController;
 
 import com.jakubchyla.englishsentences.model.Sentence;
 import com.jakubchyla.englishsentences.sentenceController.dto.SimpleDto;
+import com.jakubchyla.englishsentences.sentenceController.dto.UpdateDto;
 import com.jakubchyla.englishsentences.sentenceService.SentenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-import static com.jakubchyla.englishsentences.sentenceController.mapper.SentenceDtoMapper.mapSentenceToSimpleDto;
+import static com.jakubchyla.englishsentences.sentenceController.mapper.SentencesDtoMapper.mapSentencesToSimpleDto;
+//import static com.jakubchyla.englishsentences.sentenceController.mapper.SentenceDtoMapper.mapSentenceToSimpleDto;
 
 @RestController
 public class SentenceController {
@@ -19,10 +21,15 @@ public class SentenceController {
     @Autowired
     private SentenceService sentenceService;
 
+//    @PostMapping("/")
+//    public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence article) {
+//        Sentence newSentence = sentenceService.saveSentence(article);
+//        return new ResponseEntity<>(newSentence, HttpStatus.CREATED);
+//    }
+
     @PostMapping("/")
-    public ResponseEntity<Sentence> saveSentence( @RequestBody Sentence article) {
-        Sentence newSentence = sentenceService.saveSentence(article);
-        return new ResponseEntity<>(newSentence, HttpStatus.CREATED);
+    public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {
+        return new ResponseEntity<>(sentenceService.saveSentence(sentence), HttpStatus.CREATED);
     }
 
     @GetMapping("/")
@@ -33,8 +40,26 @@ public class SentenceController {
 
     @GetMapping("/simple")
     public ResponseEntity<List<SimpleDto>> simpleGetSentence() {
-        return mapSentenceToSimpleDto(sentenceService.findAllSentence());
+        return mapSentencesToSimpleDto(sentenceService.findAllSentence());
     }
+
+    @GetMapping("/simple/{id}")
+    public SimpleDto simpleGetById(@PathVariable Long id) {
+        Sentence sentence = sentenceService.getById(id);
+        SimpleDto simpleDto = new SimpleDto(sentence.getId(),sentence.getText());
+        return simpleDto;
+
+    }
+
+
+//    @GetMapping("/simple/{id}")
+//    public ResponseEntity<SimpleDto> simpleGetById(@PathVariable Long id) {
+//        if (sentenceService.getById(id) == null) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//        } else {
+//            return new ResponseEntity<>(sentenceService.getById(id), HttpStatus.OK);
+//        }
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Sentence> getById(@PathVariable Long id) {
@@ -44,6 +69,8 @@ public class SentenceController {
             return new ResponseEntity<>(sentenceService.getById(id), HttpStatus.OK);
         }
     }
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Long> deleteArticle(@PathVariable("id") Long id) {
@@ -55,8 +82,12 @@ public class SentenceController {
         }
     }
 
-    @PutMapping("/")
-    public ResponseEntity<Sentence> updateSentence(@RequestBody Sentence sentence) {
-        return new ResponseEntity<>(sentenceService.updateSentence(sentence), HttpStatus.OK);
+    @PutMapping("/{id}")
+    public ResponseEntity<UpdateDto> updateSentence(@PathVariable Long id, @RequestBody UpdateDto updateDto) {
+        Sentence sentence = new Sentence();
+        sentence.setId(id);
+        sentence.setText(updateDto.text());
+        sentenceService.updateSentence(sentence);
+        return new ResponseEntity<>(updateDto, HttpStatus.OK);
     }
 }
