@@ -21,11 +21,6 @@ public class SentenceController {
     @Autowired
     private SentenceService sentenceService;
 
-//    @PostMapping("/")
-//    public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence article) {
-//        Sentence newSentence = sentenceService.saveSentence(article);
-//        return new ResponseEntity<>(newSentence, HttpStatus.CREATED);
-//    }
 
     @PostMapping("/")
     public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {
@@ -43,24 +38,6 @@ public class SentenceController {
         return mapSentencesToSimpleDto(sentenceService.findAllSentence());
     }
 
-    @GetMapping("/simple/{id}")
-    public SimpleDto simpleGetById(@PathVariable Long id) {
-        Sentence sentence = sentenceService.getById(id);
-        SimpleDto simpleDto = new SimpleDto(sentence.getId(),sentence.getText());
-        return simpleDto;
-
-    }
-
-
-//    @GetMapping("/simple/{id}")
-//    public ResponseEntity<SimpleDto> simpleGetById(@PathVariable Long id) {
-//        if (sentenceService.getById(id) == null) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//        } else {
-//            return new ResponseEntity<>(sentenceService.getById(id), HttpStatus.OK);
-//        }
-//    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Sentence> getById(@PathVariable Long id) {
         if (sentenceService.getById(id) == null) {
@@ -70,7 +47,12 @@ public class SentenceController {
         }
     }
 
-
+    @GetMapping("/simple/{id}")
+    public SimpleDto simpleGetById(@PathVariable Long id) {
+        Sentence sentence = sentenceService.getById(id);
+        SimpleDto simpleDto = new SimpleDto(sentence.getId(),sentence.getText());
+        return simpleDto;
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Long> deleteArticle(@PathVariable("id") Long id) {
