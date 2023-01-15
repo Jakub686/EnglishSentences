@@ -72,4 +72,13 @@ public class SentenceController {
         sentenceService.updateSentence(sentence);
         return new ResponseEntity<>(updateDto, HttpStatus.OK);
     }
+
+    @PutMapping("/urllink/{id}")
+    public ResponseEntity<UpdateDto> updateSentenceUrlLink(@PathVariable Long id, @RequestBody UpdateDto updateDto) {
+        Sentence sentence = new Sentence();
+        sentence.setId(id);
+        sentence.setText(updateDto.text());
+        sentenceService.updateSentence(sentence);
+        return new ResponseEntity<>(updateDto, HttpStatus.OK);
+    }
 }

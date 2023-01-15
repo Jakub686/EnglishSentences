@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -21,4 +22,8 @@ public class Sentence {
 
     @Temporal(TemporalType.TIMESTAMP)
     final private Date timestamp = new Date(System.currentTimeMillis());
+
+    @OneToMany(targetEntity = UrlLink.class,cascade = CascadeType.ALL)
+    @JoinColumn(name ="sentence_id",referencedColumnName = "id")
+    private List<UrlLink> urllinks;
 }
