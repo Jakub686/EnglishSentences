@@ -54,16 +54,6 @@ public class SentenceController {
         return simpleDto;
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Long> deleteArticle(@PathVariable("id") Long id) {
-        if (sentenceService.getById(id) == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        } else {
-            sentenceService.deleteSentence(id);
-            return new ResponseEntity<>(id, HttpStatus.OK);
-        }
-    }
-
     @PutMapping("/{id}")
     public ResponseEntity<UpdateDto> updateSentence(@PathVariable Long id, @RequestBody UpdateDto updateDto) {
         Sentence sentence = new Sentence();
@@ -80,5 +70,15 @@ public class SentenceController {
         sentence.setText(updateDto.text());
         sentenceService.updateSentence(sentence);
         return new ResponseEntity<>(updateDto, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Long> deleteArticle(@PathVariable("id") Long id) {
+        if (sentenceService.getById(id) == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            sentenceService.deleteSentence(id);
+            return new ResponseEntity<>(id, HttpStatus.OK);
+        }
     }
 }
