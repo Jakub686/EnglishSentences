@@ -3,6 +3,7 @@ package com.jakubchyla.englishsentences.sentenceController;
 import com.jakubchyla.englishsentences.model.Sentence;
 import com.jakubchyla.englishsentences.sentenceController.dto.SimpleDto;
 import com.jakubchyla.englishsentences.sentenceController.dto.UpdateDto;
+import com.jakubchyla.englishsentences.sentenceController.dto.UpdateUrlLinkDto;
 import com.jakubchyla.englishsentences.sentenceService.SentenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -64,12 +65,12 @@ public class SentenceController {
     }
 
     @PutMapping("/urllink/{id}")
-    public ResponseEntity<UpdateDto> updateSentenceUrlLink(@PathVariable Long id, @RequestBody UpdateDto updateDto) {
+    public ResponseEntity<UpdateUrlLinkDto> updateSentenceUrlLink(@PathVariable Long id, @RequestBody UpdateUrlLinkDto updateUrlLinkDto) {
         Sentence sentence = new Sentence();
         sentence.setId(id);
-        sentence.setText(updateDto.text());
+        sentence.setUrllinks(updateUrlLinkDto.urlLink());
         sentenceService.updateSentence(sentence);
-        return new ResponseEntity<>(updateDto, HttpStatus.OK);
+        return new ResponseEntity<>(updateUrlLinkDto, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
