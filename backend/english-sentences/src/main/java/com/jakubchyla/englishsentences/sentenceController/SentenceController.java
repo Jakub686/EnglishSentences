@@ -34,6 +34,12 @@ public class SentenceController {
         return new ResponseEntity<>(sentence, HttpStatus.OK);
     }
 
+    @GetMapping("/random")
+    public ResponseEntity<Sentence> getSentenceRandom() {
+        Sentence sentence = sentenceService.findSentenceRandom();
+        return new ResponseEntity<>(sentence, HttpStatus.OK);
+    }
+
     @GetMapping("/simple")
     public ResponseEntity<List<SimpleDto>> simpleGetSentence() {
         return mapSentencesToSimpleDto(sentenceService.findAllSentence());
@@ -49,10 +55,14 @@ public class SentenceController {
     }
 
     @GetMapping("/simple/{id}")
-    public SimpleDto simpleGetById(@PathVariable Long id) {
-        Sentence sentence = sentenceService.getById(id);
-        SimpleDto simpleDto = new SimpleDto(sentence.getId(),sentence.getText());
-        return simpleDto;
+    public ResponseEntity<SimpleDto> simpleGetById(@PathVariable Long id) {
+        if (sentenceService.getById(id) == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            Sentence sentence = sentenceService.getById(id);
+            SimpleDto simpleDto = new SimpleDto(sentence.getId(),sentence.getText());
+            return new ResponseEntity<>(simpleDto, HttpStatus.OK);
+        }
     }
 
     @PutMapping("/{id}")

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 @Transactional
@@ -25,6 +26,40 @@ public class SentenceService {
 
     public Sentence getById(Long id) {
         return sentenceRepository.findById(id).orElse(null);
+    }
+
+    public Sentence findSentenceRandom() {
+        Random random = new Random();
+        Long id;
+        Sentence result = null;
+        do {
+            id = random.nextLong(50);
+            result = sentenceRepository.findById(id).orElse(null);
+        }
+        while (result == null);
+
+        return result;
+
+        /*
+
+public class Main {
+  public static void main(String[] args) {
+    Random random = new Random();
+    Set<Integer> generated = new HashSet<>();
+    int randomInt;
+
+    while (generated.size() < 1000) {
+      randomInt = random.nextInt(10000);
+      if (!generated.contains(randomInt)) {
+        generated.add(randomInt);
+        System.out.println("Random int: " + randomInt);
+      }
+    }
+  }
+}
+         */
+
+
     }
 
     public Sentence dtogetById(Long id) {
