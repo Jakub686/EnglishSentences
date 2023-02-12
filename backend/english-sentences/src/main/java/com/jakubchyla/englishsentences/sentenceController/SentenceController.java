@@ -14,8 +14,8 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 import static com.jakubchyla.englishsentences.sentenceController.mapper.SentencesDtoMapper.mapSentencesToSimpleDto;
-//import static com.jakubchyla.englishsentences.sentenceController.mapper.SentenceDtoMapper.mapSentenceToSimpleDto;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class SentenceController {
 

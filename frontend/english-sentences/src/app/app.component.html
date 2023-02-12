@@ -1,3 +1,22 @@
-<mat-slide-toggle>Toggle me!</mat-slide-toggle>
-<P></P>
-<button mat-button color="accent">Accent</button>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <ul class = "navbar-nav">
+    <li class = "nav-item">
+      <a routerLink="employees" routerLinkActive="active" class="nav-link" >Employee List</a>
+    </li>
+    <li class = "nav-item">
+      <a routerLink="create-employee" routerLinkActive="active" class="nav-link" >Add Employee</a>
+    </li>
+  </ul>
+</nav>
+
+<h1 class="text-center"> {{title}} </h1>
+<div class = "container">
+  <app-main></app-main>
+  <app-sentence-list></app-sentence-list>
+</div>
+
+<footer class = "footer">
+  <div class = "container">
+    <span>Jakub Chyła app</span>
+  </div>
+</footer>

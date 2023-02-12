@@ -1,0 +1,17 @@
+<h2>Sentence list</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th> Id</th>
+    <th> text</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let sentence of sentences">
+    <td> {{sentence.id}} </td>
+    <td> {{sentence.text}} </td>
+
+  </tr>
+  </tbody>
+
+</table>
