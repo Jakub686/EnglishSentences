@@ -22,7 +22,6 @@ public class SentenceController {
     @Autowired
     private SentenceService sentenceService;
 
-
     @PostMapping("/")
     public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {
         return new ResponseEntity<>(sentenceService.saveSentence(sentence), HttpStatus.CREATED);

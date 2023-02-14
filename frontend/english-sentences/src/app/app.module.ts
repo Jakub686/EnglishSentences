@@ -8,13 +8,15 @@ import { MatButtonModule } from "@angular/material/button";
 import { MainComponent } from './main/main.component';
 import { SentenceListComponent } from './sentence-list/sentence-list.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { CreateSentenceComponent } from './create-sentence/create-sentence.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    SentenceListComponent
+    SentenceListComponent,
+    CreateSentenceComponent
   ],
   imports: [
     BrowserModule,
