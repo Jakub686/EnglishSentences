@@ -8,9 +8,15 @@ import {Sentence} from "../sentence";
 })
 export class CreateSentenceComponent implements OnInit{
 
-  sentence?: Sentence = new Sentence();
+  sentence: Sentence = new Sentence();
   constructor() {
   }
 
   ngOnInit(){}
+
+  onSubmit(){
+
+  }
 }
+
+

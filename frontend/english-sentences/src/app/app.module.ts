@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { SentenceListComponent } from './sentence-list/sentence-list.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { CreateSentenceComponent } from './create-sentence/create-sentence.component';
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CreateSentenceComponent } from './create-sentence/create-sentence.compo
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
