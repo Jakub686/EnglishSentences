@@ -10,6 +10,7 @@ import { SentenceListComponent } from './sentence-list/sentence-list.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { CreateSentenceComponent } from './create-sentence/create-sentence.component';
 import { FormsModule } from "@angular/forms";
+import { UpdateSentenceComponent } from './update-sentence/update-sentence.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule } from "@angular/forms";
     AppComponent,
     MainComponent,
     SentenceListComponent,
-    CreateSentenceComponent
+    CreateSentenceComponent,
+    UpdateSentenceComponent
   ],
   imports: [
     BrowserModule,

@@ -4,12 +4,16 @@
   <tr>
     <th> Id</th>
     <th> text</th>
+    <th> actions</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let sentence of sentences">
     <td> {{sentence.id}} </td>
     <td> {{sentence.text}} </td>
+    <td>
+      <button (click)="updateSentence(sentence.id)" class="btn btn-info">update</button>
+    </td>
 
   </tr>
   </tbody>
