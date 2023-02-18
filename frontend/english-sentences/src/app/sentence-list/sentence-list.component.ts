@@ -10,11 +10,14 @@ import {Router} from "@angular/router";
 })
 export class SentenceListComponent implements OnInit {
 
-  sentences?: Sentence[];
-  constructor(private sentenceService: SentenceService,
-              private router: Router) {
+  sentences: Sentence[] = [{id:0, text:""}];
+  constructor(private sentenceService: SentenceService, private router: Router) {
   }
   ngOnInit() {
+    this.getSentencesSimple();
+  }
+
+  showList(){
     this.getSentencesSimple();
   }
 

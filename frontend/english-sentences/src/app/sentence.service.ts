@@ -18,4 +18,12 @@ export class SentenceService {
   createSentenceSimple(sentence: Sentence): Observable<Object>{
     return this.httpClient.post(`${this.baseURL}`,sentence);
   }
+
+  getSentenceById(id: number): Observable<Sentence>{
+    return this.httpClient.get<Sentence>(`${this.baseURL}simple/${id}`)
+  }
+
+  updateSentence(id:number, sentence: Sentence):Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}${id}`, sentence);
+  }
 }

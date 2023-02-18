@@ -8,23 +8,10 @@ import {Router} from "@angular/router";
   templateUrl: './create-sentence.component.html',
   styleUrls: ['./create-sentence.component.css']
 })
-export class CreateSentenceComponent implements OnInit{
+export class CreateSentenceComponent{
 
   sentence: Sentence = new Sentence();
-  constructor(private sentenceService: SentenceService,
-              private router: Router) {
-  }
-
-  ngOnInit(){}
-
-  saveSentence(){
-    this.sentenceService.createSentenceSimple(this.sentence).subscribe(data =>{
-    console.log(data);
-    },
-      error => console.log(error));
-  }
-  goToSentenceList(){
-    this.router.navigate(['/sentences'])
+  constructor(private sentenceService: SentenceService, private router: Router) {
   }
 
   onSubmit(){
@@ -32,7 +19,16 @@ export class CreateSentenceComponent implements OnInit{
     console.log(this.sentence.text);
     this.saveSentence();
     this.goToSentenceList();
+  }
+  saveSentence(){
+    this.sentenceService.createSentenceSimple(this.sentence).subscribe(data =>{
+    console.log(data);
+    },
+      error => console.log(error));
+  }
 
+  goToSentenceList(){
+    this.router.navigate(['/sentences'])
   }
 }
 
