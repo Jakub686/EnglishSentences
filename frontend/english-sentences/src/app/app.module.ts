@@ -11,6 +11,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { CreateSentenceComponent } from './create-sentence/create-sentence.component';
 import { FormsModule } from "@angular/forms";
 import { UpdateSentenceComponent } from './update-sentence/update-sentence.component';
+import { SentenceDetailsComponent } from './sentence-details/sentence-details.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { UpdateSentenceComponent } from './update-sentence/update-sentence.compo
     MainComponent,
     SentenceListComponent,
     CreateSentenceComponent,
-    UpdateSentenceComponent
+    UpdateSentenceComponent,
+    SentenceDetailsComponent
   ],
   imports: [
     BrowserModule,

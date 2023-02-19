@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Sentence} from "../sentence";
-import {SentenceService} from "../sentence.service";
 import {Router} from "@angular/router";
+import {SentenceService} from "../detailsSentence";
 
 @Component({
   selector: 'app-create-sentence',

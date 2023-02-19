@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Sentence} from "../sentence";
-import { SentenceService } from  "../sentence.service";
 import {Router} from "@angular/router";
+import {SentenceService} from "../detailsSentence";
 
 @Component({
   selector: 'app-sentence-list',
@@ -29,5 +29,16 @@ export class SentenceListComponent implements OnInit {
 
   updateSentence(id: number){
     this.router.navigate(['update-sentence',id]);
+  }
+
+  deleteSentence(id: number){
+    this.sentenceService.deleteSentence(id).subscribe(data =>{this.getSentencesSimple();
+      console.log(data);
+    });
+  }
+
+  detailsSentence(id: number){
+    this.router.navigate(['details-sentence',id])
+    this.sentenceService.detailSentence(id).subscribe();
   }
 }

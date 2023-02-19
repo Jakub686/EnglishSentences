@@ -33,7 +33,7 @@ public class SentenceService {
         Long id;
         Sentence result = null;
         do {
-            id = random.nextLong(50);
+            id = random.nextLong(500);
             result = sentenceRepository.findById(id).orElse(null);
         }
         while (result == null);

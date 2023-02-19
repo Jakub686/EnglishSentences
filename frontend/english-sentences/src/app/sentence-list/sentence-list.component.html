@@ -13,6 +13,8 @@
     <td> {{sentence.text}} </td>
     <td>
       <button (click)="updateSentence(sentence.id)" class="btn btn-info">update</button>
+      <button (click)="deleteSentence(sentence.id)" class="btn btn-danger" style="margin-left: 10px">delete</button>
+      <button (click)="detailsSentence(sentence.id)" class="btn btn-info" style="margin-left: 10px">detail</button>
     </td>
 
   </tr>
