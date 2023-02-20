@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Sentence} from "../sentence";
 import {ActivatedRoute, Router } from "@angular/router";
-import {SentenceService} from "../detailsSentence";
+import {SentenceService} from "../sentence.service";
 
 @Component({
   selector: 'app-update-sentence',

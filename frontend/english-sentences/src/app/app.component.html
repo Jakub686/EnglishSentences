@@ -1,24 +1,31 @@
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
   <ul class = "navbar-nav">
     <li class = "nav-item">
-      <a routerLink="sentences" routerLinkActive="active" class="nav-link" >sentences</a>
+      <a routerLink="main" routerLinkActive="active" class="nav-link" >Start</a>
     </li>
+
+    <li class = "nav-item">
+      <a routerLink="sentences" routerLinkActive="active" class="nav-link" >Sentences</a>
+    </li>
+
     <li class = "nav-item">
       <a routerLink="create-sentence" routerLinkActive="active" class="nav-link" >Add Sentece</a>
     </li>
-    <li class = "nav-item">
-      <a routerLink="main" routerLinkActive="active" class="nav-link" >main</a>
-    </li>
-
   </ul>
 </nav>
 
-<h1 class="text-center"> {{title}} </h1>
+<h1 class="text-center bg-primary" style="color: white; padding-bottom: 20px; padding-left: 10px; padding-right: 10px;">{{title}}</h1>
+
 <div class = "container">
-  <router-outlet></router-outlet>
+  <div class="item item-1">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="item item-2">
+    <a href="https://github.com/Jakub686/EnglishSentences">Source code</a>
+  </div>
 </div>
 
-<footer class = "footer">
+<footer class = "footer bg-primary">
   <div class = "container">
     <a href="https://github.com/Jakub686/EnglishSentences">Source code</a>
   </div>

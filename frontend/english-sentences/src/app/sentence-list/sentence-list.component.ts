@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Sentence} from "../sentence";
 import {Router} from "@angular/router";
-import {SentenceService} from "../detailsSentence";
+import {SentenceService} from "../sentence.service";
 
 @Component({
   selector: 'app-sentence-list',
@@ -15,6 +15,9 @@ export class SentenceListComponent implements OnInit {
   }
   ngOnInit() {
     this.getSentencesSimple();
+  }
+  onSubmit(){
+
   }
 
   showList(){

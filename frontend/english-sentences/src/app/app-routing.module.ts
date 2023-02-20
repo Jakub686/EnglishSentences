@@ -8,9 +8,9 @@ import {SentenceDetailsComponent} from "./sentence-details/sentence-details.comp
 
 const routes: Routes = [
   {path: 'sentences', component: SentenceListComponent}, // if http://localhost:4200/sentences show SentenceListComponent
-  {path: 'create-sentence', component: CreateSentenceComponent}, // if http://localhost:4200/sentences show SentenceListComponent
-  {path: 'main', component: MainComponent}, // if http://localhost:4200/sentences show SentenceListComponent
-  {path: '', redirectTo: 'sentences', pathMatch: 'full'}, // redirect from '' to sentences
+  {path: 'create-sentence', component: CreateSentenceComponent},
+  {path: 'main', component: MainComponent},
+  {path: '', redirectTo: 'main', pathMatch: 'full'}, // redirect from '' to sentences
   {path: 'update-sentence/:id', component: UpdateSentenceComponent},
   {path: 'details-sentence/:id', component: SentenceDetailsComponent}
 

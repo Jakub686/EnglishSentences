@@ -29,3 +29,11 @@ section {
   justify-content: center;
   width: 120px;
 }
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
