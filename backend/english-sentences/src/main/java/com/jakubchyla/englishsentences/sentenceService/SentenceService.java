@@ -52,7 +52,11 @@ public class SentenceService {
         return result;
     }
 
-    public Sentence dtogetById(Long id) {
+    public List<Sentence> findByText(String text) {
+        return sentenceRepository.findByText(text);
+    }
+
+    public Sentence dtoGetById(Long id) {
         return sentenceRepository.findById(id).orElse(null);
     }
 
@@ -70,6 +74,5 @@ public class SentenceService {
 
         return sentenceRepository.save(existingSentence);
     }
-
 
 }

@@ -39,6 +39,15 @@ public class SentenceController {
         return new ResponseEntity<>(sentence, HttpStatus.OK);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<Sentence>> findByText(@RequestParam String text) {
+        if (sentenceService.findByText(text) == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(sentenceService.findByText(text), HttpStatus.OK);
+        }
+    }
+
     @GetMapping("/simple")
     public ResponseEntity<List<SimpleDto>> simpleGetSentence() {
         return mapSentencesToSimpleDto(sentenceService.findAllSentence());
