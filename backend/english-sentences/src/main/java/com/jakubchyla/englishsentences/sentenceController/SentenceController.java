@@ -44,6 +44,8 @@ public class SentenceController {
         if (sentenceService.findByText(text) == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
+            System.out.println(text);
+            System.out.println(sentenceService.findByText(text));
             return new ResponseEntity<>(sentenceService.findByText(text), HttpStatus.OK);
         }
     }

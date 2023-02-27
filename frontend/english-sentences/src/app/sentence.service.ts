@@ -17,6 +17,10 @@ export class SentenceService {
     return this.httpClient.get<Sentence[]>(`${this.baseURL}`)
   }
 
+  getSentenceSimpleSearch(text: string): Observable<Sentence[]> {
+    return this.httpClient.get<Sentence[]>(`${this.baseURL}search?text=${text}`)
+  }
+
   getSentenceRandom(): Observable<Sentence>{
     return this.httpClient.get<Sentence>(`${this.baseURL}random`);
   }

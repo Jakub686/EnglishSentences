@@ -9,6 +9,7 @@ import {SentenceService} from "../sentence.service";
   styleUrls: ['./sentence-list.component.css']
 })
 export class SentenceListComponent implements OnInit {
+  sentence: Sentence = new Sentence();
 
   sentences: Sentence[] = [{id:0, text:""}];
   constructor(private sentenceService: SentenceService, private router: Router) {
@@ -17,11 +18,20 @@ export class SentenceListComponent implements OnInit {
     this.getSentencesSimple();
   }
   onSubmit(){
-
+    console.log(this.sentence);
+    console.log(this.sentence.text);
+    this.getSentencesSearch(this.sentence.text);
   }
 
   showList(){
     this.getSentencesSimple();
+  }
+
+  private getSentencesSearch(text: string){
+    this.sentenceService.getSentenceSimpleSearch(text).subscribe(data =>{
+      console.log(data);
+      this.sentences = data;
+    })
   }
 
   private getSentencesSimple(){
