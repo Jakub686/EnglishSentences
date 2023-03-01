@@ -40,13 +40,13 @@ public class SentenceController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<Sentence>> findByText(@RequestParam String text) {
-        if (sentenceService.findByText(text) == null) {
+    public ResponseEntity<List<Sentence>> findByText(@RequestParam String textEn) {
+        if (sentenceService.findByText(textEn) == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
-            System.out.println(text);
-            System.out.println(sentenceService.findByText(text));
-            return new ResponseEntity<>(sentenceService.findByText(text), HttpStatus.OK);
+            System.out.println(textEn);
+            System.out.println(sentenceService.findByText(textEn));
+            return new ResponseEntity<>(sentenceService.findByText(textEn), HttpStatus.OK);
         }
     }
 
@@ -70,7 +70,7 @@ public class SentenceController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
             Sentence sentence = sentenceService.getById(id);
-            SimpleDto simpleDto = new SimpleDto(sentence.getId(),sentence.getText());
+            SimpleDto simpleDto = new SimpleDto(sentence.getId(),sentence.getTextEn());
             return new ResponseEntity<>(simpleDto, HttpStatus.OK);
         }
     }
@@ -79,7 +79,7 @@ public class SentenceController {
     public ResponseEntity<UpdateDto> updateSentence(@PathVariable Long id, @RequestBody UpdateDto updateDto) {
         Sentence sentence = new Sentence();
         sentence.setId(id);
-        sentence.setText(updateDto.text());
+        sentence.setTextEn(updateDto.textEn());
         sentenceService.updateSentence(sentence);
         return new ResponseEntity<>(updateDto, HttpStatus.OK);
     }

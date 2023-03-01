@@ -12,7 +12,7 @@ public class SentencesDtoMapper {
 
     public static ResponseEntity<List<SimpleDto>> mapSentencesToSimpleDto(List<Sentence> allSentence) {
         return new ResponseEntity<>(allSentence.stream()
-                .map(sentence -> new SimpleDto(sentence.getId(), sentence.getText()))
+                .map(sentence -> new SimpleDto(sentence.getId(), sentence.getTextEn()))
                 .collect(Collectors.toList()), HttpStatus.OK);
     }
 }

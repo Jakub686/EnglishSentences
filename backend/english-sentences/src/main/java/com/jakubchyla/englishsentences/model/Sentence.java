@@ -18,7 +18,8 @@ public class Sentence {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String text;
+    @Column(name = "text_en")
+    private String textEn;
 
     @Temporal(TemporalType.TIMESTAMP)
     final private Date timestamp = new Date(System.currentTimeMillis());

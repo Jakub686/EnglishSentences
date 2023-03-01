@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface SentenceRepository extends JpaRepository<Sentence, Long> {
 
-    @Query("FROM Sentence WHERE text LIKE %?1%")
-    List<Sentence> findByText(String text);
+    @Query("FROM Sentence WHERE textEn LIKE %?1%")
+    List<Sentence> findByText(String textEn);
 
 }

@@ -70,7 +70,7 @@ public class SentenceService {
 
     public Sentence updateSentence(Sentence sentence) {
         Sentence existingSentence = sentenceRepository.findById(sentence.getId()).orElse(null);
-        existingSentence.setText(sentence.getText());
+        existingSentence.setTextEn(sentence.getTextEn());
 
         return sentenceRepository.save(existingSentence);
     }

@@ -12,7 +12,6 @@ import { CreateSentenceComponent } from './create-sentence/create-sentence.compo
 import { FormsModule } from "@angular/forms";
 import { UpdateSentenceComponent } from './update-sentence/update-sentence.component';
 import { SentenceDetailsComponent } from './sentence-details/sentence-details.component';
-import { SentenceSearchComponent } from './sentence-search/sentence-search.component';
 
 
 @NgModule({
@@ -23,7 +22,6 @@ import { SentenceSearchComponent } from './sentence-search/sentence-search.compo
     CreateSentenceComponent,
     UpdateSentenceComponent,
     SentenceDetailsComponent,
-    SentenceSearchComponent
   ],
   imports: [
     BrowserModule,
