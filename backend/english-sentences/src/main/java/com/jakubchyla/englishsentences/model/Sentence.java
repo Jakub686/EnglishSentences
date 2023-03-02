@@ -21,10 +21,13 @@ public class Sentence {
     @Column(name = "text_en")
     private String textEn;
 
+//    @Column(name = "text_pl")
+//    private String textPl;
+
     @Temporal(TemporalType.TIMESTAMP)
     final private Date timestamp = new Date(System.currentTimeMillis());
 
-    @OneToMany(targetEntity = UrlLink.class,cascade = CascadeType.ALL)
-    @JoinColumn(name ="sentence_id",referencedColumnName = "id")
-    private List<UrlLink> urllinks;
+    @OneToMany(targetEntity = TranslationToPl.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "translation_to_pl", referencedColumnName = "id")
+    private List<TranslationToPl> translationToPl;
 }

@@ -39,13 +39,12 @@ public class SentenceController {
         return new ResponseEntity<>(sentence, HttpStatus.OK);
     }
 
+    //TODO serach ma zwraca simple
     @GetMapping("/search")
     public ResponseEntity<List<Sentence>> findByText(@RequestParam String textEn) {
         if (sentenceService.findByText(textEn) == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
-            System.out.println(textEn);
-            System.out.println(sentenceService.findByText(textEn));
             return new ResponseEntity<>(sentenceService.findByText(textEn), HttpStatus.OK);
         }
     }
@@ -70,7 +69,7 @@ public class SentenceController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
             Sentence sentence = sentenceService.getById(id);
-            SimpleDto simpleDto = new SimpleDto(sentence.getId(),sentence.getTextEn());
+            SimpleDto simpleDto = new SimpleDto(sentence.getId(), sentence.getTextEn());
             return new ResponseEntity<>(simpleDto, HttpStatus.OK);
         }
     }
@@ -84,11 +83,11 @@ public class SentenceController {
         return new ResponseEntity<>(updateDto, HttpStatus.OK);
     }
 
-    @PutMapping("/urllink/{id}")
+    @PutMapping("/textpl/{id}")
     public ResponseEntity<UpdateUrlLinkDto> updateSentenceUrlLink(@PathVariable Long id, @RequestBody UpdateUrlLinkDto updateUrlLinkDto) {
         Sentence sentence = new Sentence();
         sentence.setId(id);
-        sentence.setUrllinks(updateUrlLinkDto.urlLink());
+        sentence.setTranslationToPl(updateUrlLinkDto.textPl());
         sentenceService.updateSentence(sentence);
         return new ResponseEntity<>(updateUrlLinkDto, HttpStatus.OK);
     }

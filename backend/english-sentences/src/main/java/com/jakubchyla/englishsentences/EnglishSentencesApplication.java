@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class EnglishSentencesApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EnglishSentencesApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EnglishSentencesApplication.class, args);
+    }
 
 }

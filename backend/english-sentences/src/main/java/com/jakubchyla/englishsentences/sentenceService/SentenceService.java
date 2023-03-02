@@ -23,6 +23,7 @@ public class SentenceService {
     public List<Sentence> findAllSentence() {
         return sentenceRepository.findAll();
     }
+
     public Long findHighestId() {
         sentenceRepository.findAll();
         List<Sentence> sentences = sentenceRepository.findAll();
@@ -71,7 +72,6 @@ public class SentenceService {
     public Sentence updateSentence(Sentence sentence) {
         Sentence existingSentence = sentenceRepository.findById(sentence.getId()).orElse(null);
         existingSentence.setTextEn(sentence.getTextEn());
-
         return sentenceRepository.save(existingSentence);
     }
 
