@@ -20,5 +20,6 @@ export class SentenceDetailsComponent implements OnInit{
     this.sentenceService.getSentenceById(this.id).subscribe(data=>{
       this.sentence = data;
     });
+    console.log()
   }
 }

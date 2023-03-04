@@ -44,7 +44,7 @@ public class SentenceService {
         Long id;
         Sentence result;
         do {
-            id = random.nextLong(findHighestId());// used findHighestId to not hardcoded seed in random
+            id = random.nextLong(findHighestId() + 1);// used findHighestId to not hardcoded seed in random
             System.out.println(findHighestId());
             result = sentenceRepository.findById(id).orElse(null);
             System.out.println(result);

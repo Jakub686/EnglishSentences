@@ -11,7 +11,7 @@ import {SentenceService} from "../sentence.service";
 export class SentenceListComponent implements OnInit {
   sentence: Sentence = new Sentence();
 
-  sentences: Sentence[] = [{id:0, text:""}];
+  sentences?: Sentence[];
   constructor(private sentenceService: SentenceService, private router: Router) {
   }
   ngOnInit() {
@@ -19,8 +19,8 @@ export class SentenceListComponent implements OnInit {
   }
   onSubmit(){
     console.log(this.sentence);
-    console.log(this.sentence.text);
-    this.getSentencesSearch(this.sentence.text);
+    console.log(this.sentence.textEn);
+    this.getSentencesSearch(this.sentence.textEn);
   }
 
   showList(){

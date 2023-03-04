@@ -2,7 +2,7 @@
 <form (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label>text</label>
-    <input type="text" class="form-control" id="text" [(ngModel)] = "sentence.text"  name="text">
+    <input type="text" class="form-control" id="text" [(ngModel)] = "sentence.textEn"  name="text">
   </div>
   <button class = "btn btn-success" type ="submit">Search</button>
 </form>
@@ -18,7 +18,8 @@
   <tbody>
   <tr *ngFor="let sentence of sentences">
     <td> {{sentence.id}} </td>
-    <td> {{sentence.text}} </td>
+    <td> {{sentence.textEn}} </td>
+<!--    <td> {{sentence.translationToPl.textPl}} </td>-->
     <td>
       <button (click)="updateSentence(sentence.id)" class="btn btn-info">update</button>
       <button (click)="deleteSentence(sentence.id)" class="btn btn-danger" style="margin-left: 10px">delete</button>

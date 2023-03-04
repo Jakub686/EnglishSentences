@@ -16,7 +16,7 @@ export class CreateSentenceComponent{
 
   onSubmit(){
     console.log(this.sentence);
-    console.log(this.sentence.text);
+    console.log(this.sentence.textEn);
     this.saveSentence();
     this.goToSentenceList();
   }

@@ -13,6 +13,7 @@ export class UpdateSentenceComponent implements OnInit{
   sentence: Sentence = new Sentence();
   constructor(private sentenceService: SentenceService, private route: ActivatedRoute, private router: Router) {
   }
+
   ngOnInit(): void{
     this.id = this.route.snapshot.params['id'];
     this.sentenceService.getSentenceById(this.id).subscribe(data =>{
@@ -30,4 +31,10 @@ export class UpdateSentenceComponent implements OnInit{
   goToSentenceList(){
     this.router.navigate(['/sentences'])
   }
+
+
+}
+
+export function aaa(){
+  return
 }

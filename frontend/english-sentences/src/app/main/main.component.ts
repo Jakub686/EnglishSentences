@@ -13,6 +13,7 @@ export class MainComponent implements OnInit{
   sentence: Sentence | any;
 
   constructor(private route: ActivatedRoute, private sentenceService: SentenceService) {}
+
   ngOnInit():void {
     this.randomSentence();
   }
