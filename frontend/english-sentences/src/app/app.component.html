@@ -1,32 +1,28 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-  <ul class = "navbar-nav">
-    <li class = "nav-item">
-      <a routerLink="main" routerLinkActive="active" class="nav-link" >Start</a>
-    </li>
+<header class="header">
+  <div class="grid-wrapper">
+    <div class="grid-item item-1">
+        <a routerLink="main" routerLinkActive="active" class="nav-link">Start</a>
+    </div>
+    <div class="grid-item item-2">
+        <a routerLink="sentences" routerLinkActive="active" class="nav-link">Sentences</a>
+    </div>
+    <div class="grid-item item-3">
+      <a routerLink="create-sentence" routerLinkActive="active" class="nav-link">Add Sentece</a>
+    </div>
+  </div>
+    <div class="grid-item">
+      <h1>{{title}}</h1>
+    </div>
+</header>
 
-    <li class = "nav-item">
-      <a routerLink="sentences" routerLinkActive="active" class="nav-link" >Sentences</a>
-    </li>
-
-    <li class = "nav-item">
-      <a routerLink="create-sentence" routerLinkActive="active" class="nav-link" >Add Sentece</a>
-    </li>
-  </ul>
-</nav>
-
-<h1 class="text-center bg-primary" style="color: white; padding-bottom: 20px; padding-left: 10px; padding-right: 10px;">{{title}}</h1>
-
-<div class = "container">
-  <div class="item item-1">
+<body class="body">
+  <div >
     <router-outlet></router-outlet>
   </div>
-  <div class="item item-2">
-    <a href="https://github.com/Jakub686/EnglishSentences">Source code</a>
-  </div>
-</div>
-
-<footer class = "footer bg-primary">
-  <div class = "container">
-    <a href="https://github.com/Jakub686/EnglishSentences">Source code</a>
-  </div>
+</body>
+<footer>
+    <div class="footer1">
+      <a href="https://github.com/Jakub686/EnglishSentences">Source code</a>
+    </div>
 </footer>
+
