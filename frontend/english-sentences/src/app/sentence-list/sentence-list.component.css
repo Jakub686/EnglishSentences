@@ -1,0 +1,67 @@
+.btn-update {
+  background-color: #3693ef;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: #fa5959;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-detail {
+  background-color: #ea9e0c;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-search {
+  background-color: #4CAF50;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin: 5px
+}
+
+.rounded {
+  background-color: floralwhite;
+  border-radius: 20px;
+  color: black;
+  padding: 7px 14px;
+  font-size: 16px;
+  border: none;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.rounded-input {
+  background-color: floralwhite;
+  border-radius: 20px;
+  color: black;
+  padding: 7px 270px;
+  font-size: 16px;
+  border: none;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+table{
+  margin:auto;
+  padding-top: 20px;
+}

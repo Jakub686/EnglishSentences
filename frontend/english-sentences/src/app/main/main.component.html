@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 text-center">
-      <div>
-        <label><b>text:</b></label> {{sentence.textEn}}
+      <div class="rounded">
+        <b>EN:</b> {{sentence.textEn}}
       </div>
-      <div>
-        <label><b>text:</b></label> {{sentence.translationToPl[0].textPl}}
+      <div class="rounded">
+        <b>PL:</b> {{sentence.translationToPl[0].textPl}}
       </div>
-      <div>
-        <label><b>text:</b></label> {{sentence.translationToPl[1].textPl}}
+      <div class="rounded">
+        <b>PL:</b> {{sentence.translationToPl[1].textPl}}
       </div>
       <div><button (click)="randomSentence()" class="random" style="margin-left: 10px">random sentence</button></div>
     </div>
