@@ -57,9 +57,9 @@ public class SentenceService {
         return sentenceRepository.findByText(text);
     }
 
-    public Sentence dtoGetById(Long id) {
-        return sentenceRepository.findById(id).orElse(null);
-    }
+//    public Sentence dtoGetById(Long id) {
+//        return sentenceRepository.findById(id).orElse(null);
+//    }
 
     public void deleteSentence(Long id) {
         boolean exists = sentenceRepository.existsById(id);
