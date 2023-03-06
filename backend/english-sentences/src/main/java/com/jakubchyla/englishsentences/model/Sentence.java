@@ -21,9 +21,6 @@ public class Sentence {
     @Column(name = "text_en")
     private String textEn;
 
-//    @Column(name = "text_pl")
-//    private String textPl;
-
     @Temporal(TemporalType.TIMESTAMP)
     final private Date timestamp = new Date(System.currentTimeMillis());
 

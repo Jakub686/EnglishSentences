@@ -1,0 +1,10 @@
+.rounded {
+  background-color: floralwhite;
+  border-radius: 20px;
+  color: black;
+  padding: 7px 14px;
+  font-size: 16px;
+  border: none;
+  display: inline-block;
+  margin-right: 10px;
+}
