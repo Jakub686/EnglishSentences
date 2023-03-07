@@ -1,9 +1,19 @@
+.grid-wrapper-main {
+  text-align: center;
+  display: grid;
+  grid-template-rows: 50px 50px 50px;
+  grid-gap: 10px;
+  text-indent: initial;
+  border-collapse: separate;
+  text-decoration: none;
+}
+
 .random{
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
   margin: 20px;
-  padding: 20px 40px; /* Adjust as needed */
+  padding: 20px 14px; /* Adjust as needed */
   text-align: center;
   text-decoration: none;
   display: inline-block;

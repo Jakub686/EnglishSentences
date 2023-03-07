@@ -1,16 +1,19 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 text-center">
-      <div class="rounded">
-        <b>EN:</b> {{sentence.textEn}}
-      </div><p>
-      <div class="rounded">
-        <b>PL:</b> {{sentence.translationToPl[0].textPl}}
-      </div><p>
-      <div class="rounded">
-        <b>PL:</b> {{sentence.translationToPl[1].textPl}}
-      </div><p>
-      <div><button (click)="randomSentence()" class="random" style="margin-left: 10px">random sentence</button></div>
-    </div>
+<div class="grid-wrapper-main">
+  <div class="rounded">
+    <b>EN:</b> {{sentence.textEn}}
+  </div>
+
+  <div class="rounded">
+    <b>PL:</b> {{sentence.translationToPl[0].textPl}}
+  </div>
+
+  <div class="rounded">
+    <b>PL:</b> {{sentence.translationToPl[1].textPl}}
+  </div>
+
+  <div>
+    <button (click)="randomSentence()" class="random" style="margin-left: 10px">random sentence</button>
   </div>
 </div>
+
+
