@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Sentence} from "../sentence";
 import {SentenceService} from "../sentence.service";
 import {ActivatedRoute} from "@angular/router";
+import {TranslationToPl} from "../translationToPl";
 
 @Component({
   selector: 'app-main',
@@ -9,7 +10,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit{
-
+  
   sentence: Sentence | any;
 
   constructor(private route: ActivatedRoute, private sentenceService: SentenceService) {}
