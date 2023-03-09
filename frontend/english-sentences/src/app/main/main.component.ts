@@ -10,10 +10,9 @@ import {TranslationToPl} from "../translationToPl";
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit{
-  
-  sentence: Sentence | any;
 
-  constructor(private route: ActivatedRoute, private sentenceService: SentenceService) {}
+  sentence: Sentence | any;
+    constructor(private route: ActivatedRoute, private sentenceService: SentenceService) {}
 
   ngOnInit():void {
     this.randomSentence();

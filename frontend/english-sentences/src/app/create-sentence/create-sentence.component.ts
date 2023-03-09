@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Sentence} from "../sentence";
 import {Router} from "@angular/router";
 import {SentenceService} from "../sentence.service";
+import {TranslationToPl} from "../translationToPl";
 
 @Component({
   selector: 'app-create-sentence',

@@ -10,8 +10,7 @@ import {SentenceService} from "../sentence.service";
 })
 export class SentenceListComponent implements OnInit {
   sentence: Sentence = new Sentence();
-
-  sentences?: Sentence[];
+  sentences: Sentence[] = [];
   constructor(private sentenceService: SentenceService, private router: Router) {
   }
   ngOnInit() {

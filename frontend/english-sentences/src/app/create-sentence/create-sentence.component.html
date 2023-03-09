@@ -1,10 +1,13 @@
-<div class="col-md-6 offset-md-3">
-<h3> Create sentence</h3>
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label>text</label>
-      <input type="text" class="form-control" style="background-color: red;" id="text" [(ngModel)] = "sentence.textEn" name="text">
-    </div>
-    <button class = "btn btn-success" type ="submit">Submit</button>
-  </form>
-</div>
+<h2> Create sentence</h2>
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label>text  </label>
+    <input type="text" class="rounded-input" id="textEn" [(ngModel)] = "sentence.textEn" name="textEn">
+  </div>
+<!--  <div>-->
+<!--    <label>text  </label>-->
+<!--    <input type="text" class="rounded-input" id="textPl" [(ngModel)] = "sentence.translationToPl[0].textPl" name="textPl">-->
+<!--  </div>-->
+  <button class="btn-submit" type ="submit">Submit</button>
+</form>
+
