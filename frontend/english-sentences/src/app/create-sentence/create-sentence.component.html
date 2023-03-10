@@ -2,12 +2,12 @@
 <form (ngSubmit)="onSubmit()">
   <div>
     <label>text  </label>
-    <input type="text" class="rounded-input" id="textEn" [(ngModel)] = "sentence.textEn" name="textEn">
+    <input type="text" id="textEn" class="rounded-input"  [(ngModel)] = "sentence.textEn" name="textEn" >
   </div>
-<!--  <div>-->
-<!--    <label>text  </label>-->
-<!--    <input type="text" class="rounded-input" id="textPl" [(ngModel)] = "sentence.translationToPl[0].textPl" name="textPl">-->
-<!--  </div>-->
+  <div>
+    <label>text  </label>
+    <input type="text" id="translationToPl[0].textPl" class="rounded-input" [(ngModel)] = "sentence.translationToPl[0].textPl" name="translationToPl[0].textPl" >
+  </div>
   <button class="btn-submit" type ="submit">Submit</button>
 </form>
 

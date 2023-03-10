@@ -11,13 +11,14 @@ import {TranslationToPl} from "../translationToPl";
 })
 export class CreateSentenceComponent{
 
-  sentence: Sentence = new Sentence();
+  sentence: Sentence = {id: 0, textEn:"",translationToPl:[{id:0,textPl:""}]};
   constructor(private sentenceService: SentenceService, private router: Router) {
   }
 
   onSubmit(){
     console.log(this.sentence);
     console.log(this.sentence.textEn);
+    console.log(this.sentence.translationToPl[0].textPl);
     this.saveSentence();
     this.goToSentenceList();
   }
