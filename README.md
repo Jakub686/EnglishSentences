@@ -1,6 +1,6 @@
 # EnglishSentences
 
-#### CRUD app, Angular + Springboot 3 + PostgreSQL.
+#### CRUD app, Angular + Springboot + PostgreSQL.
 
 ## Table of contents
 * [General info](#general-info)
@@ -18,9 +18,10 @@ Main purpose of this application is to practice fullstack technologies and help 
 
 ## Technologies
 Project is created with:
-* Lorem version: 12.3
-* Ipsum version: 2.33
-* Ament library version: 999
+* Java 17
+* SpringBoot 3
+* Angular 15
+* PostgreSQL
 	
 ## Setup
-To run this project, install it locally using npm:
+xxxxxxxxxxxxxxx
