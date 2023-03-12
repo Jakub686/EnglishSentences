@@ -1,5 +1,6 @@
 # EnglishSentences
 
+###### CRUD app, Angular + springboot 3 + postgresql.
 
 ## Table of contents
 * [General info](#general-info)
