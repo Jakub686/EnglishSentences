@@ -8,7 +8,7 @@
 * [Setup](#setup)
 
 ## General info
-This project is simple Lorem ipsum dolor generator.
+Main purpose of this application is to practice full stack technologies and help me with studying english by displaying random english sentences.
 
 ![image](https://user-images.githubusercontent.com/80157748/224550411-4b913aa0-01ea-431c-85d7-f008cbfe166d.png)
 
