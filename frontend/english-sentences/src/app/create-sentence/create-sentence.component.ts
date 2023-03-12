@@ -11,7 +11,7 @@ import {TranslationToPl} from "../translationToPl";
 })
 export class CreateSentenceComponent{
 
-  sentence: Sentence = {id: 0, textEn:"",translationToPl:[{id:0,textPl:""}]};
+  sentence: Sentence = {id: 0, textEn:"",translationToPl:[{id:0,textPl:""},{id:1,textPl:""}]};
   constructor(private sentenceService: SentenceService, private router: Router) {
   }
 

@@ -10,7 +10,8 @@ import {SentenceService} from "../sentence.service";
 })
 export class UpdateSentenceComponent implements OnInit{
   id:number = 0;
-  sentence: Sentence = new Sentence();
+  // sentence: Sentence = new Sentence();
+  sentence: Sentence = {id: 0, textEn:"",translationToPl:[{id:0,textPl:""},{id:1,textPl:""}]};
   constructor(private sentenceService: SentenceService, private route: ActivatedRoute, private router: Router) {
   }
 
@@ -31,7 +32,6 @@ export class UpdateSentenceComponent implements OnInit{
   goToSentenceList(){
     this.router.navigate(['/sentences'])
   }
-
 
 }
 

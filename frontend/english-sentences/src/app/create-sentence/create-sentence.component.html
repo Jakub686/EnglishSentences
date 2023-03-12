@@ -1,13 +1,23 @@
 <h2> Create sentence</h2>
+
 <form (ngSubmit)="onSubmit()">
-  <div>
-    <label>text  </label>
-    <input type="text" id="textEn" class="rounded-input"  [(ngModel)] = "sentence.textEn" name="textEn" >
+  <div class="grid-wrapper-main">
+    <div class="rounded-input">
+      <label>En: </label>
+      <input type="text" class="rounded" [(ngModel)]="sentence.textEn" name="textEn">
+    </div>
+    <div class="rounded-input">
+      <label>Pl: </label>
+      <input type="text" class="rounded" [(ngModel)]="sentence.translationToPl[0].textPl"
+             name="translationToPl[0].textPl">
+    </div>
+    <div class="rounded-input">
+      <label>Pl: </label>
+      <input type="text" class="rounded" [(ngModel)]="sentence.translationToPl[1].textPl"
+             name="translationToPl[1].textPl">
+    </div>
   </div>
-  <div>
-    <label>text  </label>
-    <input type="text" id="translationToPl[0].textPl" class="rounded-input" [(ngModel)] = "sentence.translationToPl[0].textPl" name="translationToPl[0].textPl" >
-  </div>
-  <button class="btn-submit" type ="submit">Submit</button>
+  <button class="btn-submit" type="submit">Submit</button>
 </form>
+
 

@@ -1,10 +1,20 @@
-<div class="col-md-6 offset-md-3">
-  <h3> Update sentence</h3>
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label>text</label>
-      <input type="text" class="form-control" id="text" [(ngModel)] = "sentence.textEn" name="text">
+<h2> Update sentence</h2>
+<form (ngSubmit)="onSubmit()">
+  <div class="grid-wrapper-main">
+    <div class="rounded-input">
+      <label>En: </label>
+      <input type="text" class="rounded" [(ngModel)]="sentence.textEn" name="textEn">
     </div>
-    <button class = "btn btn-success" type ="submit">Submit</button>
-  </form>
-</div>
+    <div class="rounded-input">
+      <label>Pl: </label>
+      <input type="text" class="rounded" [(ngModel)]="sentence.translationToPl[0].textPl"
+             name="translationToPl[0].textPl">
+    </div>
+    <div class="rounded-input">
+      <label>Pl: </label>
+      <input type="text" class="rounded" [(ngModel)]="sentence.translationToPl[1].textPl"
+             name="translationToPl[1].textPl">
+    </div>
+  </div>
+  <button class="btn-submit" type="submit">Submit</button>
+</form>
