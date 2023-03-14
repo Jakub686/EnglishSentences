@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 import java.util.List;
 
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Entity
 public class Sentence {
 
     @Id
@@ -28,3 +28,5 @@ public class Sentence {
     @JoinColumn(name = "translation_to_pl", referencedColumnName = "id")
     private List<TranslationToPl> translationToPl;
 }
+
+

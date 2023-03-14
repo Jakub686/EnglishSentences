@@ -1,9 +1,9 @@
 <h2>Sentence list</h2>
 <form (ngSubmit)="onSubmit()">
-  <div >
-    <input type="text" class="rounded-input" id="text" [(ngModel)] = "sentence.textEn"  name="text">
+  <div>
+    <input type="text" class="rounded-input" id="text" [(ngModel)]="search" name="text">
   </div>
-  <button class="btn-search" type ="submit">Search</button>
+  <button class="btn-search" type="submit">Search</button>
 </form>
 
 <table>

@@ -13,7 +13,6 @@ import { FormsModule } from "@angular/forms";
 import { UpdateSentenceComponent } from './update-sentence/update-sentence.component';
 import { SentenceDetailsComponent } from './sentence-details/sentence-details.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
