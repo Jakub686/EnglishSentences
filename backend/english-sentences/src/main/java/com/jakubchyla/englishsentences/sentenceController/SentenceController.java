@@ -85,6 +85,8 @@ public class SentenceController {
 
     @PutMapping("/textpl/{id}")
     public ResponseEntity<UpdateUrlLinkDto> updateSentenceUrlLink(@PathVariable Long id, @RequestBody UpdateUrlLinkDto updateUrlLinkDto) {
+       // String loginInfo = login;
+        //System.out.println(loginInfo);
         Sentence sentence = new Sentence();
         sentence.setId(id);
         sentence.setTranslationToPl(updateUrlLinkDto.textPl());
