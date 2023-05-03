@@ -17,9 +17,7 @@ export class SentenceDetailsComponent implements OnInit{
   ngOnInit():void {
     this.id = this.route.snapshot.params['id'];
     this.sentence = new Sentence();
-    this.sentenceService.getSentenceById(this.id).subscribe(data=>{
-      this.sentence = data;
-    });
+    this.sentenceService.getSentenceById(this.id).subscribe(data=>{this.sentence = data;});
     console.log()
   }
 }
