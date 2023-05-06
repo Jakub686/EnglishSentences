@@ -1,15 +1,25 @@
-#spring:
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/jwt_security
-#    username: postgres
-#    password: root
-#    driver-class-name: org.postgresql.Driver
-#  jpa:
-#    hibernate:
-#      ddl-auto: create-drop
-#    show-sql: true
-#    properties:
-#      hibernate:
-#        format_sql: true
-#    database: postgresql
-#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/english-sentences
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
+#    spring.datasource.url=jdbc:postgresql://localhost:5432/english-sentences
+#    spring.datasource.username=postgres
+#    spring.datasource.password=root
+#
+#    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect
+#    spring.jpa.hibernate.ddl-auto=update
+#    spring.jpa.show-sql=true
+#
