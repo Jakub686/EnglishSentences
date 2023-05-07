@@ -1,6 +1,10 @@
 package com.jakubchyla.englishsentences.auth;
 
+import com.jakubchyla.englishsentences.model.Sentence;
+import com.jakubchyla.englishsentences.sentenceService.SentenceService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 public class AuthenticationController {
 
     private final AuthenticationService service;
+    @Autowired
+    private SentenceService sentenceService;
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
@@ -29,5 +35,11 @@ public class AuthenticationController {
     @GetMapping("/demo-controller")
     public ResponseEntity<String> sayHello() {
         return ResponseEntity.ok("Hello from secured endpoint");
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<Sentence> getSentenceRandom() {
+        Sentence sentence = sentenceService.findSentenceRandom();
+        return new ResponseEntity<>(sentence, HttpStatus.OK);
     }
 }
