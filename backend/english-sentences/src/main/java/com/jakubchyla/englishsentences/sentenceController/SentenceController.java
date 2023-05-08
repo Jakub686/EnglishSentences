@@ -15,7 +15,8 @@ import java.util.List;
 
 import static com.jakubchyla.englishsentences.sentenceController.mapper.SentencesDtoMapper.mapSentencesToSimpleDto;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/v1")
 @RestController
 public class SentenceController {
 
