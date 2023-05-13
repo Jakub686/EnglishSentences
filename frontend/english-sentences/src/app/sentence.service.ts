@@ -8,7 +8,7 @@ import {Sentence} from "./sentence";
 })
 export class SentenceService {
 
-  private baseURL = 'http://localhost:8080/';
+  private baseURL = 'http://localhost:8080/api/v1/open/';
 
   constructor(private httpClient: HttpClient) {
   }

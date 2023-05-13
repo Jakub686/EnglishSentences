@@ -12,6 +12,7 @@ import { CreateSentenceComponent } from './create-sentence/create-sentence.compo
 import { FormsModule } from "@angular/forms";
 import { UpdateSentenceComponent } from './update-sentence/update-sentence.component';
 import { SentenceDetailsComponent } from './sentence-details/sentence-details.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SentenceDetailsComponent } from './sentence-details/sentence-details.co
     CreateSentenceComponent,
     UpdateSentenceComponent,
     SentenceDetailsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
