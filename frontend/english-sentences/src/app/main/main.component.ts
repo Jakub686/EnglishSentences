@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Sentence} from "../sentence";
-import {SentenceService} from "../sentence.service";
+import {SentenceService} from "../service/sentence.service";
 import {ActivatedRoute} from "@angular/router";
 import {TranslationToPl} from "../translationToPl";
 
