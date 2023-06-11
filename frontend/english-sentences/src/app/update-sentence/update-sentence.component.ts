@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Sentence} from "../sentence";
+import {Sentence} from "../model/sentence";
 import {ActivatedRoute, Router } from "@angular/router";
 import {SentenceService} from "../service/sentence.service";
 

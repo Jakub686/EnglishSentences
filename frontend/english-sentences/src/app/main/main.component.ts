@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Sentence} from "../sentence";
+import {Sentence} from "../model/sentence";
 import {SentenceService} from "../service/sentence.service";
 import {ActivatedRoute} from "@angular/router";
-import {TranslationToPl} from "../translationToPl";
+import {TranslationToPl} from "../model/translationToPl";
 
 @Component({
   selector: 'app-main',
