@@ -1,15 +1,15 @@
-<h2> Login</h2>
+<h2>Login</h2>
 
 <form (ngSubmit)="onSubmit()">
   <div class="grid-wrapper-main">
     <div class="rounded-input">
-      <label>En: </label>
-      <input type="text" class="rounded" [(ngModel)]="sentence.textEn" name="textEn">
+      <label>Email: </label>
+      <input type="text" class="rounded" [(ngModel)]="user.email" name="username">
     </div>
     <div class="rounded-input">
-      <label>Pl: </label>
-      <input type="text" class="rounded" [(ngModel)]="sentence.translationToPl[0].textPl"
-             name="translationToPl[0].textPl">
+      <label>Password: </label>
+      <input type="text" class="rounded" [(ngModel)]="user.password"
+             name="password">
     </div>
   </div>
   <button class="btn-submit" type="submit">Submit</button>

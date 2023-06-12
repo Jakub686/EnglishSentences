@@ -13,6 +13,7 @@ import { FormsModule } from "@angular/forms";
 import { UpdateSentenceComponent } from './update-sentence/update-sentence.component';
 import { SentenceDetailsComponent } from './sentence-details/sentence-details.component';
 import { LoginComponent } from './login/login.component';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LoginComponent } from './login/login.component';
     UpdateSentenceComponent,
     SentenceDetailsComponent,
     LoginComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
