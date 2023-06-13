@@ -1,24 +1,24 @@
 <h2>Sign in</h2>
 
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="saveUser()">
   <div class="grid-wrapper-main">
     <div class="rounded-input">
       <label>First name: </label>
-      <input type="text" class="rounded" [(ngModel)]="user.firstname" name="username">
+      <input type="text" class="rounded" [(ngModel)]="userSignIn.firstname" name="username">
     </div>
     <div class="rounded-input">
       <label>Last name: </label>
-      <input type="text" class="rounded" [(ngModel)]="user.lastname"
+      <input type="text" class="rounded" [(ngModel)]="userSignIn.lastname"
              name="password">
     </div>
     <div class="rounded-input">
       <label>Emial: </label>
-      <input type="text" class="rounded" [(ngModel)]="user.email"
+      <input type="text" class="rounded" [(ngModel)]="userSignIn.email"
              name="password">
     </div>
     <div class="rounded-input">
       <label>Password: </label>
-      <input type="text" class="rounded" [(ngModel)]="user.password"
+      <input type="text" class="rounded" [(ngModel)]="userSignIn.password"
              name="password">
     </div>
   </div>
