@@ -14,7 +14,7 @@ export class SentenceService {
   }
 
   getSentenceSimpleList(): Observable<Sentence[]> {
-    return this.httpClient.get<Sentence[]>(`${this.baseURL}`)
+    return this.httpClient.get<Sentence[]>(`${this.baseURL}sentences`)
   }
 
   getSentenceSimpleSearch(text: string): Observable<Sentence[]> {

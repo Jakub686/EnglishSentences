@@ -1,14 +1,14 @@
 <h2>Login</h2>
 
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="authUser()">
   <div class="grid-wrapper-main">
     <div class="rounded-input">
       <label>Email: </label>
-      <input type="text" class="rounded" [(ngModel)]="user.email" name="username">
+      <input type="text" class="rounded" [(ngModel)]="userLogIn.email" name="username">
     </div>
     <div class="rounded-input">
       <label>Password: </label>
-      <input type="text" class="rounded" [(ngModel)]="user.password"
+      <input type="text" class="rounded" [(ngModel)]="userLogIn.password"
              name="password">
     </div>
   </div>

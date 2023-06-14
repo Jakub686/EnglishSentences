@@ -3,6 +3,9 @@ import {Sentence} from "../model/sentence";
 import {SentenceService} from "../service/sentence.service";
 import {Router} from "@angular/router";
 import {UserLoginDTO} from "../model/userLoginDTO";
+import {UserSigninDTO} from "../model/userSigninDTO";
+import {Observable, tap} from "rxjs";
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-login',
@@ -11,14 +14,28 @@ import {UserLoginDTO} from "../model/userLoginDTO";
 })
 export class LoginComponent {
   sentence: Sentence = {id: 0, textEn: "", translationToPl: [{id: 0, textPl: ""}, {id: 1, textPl: ""}]};
-  user: UserLoginDTO = {email: '', password: ''}
+  userLogIn: UserLoginDTO = {email: '', password: ''};
+  token: string = '';
 
-  constructor(private sentenceService: SentenceService, private router: Router) {
+  constructor(private sentenceService: SentenceService,private userService: UserService, private router: Router) {
   }
 
   onSubmit() {
     this.saveSentence();
     this.goToSentenceList();
+  }
+
+  authUser() {
+    console.log(this.userLogIn.email)
+    console.log(this.userLogIn.password)
+    this.userService.authUser(this.userLogIn).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.token = data.token;
+      },
+      error => console.log(error)
+    );
+    console.log(this.token)
   }
 
   saveSentence() {

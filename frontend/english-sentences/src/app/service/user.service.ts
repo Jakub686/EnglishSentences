@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, tap} from "rxjs";
 import {Injectable} from "@angular/core";
 import {UserSigninDTO} from "../model/userSigninDTO";
+import {UserLoginDTO} from "../model/userLoginDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -18,16 +19,20 @@ export class UserService {
     return this.httpClient.post(`${this.baseURL}register`, user)
   }
 
-  authUser(user: UserSigninDTO): Observable<Object> {
+  authUser(user: UserLoginDTO): Observable<Object> {
     console.log(`${this.baseURL}authenticate`);
     return this.httpClient.post(`${this.baseURL}authenticate`, user).pipe(
       tap((response: any) => {
         const token = response.token; // Assuming the token is returned in the response as "token"
         // Store the token in your desired storage mechanism (e.g., local storage, state management, etc.)
         // For example, if you're using local storage:
+
         localStorage.setItem('token', token);
+        console.log(token);
       })
+
     );
+
   }
 
   getSecureContent(token: string): Observable<Object> {
