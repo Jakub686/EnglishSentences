@@ -35,7 +35,6 @@ export class CreateSentenceComponent {
   }
 
   getContent() {
-    console.log('token i send ' + this.token)
     this.userService.getSecureContent(this.token).subscribe(
       data => {
         console.log(data); // The response is a string, so you can directly access it

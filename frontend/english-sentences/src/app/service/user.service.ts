@@ -21,18 +21,14 @@ export class UserService {
 
   authUser(user: UserLoginDTO): Observable<Object> {
     console.log(`${this.baseURL}authenticate`);
-    return this.httpClient.post(`${this.baseURL}authenticate`, user).pipe(
+    return this.httpClient.post(`${this.baseURL}auth/authenticate`, user).pipe(
       tap((response: any) => {
         const token = response.token; // Assuming the token is returned in the response as "token"
         // Store the token in your desired storage mechanism (e.g., local storage, state management, etc.)
         // For example, if you're using local storage:
-
         localStorage.setItem('token', token);
-        console.log(token);
       })
-
     );
-
   }
 
   getSecureContent(token: string): Observable<Object> {
@@ -43,5 +39,4 @@ export class UserService {
     };
     return this.httpClient.get<Object>(`${this.baseURL}demo-controller`, httpOptions);
   }
-
 }
