@@ -1,25 +1,24 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, tap} from "rxjs";
 import {Injectable} from "@angular/core";
-import {UserSigninDTO} from "../model/userSigninDTO";
-import {UserLoginDTO} from "../model/userLoginDTO";
+import {UserSignIn} from "../model/userSignIn";
+import {UserLogIn} from "../model/userLogIn";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private baseURL = 'http://localhost:8080/api/v1/auth/';
+  private baseURL = 'http://localhost:8080/api/v1/';
 
   constructor(private httpClient: HttpClient) {
   }
-
-  createUser(user: UserSigninDTO): Observable<Object> {
+  createUser(user: UserSignIn): Observable<Object> {
     console.log(`${this.baseURL}register`)
-    return this.httpClient.post(`${this.baseURL}register`, user)
+    return this.httpClient.post(`${this.baseURL}auth/register`, user)
   }
 
-  authUser(user: UserLoginDTO): Observable<Object> {
+  authUser(user: UserSignIn): Observable<Object> {
     console.log(`${this.baseURL}authenticate`);
     return this.httpClient.post(`${this.baseURL}auth/authenticate`, user).pipe(
       tap((response: any) => {
@@ -39,4 +38,9 @@ export class UserService {
     };
     return this.httpClient.get<Object>(`${this.baseURL}demo-controller`, httpOptions);
   }
+
 }
+
+
+
+

@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {Sentence} from "../model/sentence";
-import {UserLoginDTO} from "../model/userLoginDTO";
+import {UserLogIn} from "../model/userLogIn";
 import {SentenceService} from "../service/sentence.service";
 import {Router} from "@angular/router";
-import {UserSigninDTO} from "../model/userSigninDTO";
+import {UserSignIn} from "../model/userSignIn";
 import {UserService} from "../service/user.service";
 
 @Component({
@@ -12,11 +12,25 @@ import {UserService} from "../service/user.service";
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent {
-  sentence: Sentence = {id: 0, textEn: "", translationToPl: [{id: 0, textPl: ""}, {id: 1, textPl: ""}]};
-  userSignIn: UserSigninDTO = {id: 0, firstname: "", lastname: "", email: "", password: ""};
-  token: string = '';
 
-  constructor(private sentenceService: SentenceService, private userService: UserService , private router: Router) {
+  userSignIn: UserSignIn = {id: 0, firstname: "", lastname: "", email: "", password: ""};
+  userLogIn: UserLogIn = {email: "", password: ""};
+  token: string = '';
+  message: string = '';
+
+  constructor(private userService: UserService, private router: Router) {
+  }
+
+  authUser() {
+    console.log(this.userLogIn.email)
+    console.log(this.userLogIn.password)
+    this.userService.authUser(this.userLogIn).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.token = data.token;
+      },
+      error => console.log(error)
+    );
   }
 
   saveUser() {
@@ -26,7 +40,14 @@ export class SigninComponent {
       error => console.log(error));
   }
 
-  goToSentenceList() {
-    this.router.navigate(['/sentences'])
+  getContent() {
+    this.userService.getSecureContent(this.token).subscribe(
+      data => {
+        console.log(data); // The response is a string, so you can directly access it
+      },
+      error => console.log(error)
+    );
   }
+
+
 }

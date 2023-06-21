@@ -1,4 +1,4 @@
-export class UserSigninDTO {
+export class UserSignIn {
   id?: number;
   firstname?: string;
   lastname?: string;

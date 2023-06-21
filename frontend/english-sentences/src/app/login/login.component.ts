@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {Sentence} from "../model/sentence";
 import {SentenceService} from "../service/sentence.service";
 import {Router} from "@angular/router";
-import {UserLoginDTO} from "../model/userLoginDTO";
-import {UserSigninDTO} from "../model/userSigninDTO";
+import {UserLogIn} from "../model/userLogIn";
+import {UserSignIn} from "../model/userSignIn";
 import {Observable, tap} from "rxjs";
 import {UserService} from "../service/user.service";
 
@@ -14,7 +14,7 @@ import {UserService} from "../service/user.service";
 })
 export class LoginComponent {
   sentence: Sentence = {id: 0, textEn: "", translationToPl: [{id: 0, textPl: ""}, {id: 1, textPl: ""}]};
-  userLogIn: UserLoginDTO = {email: '', password: ''};
+  userLogIn: UserLogIn = {email: '', password: ''};
   token: string = '';
 
   constructor(private sentenceService: SentenceService,private userService: UserService, private router: Router) {
