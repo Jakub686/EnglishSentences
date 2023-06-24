@@ -12,11 +12,10 @@ import {UserService} from "../service/user.service";
 })
 export class CreateSentenceComponent {
 
-  token: string;
   sentence: Sentence = {id: 0, textEn: "", translationToPl: [{id: 0, textPl: ""}, {id: 1, textPl: ""}]};
 
   constructor(private sentenceService: SentenceService, private userService: UserService, private router: Router) {
-    this.token = localStorage.getItem('token') as string;
+
   }
 
   onSubmit() {
@@ -35,7 +34,7 @@ export class CreateSentenceComponent {
   }
 
   getContent() {
-    this.userService.getSecureContent(this.token).subscribe(
+    this.userService.getSecureContent().subscribe(
       data => {
         console.log(data); // The response is a string, so you can directly access it
       },

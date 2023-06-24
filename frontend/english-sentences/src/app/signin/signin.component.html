@@ -56,7 +56,6 @@
 
 login
 
-
 <form (ngSubmit)="authUser()">
   <div class="grid-wrapper-main">
     <div class="rounded-input">
@@ -75,8 +74,11 @@ login
   <button class="btn-submit" type="submit">Submit</button>
 </form>
 
-get content
+
 
 <button (click)="getContent()" class="btn-submit">get content</button>
 {{token}}
+
+<button (click)="logout()" class="btn-submit">logout</button>
+
 

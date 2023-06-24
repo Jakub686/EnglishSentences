@@ -16,9 +16,13 @@ export class SigninComponent {
   userSignIn: UserSignIn = {id: 0, firstname: "", lastname: "", email: "", password: ""};
   userLogIn: UserLogIn = {email: "", password: ""};
   token: string = '';
-  message: string = '';
+  login = '';
 
   constructor(private userService: UserService, private router: Router) {
+    this.login = localStorage.getItem('login') as string;
+  }
+  ngOnInit() {
+    console.log('login' + this.login);
   }
 
   authUser() {
@@ -41,7 +45,7 @@ export class SigninComponent {
   }
 
   getContent() {
-    this.userService.getSecureContent(this.token).subscribe(
+    this.userService.getSecureContent().subscribe(
       data => {
         console.log(data); // The response is a string, so you can directly access it
       },
@@ -49,5 +53,7 @@ export class SigninComponent {
     );
   }
 
-
+  logout() {
+    this.userService.logout();
+  }
 }

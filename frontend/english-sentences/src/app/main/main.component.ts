@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   token: string = '';
 
   constructor(private userService: UserService, private route: ActivatedRoute, private sentenceService: SentenceService) {
-    this.token = localStorage.getItem('token') as string;
+    this.token = sessionStorage.getItem('token') as string;
   }
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class MainComponent implements OnInit {
   }
 
   getContent() {
-    this.userService.getSecureContent(this.token).subscribe(
+    this.userService.getSecureContent().subscribe(
       data => {
         console.log(data); // The response is a string, so you can directly access it
       },

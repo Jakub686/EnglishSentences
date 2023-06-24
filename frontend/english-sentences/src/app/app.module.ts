@@ -14,6 +14,7 @@ import { UpdateSentenceComponent } from './update-sentence/update-sentence.compo
 import { SentenceDetailsComponent } from './sentence-details/sentence-details.component';
 import { LoginComponent } from './login/login.component';
 import { SigninComponent } from './signin/signin.component';
+import { TopbarComponent } from './topbar/topbar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SigninComponent } from './signin/signin.component';
     SentenceDetailsComponent,
     LoginComponent,
     SigninComponent,
+    TopbarComponent,
   ],
   imports: [
     BrowserModule,
