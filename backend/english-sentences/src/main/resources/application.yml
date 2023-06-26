@@ -14,6 +14,10 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+    spring:
+      banner:
+        location: classpath:banner.txt
+
 #spring:
 #  datasource:
 #    url: jdbc:postgresql://localhost:5432/jwt_security
