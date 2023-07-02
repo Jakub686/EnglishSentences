@@ -11,8 +11,10 @@ import {SentenceService} from "../service/sentence.service";
 export class SentenceListComponent implements OnInit {
   search: string ="";
   sentences: Sentence[] = [];
+  token: string;
 
   constructor(private sentenceService: SentenceService, private router: Router) {
+    this.token = localStorage.getItem('token') as string;
   }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class SentenceListComponent implements OnInit {
   }
 
   private getSentencesSimple() {
-    this.sentenceService.getSentenceSimpleList().subscribe(data => {
+    this.sentenceService.getSentenceSimpleList(this.token).subscribe(data => {
       this.sentences = data;
     })
   }

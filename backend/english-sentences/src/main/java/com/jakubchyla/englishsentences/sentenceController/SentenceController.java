@@ -28,11 +28,11 @@ public class SentenceController {
         return new ResponseEntity<>(sentenceService.saveSentence(sentence), HttpStatus.CREATED);
     }
 
-    @GetMapping("/sentences")
-    public ResponseEntity<List<Sentence>> getSentence() {
-        List<Sentence> sentence = sentenceService.findAllSentence();
-        return new ResponseEntity<>(sentence, HttpStatus.OK);
-    }
+//    @GetMapping("/sentences")
+//    public ResponseEntity<List<Sentence>> getSentence() {
+//        List<Sentence> sentence = sentenceService.findAllSentence();
+//        return new ResponseEntity<>(sentence, HttpStatus.OK);
+//    }
 
     @GetMapping("/random")
     public ResponseEntity<Sentence> getSentenceRandom() {
