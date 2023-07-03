@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-topbar',
@@ -9,7 +10,7 @@ export class TopbarComponent implements OnInit {
   title = 'english-sentences';
   login: string | null = '';
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.getLoginFromLocalStorage(); // Get initial login value
@@ -28,5 +29,9 @@ export class TopbarComponent implements OnInit {
       this.getLoginFromLocalStorage(); // Update login value
       console.log('login top bar updated: ' + this.login);
     }
+  }
+
+  logout() {
+    this.userService.logout();
   }
 }

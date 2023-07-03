@@ -1,8 +1,15 @@
-.container{
+.container {
   display: flex;
   justify-content: space-between;
 }
-.grid-wrapper {
+
+.container2 {
+  display: flex;
+  justify-content: space-between;
+  grid-gap: 10px;
+}
+
+.container1 {
   text-align: center;
   display: grid;
   grid-template-columns: 155px 155px 170px 155px 155px;
