@@ -52,8 +52,5 @@ export class SigninComponent {
       error => console.log(error)
     );
   }
-
-  logout() {
-    this.userService.logout();
-  }
+  
 }
