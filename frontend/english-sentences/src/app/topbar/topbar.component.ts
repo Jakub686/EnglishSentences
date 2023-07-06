@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../service/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-topbar',
@@ -10,7 +11,8 @@ export class TopbarComponent implements OnInit {
   title = 'english-sentences';
   login: string | null = '';
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {
+  }
 
   ngOnInit() {
     this.getLoginFromLocalStorage(); // Get initial login value

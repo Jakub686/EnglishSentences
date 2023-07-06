@@ -29,12 +29,4 @@ export class MainComponent implements OnInit {
     })
   }
 
-  getContent() {
-    this.userService.getSecureContent().subscribe(
-      data => {
-        console.log(data); // The response is a string, so you can directly access it
-      },
-      error => console.log(error)
-    );
-  }
 }

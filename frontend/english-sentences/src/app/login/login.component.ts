@@ -32,10 +32,12 @@ export class LoginComponent {
       (data: any) => {
         console.log(data);
         this.token = data.token;
+
       },
       error => console.log(error)
     );
     console.log(this.token)
+
   }
 
   saveSentence() {
