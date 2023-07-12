@@ -75,4 +75,8 @@ public class SentenceService {
         return sentenceRepository.save(existingSentence);
     }
 
+    public String testMethod(String input) {
+        return input + "hello world";
+    }
+
 }

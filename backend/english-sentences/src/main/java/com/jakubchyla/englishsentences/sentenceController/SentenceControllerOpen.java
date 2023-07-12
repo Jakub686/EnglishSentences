@@ -18,7 +18,7 @@ import static com.jakubchyla.englishsentences.sentenceController.mapper.Sentence
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1/open")
 @RestController
-public class SentenceController {
+public class SentenceControllerOpen {
 
     @Autowired
     private SentenceService sentenceService;
