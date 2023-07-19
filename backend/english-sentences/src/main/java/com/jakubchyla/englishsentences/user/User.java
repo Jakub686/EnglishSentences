@@ -1,6 +1,6 @@
 package com.jakubchyla.englishsentences.user;
 
-import com.jakubchyla.englishsentences.token.Token;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
