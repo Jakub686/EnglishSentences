@@ -23,11 +23,13 @@ export class UserService {
 
   authUser(user: UserSignIn): Observable<Object> {
     let login = user.email;
-    console.log(`${this.baseURL}authenticate`);
+
     return this.httpClient.post(`${this.baseURL}auth/authenticate`, user).pipe(
       tap((response: any) => {
-        const token = response.token;
-        localStorage.setItem('token', token);
+
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('role', response.role);
+
         if (typeof login === "string") {
           localStorage.setItem('login', login);
           window.dispatchEvent(new StorageEvent('storage', {
