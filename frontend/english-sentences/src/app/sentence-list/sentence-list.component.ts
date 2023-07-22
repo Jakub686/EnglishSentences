@@ -9,12 +9,14 @@ import {SentenceService} from "../service/sentence.service";
   styleUrls: ['./sentence-list.component.css']
 })
 export class SentenceListComponent implements OnInit {
-  search: string ="";
+  search: string ='';
   sentences: Sentence[] = [];
-  token: string;
+  token: string ;
+  role: string;
 
   constructor(private sentenceService: SentenceService, private router: Router) {
     this.token = localStorage.getItem('token') as string;
+    this.role = localStorage.getItem('role') as string;
   }
 
   ngOnInit() {

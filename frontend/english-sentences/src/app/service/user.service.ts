@@ -10,7 +10,7 @@ import {UserLogIn} from "../model/userLogIn";
 export class UserService {
   private baseURL = 'http://localhost:8080/api/v1/';
   token: string;
-  login: string | null = '';
+  email: string | null = '';
 
   constructor(private httpClient: HttpClient) {
     this.token = localStorage.getItem('token') as string;
@@ -22,19 +22,20 @@ export class UserService {
   }
 
   authUser(user: UserSignIn): Observable<Object> {
-    let login = user.email;
+    let email = user.email;
 
     return this.httpClient.post(`${this.baseURL}auth/authenticate`, user).pipe(
       tap((response: any) => {
 
         localStorage.setItem('token', response.token);
         localStorage.setItem('role', response.role);
+        localStorage.setItem('email', response.email);
 
-        if (typeof login === "string") {
-          localStorage.setItem('login', login);
+        if (typeof email === "string") {
+          localStorage.setItem('email', email);
           window.dispatchEvent(new StorageEvent('storage', {
-            key: 'login',
-            newValue: login
+            key: 'email',
+            newValue: email
           }));
         }
       })
@@ -54,17 +55,17 @@ export class UserService {
   }
 
   getLogin(): string | null {
-    this.login = localStorage.getItem('login');
-    return this.login;
+    this.email = localStorage.getItem('login');
+    return this.email;
   }
 
   logout(): string | null {
     localStorage.setItem('token', '');
-    localStorage.setItem('login', '');
+    localStorage.setItem('email', '');
     window.dispatchEvent(new StorageEvent('storage', {
-      key: 'login',
+      key: 'email',
       newValue: ''
     }));
-    return localStorage.getItem('login');
+    return localStorage.getItem('email');
   }
 }

@@ -14,10 +14,10 @@ import {UserService} from "../service/user.service";
 })
 export class LoginComponent {
   sentence: Sentence = {id: 0, textEn: "", translationToPl: [{id: 0, textPl: ""}, {id: 1, textPl: ""}]};
-  userLogIn: UserLogIn = {email: '', password: ''};
+  userLogIn: UserLogIn = {email: '', password: '', role: ''};
   token: string = '';
 
-  constructor(private sentenceService: SentenceService,private userService: UserService, private router: Router) {
+  constructor(private sentenceService: SentenceService, private userService: UserService, private router: Router) {
   }
 
   onSubmit() {
@@ -26,8 +26,7 @@ export class LoginComponent {
   }
 
   authUser() {
-    console.log(this.userLogIn.email)
-    console.log(this.userLogIn.password)
+
     this.userService.authUser(this.userLogIn).subscribe(
       (data: any) => {
         console.log(data);
@@ -36,7 +35,9 @@ export class LoginComponent {
       },
       error => console.log(error)
     );
-    console.log(this.token)
+    console.log(this.token);
+    console.log('role ' + localStorage.getItem('role'));
+
 
   }
 

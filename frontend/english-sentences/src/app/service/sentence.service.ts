@@ -21,7 +21,7 @@ export class SentenceService {
         'Authorization': `Bearer ${token}`
       })
     };
-    return this.httpClient.get<Sentence[]>(`${this.baseURLSecured}sentences`,httpOptions)
+    return this.httpClient.get<Sentence[]>(`${this.baseURLOpen}sentences`,httpOptions)
   }
 
   getSentenceSimpleSearch(text: string): Observable<Sentence[]> {
