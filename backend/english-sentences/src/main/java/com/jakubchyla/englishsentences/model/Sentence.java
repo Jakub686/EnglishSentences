@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
+@Table(name = "sentences")
 public class Sentence {
 
     @Id
@@ -28,9 +29,9 @@ public class Sentence {
     @JoinColumn(name = "sentence_id", referencedColumnName = "id")
     private List<Favorite> Favorite;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "sentence_id", referencedColumnName = "id")
-//    private TranslationToPl translationToPl;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "translation_to_pl_id", referencedColumnName = "id")
+    private SentencePl sentencePl;
 
 }
 
