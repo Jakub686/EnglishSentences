@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class TopbarComponent implements OnInit {
   title = 'english-sentences';
-  login: string | null = '';
+  email: string | null = '';
 
   constructor(private userService: UserService, private router: Router) {
   }
@@ -22,14 +22,14 @@ export class TopbarComponent implements OnInit {
   }
 
   getLoginFromLocalStorage() {
-    this.login = localStorage.getItem('login') as string;
-    console.log('login top bar ' + this.login);
+    this.email = localStorage.getItem('email') as string;
+    console.log('login top bar ' + this.email);
   }
 
   onStorageChange(event: StorageEvent) {
-    if (event.key === 'login') {
+    if (event.key === 'email') {
       this.getLoginFromLocalStorage(); // Update login value
-      console.log('login top bar updated: ' + this.login);
+      console.log('login top bar updated: ' + this.email);
     }
   }
 

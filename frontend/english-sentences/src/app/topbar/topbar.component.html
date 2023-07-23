@@ -14,19 +14,19 @@
   <div class="container2">
 
 
-    <div *ngIf="login === null || login ===''" class="grid-item">
+    <div *ngIf="email === null || email ===''" class="grid-item">
       <a routerLink="signin" routerLinkActive="active" class="nav-link">Sign in</a>
     </div>
 
-    <div *ngIf="login === null || login ===''" class="grid-item">
+    <div *ngIf="email === null || email ===''" class="grid-item">
       <a routerLink="login" routerLinkActive="active" class="nav-link">Login</a>
     </div>
 
-    <div *ngIf="!(login === null || login ==='')" class="grid-item">
-      {{login}}
+    <div *ngIf="!(email === null || email ==='')" class="grid-item">
+      {{email}}
     </div>
 
-    <div *ngIf="!(login === null || login ==='')" class="grid-item">
+    <div *ngIf="!(email === null || email ==='')" class="grid-item">
       <a  (click)="logout()" routerLinkActive="active" class="nav-link" style="cursor: pointer;">Logout</a>
     </div>
   </div>

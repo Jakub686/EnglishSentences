@@ -55,7 +55,7 @@ export class UserService {
   }
 
   getLogin(): string | null {
-    this.email = localStorage.getItem('login');
+    this.email = localStorage.getItem('email');
     return this.email;
   }
 
