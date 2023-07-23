@@ -13,7 +13,20 @@ public class TranslationToPl {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "translation_id")
-    private Long idTranslation;
+    private Long id;
+    @Column(name = "sentence_id")
+    private Long sentenceId;
+
     private String textPl;
+
+
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//
+//    private Long id;
+//    @Column(name = "sentence_id")
+//    private Long sentenceId;
+//    @Column(name = "user_id")
+//    private Long userId;
 }
+

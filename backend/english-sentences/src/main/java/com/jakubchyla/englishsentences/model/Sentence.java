@@ -24,9 +24,14 @@ public class Sentence {
     @Temporal(TemporalType.TIMESTAMP)
     final private Date timestamp = new Date(System.currentTimeMillis());
 
-    @OneToMany(targetEntity = TranslationToPl.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "translation_to_pl", referencedColumnName = "id")
-    private List<TranslationToPl> translationToPl;
+    @OneToMany(targetEntity = Favorite.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "sentence_id", referencedColumnName = "id")
+    private List<Favorite> Favorite;
+
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "sentence_id", referencedColumnName = "id")
+//    private TranslationToPl translationToPl;
+
 }
 
 
