@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,10 +17,11 @@ public class Favorite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
-    @Column(name = "sentence_id")
-    private Long sentenceId;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    final private Date timestamp = new Date(System.currentTimeMillis());
+
     @Column(name = "user_id")
     private Long userId;
 }

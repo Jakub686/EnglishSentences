@@ -30,7 +30,7 @@ public class Sentence {
     private List<Favorite> Favorite;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "translation_to_pl_id", referencedColumnName = "id")
+    @JoinColumn(name = "translation_id", referencedColumnName = "id")
     private SentencePl sentencePl;
 
 }

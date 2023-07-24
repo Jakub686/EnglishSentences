@@ -15,6 +15,7 @@ public class SentencePl {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "text_pl")
     private String textPl;
 
 }
