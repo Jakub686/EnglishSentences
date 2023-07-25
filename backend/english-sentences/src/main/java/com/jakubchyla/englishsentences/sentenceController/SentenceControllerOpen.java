@@ -1,8 +1,9 @@
 package com.jakubchyla.englishsentences.sentenceController;
 
 import com.jakubchyla.englishsentences.model.Sentence;
+import com.jakubchyla.englishsentences.sentenceController.dto.AddToFavByUserDto;
 import com.jakubchyla.englishsentences.sentenceController.dto.SimpleDto;
-import com.jakubchyla.englishsentences.sentenceController.dto.UpdateDto;
+import com.jakubchyla.englishsentences.sentenceService.FavoriteService;
 import com.jakubchyla.englishsentences.sentenceService.SentenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,8 @@ public class SentenceControllerOpen {
 
     @Autowired
     private SentenceService sentenceService;
+    @Autowired
+    private FavoriteService favoriteService;
 
     @PostMapping("/")
     public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {
@@ -74,14 +77,21 @@ public class SentenceControllerOpen {
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<UpdateDto> updateSentence(@PathVariable Long id, @RequestBody UpdateDto updateDto) {
-        Sentence sentence = new Sentence();
-        sentence.setId(id);
-        sentence.setTextEn(updateDto.textEn());
-        sentenceService.updateSentence(sentence);
-        return new ResponseEntity<>(updateDto, HttpStatus.OK);
+    @PatchMapping("/add-fav")
+    public ResponseEntity<AddToFavByUserDto> addToFavByUser(@RequestBody AddToFavByUserDto favDto) {
+        favoriteService.addToFavByUserDto(favDto);
+        return new ResponseEntity<>(favDto,HttpStatus.OK);
     }
+
+//    @PatchMapping("/{id}")
+//    public ResponseEntity<UpdateDto> updateSentence(@PathVariable Long id, @RequestBody UpdateDto updateDto) {
+//        Sentence sentence = new Sentence();
+//        sentence.setId(id);
+//        sentence.setTextEn(updateDto.textEn());
+//        sentenceService.updateSentence(sentence);
+//        return new ResponseEntity<>(updateDto, HttpStatus.OK);
+//    }
+
 
 //    @PutMapping("/textpl/{id}")
 //    public ResponseEntity<UpdateUrlLinkDto> updateSentenceUrlLink(@PathVariable Long id, @RequestBody UpdateUrlLinkDto updateUrlLinkDto) {

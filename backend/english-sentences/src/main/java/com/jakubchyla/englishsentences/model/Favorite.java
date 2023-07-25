@@ -22,6 +22,9 @@ public class Favorite {
     @Temporal(TemporalType.TIMESTAMP)
     final private Date timestamp = new Date(System.currentTimeMillis());
 
+    @Column(name = "sentence_id")
+    private Long sentenceId;
+
     @Column(name = "user_id")
     private Long userId;
 }
