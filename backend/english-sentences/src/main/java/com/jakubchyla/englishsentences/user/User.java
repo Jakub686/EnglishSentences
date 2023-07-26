@@ -25,7 +25,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     private String firstname;
     private String lastname;
     private String email;
@@ -44,7 +44,7 @@ public class User implements UserDetails {
         return password;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
