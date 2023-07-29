@@ -22,6 +22,9 @@ public class Sentence {
     @Column(name = "text_en")
     private String textEn;
 
+    @Column(name = "text_pl")
+    private String textPl;
+
     @Temporal(TemporalType.TIMESTAMP)
     final private Date timestamp = new Date(System.currentTimeMillis());
 
@@ -29,9 +32,6 @@ public class Sentence {
     @JoinColumn(name = "sentence_id", referencedColumnName = "id")
     private List<Favorite> Favorite;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "translation_id", referencedColumnName = "id")
-    private SentencePl sentencePl;
 
 }
 

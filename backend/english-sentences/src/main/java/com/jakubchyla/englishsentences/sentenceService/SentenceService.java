@@ -1,6 +1,7 @@
 package com.jakubchyla.englishsentences.sentenceService;
 
 import com.jakubchyla.englishsentences.model.Sentence;
+import com.jakubchyla.englishsentences.sentenceController.dto.RandomDTO;
 import com.jakubchyla.englishsentences.sentenceRepository.SentenceRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,18 +40,19 @@ public class SentenceService {
         return sentenceRepository.findById(id).orElse(null);
     }
 
-    public Sentence findSentenceRandom() {
+    public RandomDTO findSentenceRandom() {
         Random random = new Random();
         Long id;
-        Sentence result;
+        Sentence sentence;
         do {
             id = random.nextLong(findHighestId() + 1);// used findHighestId to not hardcoded seed in random
             System.out.println(findHighestId());
-            result = sentenceRepository.findById(id).orElse(null);
-            System.out.println(result);
+            sentence = sentenceRepository.findById(id).orElse(null);
+
         }
-        while (result == null);
-        return result;
+        while (sentence == null);
+        RandomDTO randomDTO = new RandomDTO(sentence.getId(),sentence.getTextEn(),sentence.getTextPl());
+        return randomDTO;
     }
 
     public List<Sentence> findByText(String text) {

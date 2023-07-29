@@ -2,6 +2,7 @@ package com.jakubchyla.englishsentences.sentenceController;
 
 import com.jakubchyla.englishsentences.model.Sentence;
 import com.jakubchyla.englishsentences.sentenceController.dto.AddToFavByUserDto;
+import com.jakubchyla.englishsentences.sentenceController.dto.RandomDTO;
 import com.jakubchyla.englishsentences.sentenceController.dto.SimpleDto;
 import com.jakubchyla.englishsentences.sentenceService.FavoriteService;
 import com.jakubchyla.englishsentences.sentenceService.SentenceService;
@@ -37,9 +38,9 @@ public class SentenceControllerOpen {
     }
 
     @GetMapping("/random")
-    public ResponseEntity<Sentence> getSentenceRandom() {
-        Sentence sentence = sentenceService.findSentenceRandom();
-        return new ResponseEntity<>(sentence, HttpStatus.OK);
+    public ResponseEntity<RandomDTO> getSentenceRandom() {
+        RandomDTO randomDTO = sentenceService.findSentenceRandom();
+        return new ResponseEntity<>(randomDTO, HttpStatus.OK);
     }
 
     //TODO serach ma zwraca simple
