@@ -38,8 +38,8 @@ public class SentenceControllerOpen {
     }
 
     @GetMapping("/random")
-    public ResponseEntity<RandomDTO> getSentenceRandom() {
-        RandomDTO randomDTO = sentenceService.findSentenceRandom();
+    public ResponseEntity<RandomDTO> getSentenceRandom(Long userId) {
+        RandomDTO randomDTO = sentenceService.findSentenceRandom(userId);
         return new ResponseEntity<>(randomDTO, HttpStatus.OK);
     }
 

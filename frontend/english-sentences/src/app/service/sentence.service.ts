@@ -2,6 +2,8 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Sentence} from "../model/sentence";
+import {RandomDTO} from "../model/randomDTO";
+import {AddToFavByUserDto} from "../model/addToFavByUserDto";
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +30,8 @@ export class SentenceService {
     return this.httpClient.get<Sentence[]>(`${this.baseURLOpen}search?textEn=${text}`)
   }
 
-  getSentenceRandom(): Observable<Sentence>{
-    return this.httpClient.get<Sentence>(`${this.baseURLOpen}random`);
+  getSentenceRandom(): Observable<RandomDTO>{
+    return this.httpClient.get<RandomDTO>(`${this.baseURLOpen}random`);
   }
 
   createSentenceSimple(sentence: Sentence): Observable<Object> {
@@ -46,6 +48,10 @@ export class SentenceService {
 
   updateSentence(id: number, sentence: Sentence): Observable<Object> {
     return this.httpClient.put(`${this.baseURLOpen}${id}`, sentence);
+  }
+
+  addToFav(addToFavByUserDto:AddToFavByUserDto ): Observable<Object> {
+    return this.httpClient.patch(`${this.baseURLOpen}add-fav`, addToFavByUserDto);
   }
 
   deleteSentence(id: number): Observable<Sentence> {

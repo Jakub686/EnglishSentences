@@ -3,13 +3,13 @@
   <table>
     <tbody>
     <tr >
-      <td class="rounded"> En: {{sentence.textEn}} </td>
+      <td class="rounded"> En: {{randomDTO.textEn}} </td>
     </tr>
     <tr >
-      <td class="rounded">Pl: {{sentence.translationToPl[0].textPl}} </td>
+      <td class="rounded">Pl: {{randomDTO.textPl}} </td>
     </tr>
     <tr >
-      <td class="rounded">Pl: {{sentence.translationToPl[1].textPl}} </td>
+      <button *ngIf="email !== null" (click)="addToFav(randomDTO.id)" class="random" style="margin-left: 10px">Add to fav</button>
     </tr>
     <tr >
       <button (click)="randomSentence()" class="random" style="margin-left: 10px">random sentence</button>

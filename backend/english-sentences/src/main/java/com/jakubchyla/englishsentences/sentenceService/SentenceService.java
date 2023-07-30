@@ -1,7 +1,9 @@
 package com.jakubchyla.englishsentences.sentenceService;
 
+import com.jakubchyla.englishsentences.model.Favorite;
 import com.jakubchyla.englishsentences.model.Sentence;
 import com.jakubchyla.englishsentences.sentenceController.dto.RandomDTO;
+import com.jakubchyla.englishsentences.sentenceRepository.FavoriteRepository;
 import com.jakubchyla.englishsentences.sentenceRepository.SentenceRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class SentenceService {
 
     @Autowired
     private SentenceRepository sentenceRepository;
+
+    private FavoriteRepository favoriteRepository;
 
     public Sentence saveSentence(Sentence sentence) {
         return sentenceRepository.save(sentence);
@@ -40,7 +44,7 @@ public class SentenceService {
         return sentenceRepository.findById(id).orElse(null);
     }
 
-    public RandomDTO findSentenceRandom() {
+    public RandomDTO findSentenceRandom(Long userId) {
         Random random = new Random();
         Long id;
         Sentence sentence;
@@ -51,8 +55,22 @@ public class SentenceService {
 
         }
         while (sentence == null);
-        RandomDTO randomDTO = new RandomDTO(sentence.getId(),sentence.getTextEn(),sentence.getTextPl());
+
+        RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), findFavSentence(sentence, userId));
         return randomDTO;
+    }
+
+    private boolean findFavSentence(Sentence sentence, Long userId) {
+
+        try {
+            List<Favorite> favList = favoriteRepository.findBySentenceId(sentence.getId());
+            if(favList.size() >0) {
+                return true;
+            }
+            return false;
+        } catch (NullPointerException e) {
+            return false;
+        }
     }
 
     public List<Sentence> findByText(String text) {

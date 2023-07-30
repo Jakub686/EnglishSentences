@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Sentence} from "../model/sentence";
 import {Router} from "@angular/router";
 import {SentenceService} from "../service/sentence.service";
+import {RandomDTO} from "../model/randomDTO";
 
 @Component({
   selector: 'app-sentence-list',
@@ -11,6 +12,7 @@ import {SentenceService} from "../service/sentence.service";
 export class SentenceListComponent implements OnInit {
   search: string ='';
   sentences: Sentence[] = [];
+
   token: string ;
   role: string;
 
