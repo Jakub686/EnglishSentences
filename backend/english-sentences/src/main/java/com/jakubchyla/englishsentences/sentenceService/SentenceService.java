@@ -19,6 +19,7 @@ public class SentenceService {
     @Autowired
     private SentenceRepository sentenceRepository;
 
+    @Autowired
     private FavoriteRepository favoriteRepository;
 
     public Sentence saveSentence(Sentence sentence) {
@@ -63,8 +64,8 @@ public class SentenceService {
     private boolean findFavSentence(Sentence sentence, Long userId) {
 
         try {
-            List<Favorite> favList = favoriteRepository.findBySentenceId(sentence.getId());
-            if(favList.size() >0) {
+            List<Favorite> favList = favoriteRepository.findByUserIdAndSentenceId(userId, sentence.getId());
+            if (favList.size() > 0) {
                 return true;
             }
             return false;

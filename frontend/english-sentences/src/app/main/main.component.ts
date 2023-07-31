@@ -41,7 +41,6 @@ export class MainComponent implements OnInit {
     if (this.email !== undefined) {
       this.addToFavByUserDto.email = this.email;
       this.addToFavByUserDto.sentenceId = randomDTOid;
-      console.log(this.addToFavByUserDto)
 
       this.sentenceService.addToFav(this.addToFavByUserDto).subscribe(data => {
         this.randomDTO = data;

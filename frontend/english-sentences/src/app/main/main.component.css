@@ -50,3 +50,7 @@
   cursor: pointer;
   margin: 5px
 }
+
+.text-yellow {
+  color: yellow;
+}

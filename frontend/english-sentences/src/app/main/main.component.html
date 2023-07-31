@@ -1,22 +1,27 @@
 <div class="grid-wrapper-main">
-
   <table>
     <tbody>
-    <tr >
+    <tr>
       <td class="rounded"> En: {{randomDTO.textEn}} </td>
     </tr>
-    <tr >
+    <tr>
       <td class="rounded">Pl: {{randomDTO.textPl}} </td>
     </tr>
-    <tr >
-      <button *ngIf="email !== null" (click)="addToFav(randomDTO.id)" class="random" style="margin-left: 10px">Add to fav</button>
+    <tr>
+      <td>
+        <i
+          *ngIf="email !== null"
+          (click)="addToFav(randomDTO.id)"
+          [class]="randomDTO.favorite ? 'fas fa-star text-yellow' : 'fas fa-star'"
+          style="margin-left: 10px; cursor: pointer;"
+        ></i>
+      </td>
     </tr>
-    <tr >
-      <button (click)="randomSentence()" class="random" style="margin-left: 10px">random sentence</button>
+    <tr>
+      <td>
+        <button (click)="randomSentence()" class="random" style="margin-left: 10px">random sentence</button>
+      </td>
     </tr>
     </tbody>
   </table>
-
 </div>
-
-
