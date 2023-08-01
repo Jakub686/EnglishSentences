@@ -5,11 +5,14 @@ import com.jakubchyla.englishsentences.model.Sentence;
 import com.jakubchyla.englishsentences.sentenceController.dto.RandomDTO;
 import com.jakubchyla.englishsentences.sentenceRepository.FavoriteRepository;
 import com.jakubchyla.englishsentences.sentenceRepository.SentenceRepository;
+import com.jakubchyla.englishsentences.user.User;
+import com.jakubchyla.englishsentences.user.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -21,6 +24,8 @@ public class SentenceService {
 
     @Autowired
     private FavoriteRepository favoriteRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public Sentence saveSentence(Sentence sentence) {
         return sentenceRepository.save(sentence);
@@ -45,7 +50,7 @@ public class SentenceService {
         return sentenceRepository.findById(id).orElse(null);
     }
 
-    public RandomDTO findSentenceRandom(Long userId) {
+    public RandomDTO findSentenceRandom(String email) {
         Random random = new Random();
         Long id;
         Sentence sentence;
@@ -57,7 +62,8 @@ public class SentenceService {
         }
         while (sentence == null);
 
-        RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), findFavSentence(sentence, userId));
+        Optional<User> userOptional = userRepository.findByEmail(email);
+        RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), findFavSentence(sentence, userOptional.get().getId()));
         return randomDTO;
     }
 

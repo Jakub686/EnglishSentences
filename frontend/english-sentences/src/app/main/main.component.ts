@@ -5,7 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {TranslationToPl} from "../model/translationToPl";
 import {UserService} from "../service/user.service";
 import {RandomDTO} from "../model/randomDTO";
-import {AddToFavByUserDto} from "../model/addToFavByUserDto";
+import {AddToFav} from "../model/addToFav";
 
 @Component({
   selector: 'app-main',
@@ -16,7 +16,8 @@ export class MainComponent implements OnInit {
 
   sentence: Sentence | any;
   randomDTO: RandomDTO | any;
-  addToFavByUserDto: AddToFavByUserDto = {sentenceId:0, email:''};
+  data: RandomDTO | any;
+  addToFavByUserDto: AddToFav = {sentenceId:0, email:'',favorite:false};
   token: string;
   email: string;
   role: string;
@@ -32,7 +33,7 @@ export class MainComponent implements OnInit {
   }
 
   randomSentence() {
-    this.sentenceService.getSentenceRandom().subscribe(data => {
+    this.sentenceService.getSentenceRandom(this.email).subscribe(data => {
       this.randomDTO = data;
     })
   }
@@ -41,9 +42,12 @@ export class MainComponent implements OnInit {
     if (this.email !== undefined) {
       this.addToFavByUserDto.email = this.email;
       this.addToFavByUserDto.sentenceId = randomDTOid;
+      this.addToFavByUserDto.favorite = this.randomDTO.favorite;
 
       this.sentenceService.addToFav(this.addToFavByUserDto).subscribe(data => {
-        this.randomDTO = data;
+        this.data = data;
+        console.log(this.data)
+        this.randomDTO.favorite = this.data.favorite;
       });
     }
   }

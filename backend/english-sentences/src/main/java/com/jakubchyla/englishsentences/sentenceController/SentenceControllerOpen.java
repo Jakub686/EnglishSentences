@@ -1,7 +1,7 @@
 package com.jakubchyla.englishsentences.sentenceController;
 
 import com.jakubchyla.englishsentences.model.Sentence;
-import com.jakubchyla.englishsentences.sentenceController.dto.AddToFavByUserDto;
+import com.jakubchyla.englishsentences.sentenceController.dto.AddToFav;
 import com.jakubchyla.englishsentences.sentenceController.dto.RandomDTO;
 import com.jakubchyla.englishsentences.sentenceController.dto.SimpleDto;
 import com.jakubchyla.englishsentences.sentenceService.FavoriteService;
@@ -38,8 +38,8 @@ public class SentenceControllerOpen {
     }
 
     @GetMapping("/random")
-    public ResponseEntity<RandomDTO> getSentenceRandom(Long userId) {
-        RandomDTO randomDTO = sentenceService.findSentenceRandom(userId);
+    public ResponseEntity<RandomDTO> getSentenceRandom(String email) {
+        RandomDTO randomDTO = sentenceService.findSentenceRandom(email);
         return new ResponseEntity<>(randomDTO, HttpStatus.OK);
     }
 
@@ -79,9 +79,10 @@ public class SentenceControllerOpen {
     }
 
     @PatchMapping("/add-fav")
-    public ResponseEntity<AddToFavByUserDto> addToFavByUser(@RequestBody AddToFavByUserDto favDto) {
-        favoriteService.addToFavByUserDto(favDto);
-        return new ResponseEntity<>(favDto,HttpStatus.OK);
+    public ResponseEntity<AddToFav> addToFavByUser(@RequestBody AddToFav favDto) {
+        //TODO refactor
+        AddToFav fav = new AddToFav(favDto.email(), favDto.sentenceId(), favoriteService.addToFav(favDto));
+        return new ResponseEntity<>(fav, HttpStatus.OK);
     }
 
 //    @PatchMapping("/{id}")
