@@ -50,21 +50,24 @@ public class SentenceService {
         return sentenceRepository.findById(id).orElse(null);
     }
 
-    public RandomDTO findSentenceRandom(String email) {
+    public RandomDTO findSentenceRandomForEmail(String email) {
+        Sentence sentence = getRandomSentence();
+
+        Optional<User> userOptional = userRepository.findByEmail(email);
+        RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), findFavSentence(sentence, userOptional.get().getId()));
+        return randomDTO;
+    }
+
+    private Sentence getRandomSentence() {
         Random random = new Random();
         Long id;
         Sentence sentence;
         do {
             id = random.nextLong(findHighestId() + 1);// used findHighestId to not hardcoded seed in random
-            System.out.println(findHighestId());
             sentence = sentenceRepository.findById(id).orElse(null);
-
         }
         while (sentence == null);
-
-        Optional<User> userOptional = userRepository.findByEmail(email);
-        RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), findFavSentence(sentence, userOptional.get().getId()));
-        return randomDTO;
+        return sentence;
     }
 
     private boolean findFavSentence(Sentence sentence, Long userId) {
