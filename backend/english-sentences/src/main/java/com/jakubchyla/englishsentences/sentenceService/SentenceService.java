@@ -50,6 +50,13 @@ public class SentenceService {
         return sentenceRepository.findById(id).orElse(null);
     }
 
+    public RandomDTO findSentenceRandom() {
+        Sentence sentence = getRandomSentence();
+
+        RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(),false);
+        return randomDTO;
+    }
+
     public RandomDTO findSentenceRandomForEmail(String email) {
         Sentence sentence = getRandomSentence();
 
@@ -63,7 +70,7 @@ public class SentenceService {
         Long id;
         Sentence sentence;
         do {
-            id = random.nextLong(findHighestId() + 1);// used findHighestId to not hardcoded seed in random
+            id = random.nextLong(findHighestId() + 1);// + 1 prevent zero
             sentence = sentenceRepository.findById(id).orElse(null);
         }
         while (sentence == null);

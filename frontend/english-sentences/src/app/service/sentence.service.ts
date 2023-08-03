@@ -30,8 +30,12 @@ export class SentenceService {
     return this.httpClient.get<Sentence[]>(`${this.baseURLOpen}search?textEn=${text}`)
   }
 
-  getSentenceRandom(email: string): Observable<RandomDTO>{
-    return this.httpClient.get<RandomDTO>(`${this.baseURLOpen}random?email=${email}`);
+  getSentenceRandom(): Observable<RandomDTO>{
+    return this.httpClient.get<RandomDTO>(`${this.baseURLOpen}random`);
+  }
+
+  getSentenceRandomForUser(email: string): Observable<RandomDTO>{
+    return this.httpClient.get<RandomDTO>(`${this.baseURLOpen}randomForUser?email=${email}`);
   }
 
   createSentenceSimple(sentence: Sentence): Observable<Object> {

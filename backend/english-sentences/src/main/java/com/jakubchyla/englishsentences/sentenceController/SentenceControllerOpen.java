@@ -37,9 +37,15 @@ public class SentenceControllerOpen {
         return new ResponseEntity<>(sentence, HttpStatus.OK);
     }
 
-    @GetMapping("/random")
-    public ResponseEntity<RandomDTO> getSentenceRandom(String email) {
+    @GetMapping("/randomForUser")
+    public ResponseEntity<RandomDTO> getSentenceRandomForUser(String email) {
         RandomDTO randomDTO = sentenceService.findSentenceRandomForEmail(email);
+        return new ResponseEntity<>(randomDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<RandomDTO> getSentenceRandom() {
+        RandomDTO randomDTO = sentenceService.findSentenceRandom();
         return new ResponseEntity<>(randomDTO, HttpStatus.OK);
     }
 
