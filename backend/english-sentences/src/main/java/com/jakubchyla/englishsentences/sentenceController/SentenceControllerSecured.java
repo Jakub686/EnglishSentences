@@ -1,8 +1,12 @@
 package com.jakubchyla.englishsentences.sentenceController;
 
+import com.jakubchyla.englishsentences.sentenceController.dto.RandomDTO;
 import com.jakubchyla.englishsentences.sentenceService.SentenceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +17,12 @@ public class SentenceControllerSecured {
 
     @Autowired
     private SentenceService sentenceService;
+
+    @GetMapping("/randomForUser")
+    public ResponseEntity<RandomDTO> getSentenceRandomForUser(String email) {
+        RandomDTO randomDTO = sentenceService.findSentenceRandomForEmail(email);
+        return new ResponseEntity<>(randomDTO, HttpStatus.OK);
+    }
 
 //    @PostMapping("/")
 //    public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {

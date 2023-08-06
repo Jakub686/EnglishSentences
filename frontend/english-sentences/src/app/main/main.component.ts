@@ -40,7 +40,7 @@ export class MainComponent implements OnInit {
     }
 
     if (this.email !== '') {
-      this.sentenceService.getSentenceRandomForUser(this.email).subscribe(data => {
+      this.sentenceService.getSentenceRandomForUser(this.email, this.token).subscribe(data => {
         this.randomDTO = data;
       });
     }

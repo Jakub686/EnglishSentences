@@ -10,6 +10,7 @@ import {AddToFav} from "../model/addToFav";
 })
 export class SentenceService {
 
+  private baseURL = 'http://localhost:8080/api/v1/';
   private baseURLOpen = 'http://localhost:8080/api/v1/open/';
   private baseURLSecured = 'http://localhost:8080/api/v1/secured/';
   token: string = '';
@@ -34,8 +35,13 @@ export class SentenceService {
     return this.httpClient.get<RandomDTO>(`${this.baseURLOpen}random`);
   }
 
-  getSentenceRandomForUser(email: string): Observable<RandomDTO>{
-    return this.httpClient.get<RandomDTO>(`${this.baseURLOpen}randomForUser?email=${email}`);
+  getSentenceRandomForUser(email: string, token: string): Observable<RandomDTO>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    return this.httpClient.get<RandomDTO>(`${this.baseURLSecured}randomForUser?email=${email}`, httpOptions);
   }
 
   createSentenceSimple(sentence: Sentence): Observable<Object> {
@@ -64,5 +70,17 @@ export class SentenceService {
 
   detailSentence(id: number): Observable<Sentence> {
     return this.httpClient.get<Sentence>(`${this.baseURLOpen}simple/${id}`)
+  }
+
+  getSecureContent(): Observable<Object> {
+    this.token = localStorage.getItem('token') as string;
+    let token = this.token
+    console.log(token)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    return this.httpClient.get<Object>(`${this.baseURL}demo-controller`, httpOptions);
   }
 }

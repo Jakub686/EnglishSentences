@@ -41,19 +41,7 @@ export class UserService {
       })
     );
   }
-
-  getSecureContent(): Observable<Object> {
-    this.token = localStorage.getItem('token') as string;
-    let token = this.token
-    console.log(token)
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      })
-    };
-    return this.httpClient.get<Object>(`${this.baseURL}demo-controller`, httpOptions);
-  }
-
+  
   getLogin(): string | null {
     this.email = localStorage.getItem('email');
     return this.email;

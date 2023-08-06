@@ -18,7 +18,7 @@ export class SigninComponent {
   token: string = '';
   login = '';
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private sentenceService: SentenceService, private router: Router) {
     this.login = localStorage.getItem('login') as string;
   }
   ngOnInit() {
@@ -45,12 +45,12 @@ export class SigninComponent {
   }
 
   getContent() {
-    this.userService.getSecureContent().subscribe(
+    this.sentenceService.getSecureContent().subscribe(
       data => {
         console.log(data); // The response is a string, so you can directly access it
       },
       error => console.log(error)
     );
   }
-  
+
 }

@@ -3,6 +3,7 @@ import {Sentence} from "../model/sentence";
 import {Router} from "@angular/router";
 import {SentenceService} from "../service/sentence.service";
 import {RandomDTO} from "../model/randomDTO";
+import {AddToFav} from "../model/addToFav";
 
 @Component({
   selector: 'app-sentence-list',
@@ -12,13 +13,18 @@ import {RandomDTO} from "../model/randomDTO";
 export class SentenceListComponent implements OnInit {
   search: string ='';
   sentences: Sentence[] = [];
+  addToFavByUserDto: AddToFav = {sentenceId: 0, email: '', favorite: false};
+  data: RandomDTO | any;
+  randomDTO: RandomDTO | any;
 
   token: string ;
   role: string;
+  email: string;
 
   constructor(private sentenceService: SentenceService, private router: Router) {
     this.token = localStorage.getItem('token') as string;
     this.role = localStorage.getItem('role') as string;
+    this.email = localStorage.getItem('email') as string;
   }
 
   ngOnInit() {
@@ -27,10 +33,6 @@ export class SentenceListComponent implements OnInit {
 
   onSubmit() {
     this.getSentencesSearch(this.search);
-  }
-
-  showList() {
-    this.getSentencesSimple();
   }
 
   private getSentencesSearch(text: string) {
@@ -57,5 +59,20 @@ export class SentenceListComponent implements OnInit {
   detailsSentence(id: number) {
     this.router.navigate(['details-sentence', id])
     this.sentenceService.detailSentence(id).subscribe();
+  }
+
+  addToFav(randomDTOid: number) {
+    console.log(this.email)
+    if (this.email !== undefined) {
+      this.addToFavByUserDto.email = this.email;
+      this.addToFavByUserDto.sentenceId = randomDTOid;
+      this.addToFavByUserDto.favorite = this.randomDTO.favorite;
+
+      this.sentenceService.addToFav(this.addToFavByUserDto).subscribe(data => {
+        this.data = data;
+        console.log(this.data)
+        this.randomDTO.favorite = this.data.favorite;
+      });
+    }
   }
 }
