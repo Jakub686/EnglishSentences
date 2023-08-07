@@ -18,7 +18,6 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signin', component: SigninComponent},
   {path: '**', redirectTo: 'main'}, // redirect from '**' to main
-
 ];
 
 @NgModule({

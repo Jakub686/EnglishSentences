@@ -12,7 +12,7 @@ import {UserService} from "../service/user.service";
 })
 export class CreateSentenceComponent {
 
-  sentence: Sentence = {id: 0, textEn: "", translationToPl: [{id: 0, textPl: ""}, {id: 1, textPl: ""}]};
+  sentence: Sentence = {id: 0, textEn: "", textPl: ""};
 
   constructor(private sentenceService: SentenceService, private userService: UserService, private router: Router) {
 
@@ -21,7 +21,7 @@ export class CreateSentenceComponent {
   onSubmit() {
     console.log(this.sentence);
     console.log(this.sentence.textEn);
-    console.log(this.sentence.translationToPl[0].textPl);
+    console.log(this.sentence.textPl);
     this.saveSentence();
     this.goToSentenceList();
   }

@@ -13,7 +13,7 @@ import {UserService} from "../service/user.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  sentence: Sentence = {id: 0, textEn: "", translationToPl: [{id: 0, textPl: ""}, {id: 1, textPl: ""}]};
+  sentence: Sentence = {id: 0, textEn: "", textPl: ""};
   userLogIn: UserLogIn = {email: '', password: '', role: ''};
   token: string = '';
 
@@ -26,7 +26,6 @@ export class LoginComponent {
   }
 
   authUser() {
-
     this.userService.authUser(this.userLogIn).subscribe(
       (data: any) => {
         console.log(data);
@@ -35,10 +34,7 @@ export class LoginComponent {
       },
       error => console.log(error)
     );
-    console.log(this.token);
-    console.log('role ' + localStorage.getItem('role'));
-
-
+    this.router.navigate(['/main']);
   }
 
   saveSentence() {

@@ -11,7 +11,7 @@ import {SentenceService} from "../service/sentence.service";
 export class UpdateSentenceComponent implements OnInit{
   id:number = 0;
   // sentence: Sentence = new Sentence();
-  sentence: Sentence = {id: 0, textEn:"",translationToPl:[{id:0,textPl:""},{id:1,textPl:""}]};
+  sentence: Sentence = {id: 0, textEn:"",textPl:""};
   constructor(private sentenceService: SentenceService, private route: ActivatedRoute, private router: Router) {
   }
 

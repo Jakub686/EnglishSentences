@@ -24,7 +24,7 @@
       </button>
       <button class="btn-detail" (click)="detailsSentence(sentence.id)" style="margin-left: 10px">detail</button>
     </td>
-    <td (click)="addToFav(sentence.id)" [class]="sentence.id ===1 ? 'fas fa-star text-yellow' : 'fas fa-star'"
+    <td *ngIf="email!=='' && role === 'USER'" (click)="addToFav(sentence.id)" [class]="sentence.id ===1 ? 'fas fa-star text-yellow' : 'fas fa-star'"
         style="margin-left: 10px; cursor: pointer;"></td>
   </tr>
   </tbody>

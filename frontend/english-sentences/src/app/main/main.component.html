@@ -10,7 +10,7 @@
     <tr>
       <td>
         <i
-          *ngIf="email !== ''"
+          *ngIf="email !== '' && role === 'USER'"
           (click)="addToFav(randomDTO.id)"
           [class]="randomDTO.favorite ? 'fas fa-star text-yellow' : 'fas fa-star'"
           style="margin-left: 10px; cursor: pointer;"

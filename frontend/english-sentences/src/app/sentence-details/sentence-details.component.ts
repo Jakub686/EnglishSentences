@@ -8,16 +8,18 @@ import {SentenceService} from "../service/sentence.service";
   templateUrl: './sentence-details.component.html',
   styleUrls: ['./sentence-details.component.css']
 })
-export class SentenceDetailsComponent implements OnInit{
-  id:number | any;
+export class SentenceDetailsComponent implements OnInit {
+  id: number | any;
   sentence: Sentence | any;
+
   constructor(private route: ActivatedRoute, private sentenceService: SentenceService) {
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.sentence = new Sentence();
-    this.sentenceService.getSentenceById(this.id).subscribe(data=>{this.sentence = data;});
-    console.log()
+    this.sentenceService.getSentenceById(this.id).subscribe(data => {
+      this.sentence = data;
+    });
   }
 }
