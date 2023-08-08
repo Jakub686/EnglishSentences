@@ -40,7 +40,7 @@ export class SentenceListComponent implements OnInit {
   }
 
   private getSentencesSimple() {
-    this.sentenceService.getSentenceSimpleList(this.token).subscribe(data => {
+    this.sentenceService.getSentenceList(this.token).subscribe(data => {
       this.sentences = data;
     })
   }
@@ -58,7 +58,6 @@ export class SentenceListComponent implements OnInit {
 
   detailsSentence(id: number) {
     this.router.navigate(['details-sentence', id])
-    this.sentenceService.detailSentence(id).subscribe();
   }
 
   addToFav(randomDTOid: number) {

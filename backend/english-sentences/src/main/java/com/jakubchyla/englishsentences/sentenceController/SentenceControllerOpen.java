@@ -31,11 +31,11 @@ public class SentenceControllerOpen {
         return new ResponseEntity<>(sentenceService.saveSentence(sentence), HttpStatus.CREATED);
     }
 
-    @GetMapping("/sentences")
-    public ResponseEntity<List<Sentence>> getSentence() {
-        List<Sentence> sentence = sentenceService.findAllSentence();
-        return new ResponseEntity<>(sentence, HttpStatus.OK);
-    }
+//    @GetMapping("/sentences")
+//    public ResponseEntity<List<Sentence>> getSentence() {
+//        List<Sentence> sentence = sentenceService.findAllSentence();
+//        return new ResponseEntity<>(sentence, HttpStatus.OK);
+//    }
 
 //    @GetMapping("/randomForUser")
 //    public ResponseEntity<RandomDTO> getSentenceRandomForUser(String email) {
@@ -64,14 +64,14 @@ public class SentenceControllerOpen {
         return mapSentencesToSimpleDto(sentenceService.findAllSentence());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Sentence> getById(@PathVariable Long id) {
-        if (sentenceService.getById(id) == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(sentenceService.getById(id), HttpStatus.OK);
-        }
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Sentence> getById(@PathVariable Long id) {
+//        if (sentenceService.getById(id) == null) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//        } else {
+//            return new ResponseEntity<>(sentenceService.getById(id), HttpStatus.OK);
+//        }
+//    }
 
     @GetMapping("/simple/{id}")
     public ResponseEntity<SimpleDto> simpleGetById(@PathVariable Long id) {

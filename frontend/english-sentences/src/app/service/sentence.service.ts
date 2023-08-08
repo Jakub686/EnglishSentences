@@ -18,13 +18,13 @@ export class SentenceService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getSentenceSimpleList(token: string): Observable<Sentence[]> {
+  getSentenceList(token: string): Observable<Sentence[]> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${token}`
       })
     };
-    return this.httpClient.get<Sentence[]>(`${this.baseURLOpen}sentences`,httpOptions)
+    return this.httpClient.get<Sentence[]>(`${this.baseURLSecured}sentences`,httpOptions)
   }
 
   getSentenceSimpleSearch(text: string): Observable<Sentence[]> {
@@ -48,13 +48,18 @@ export class SentenceService {
     return this.httpClient.post(`${this.baseURLOpen}`, sentence);
   }
 
-  getSentenceById(id: number): Observable<Sentence> {
-    return this.httpClient.get<Sentence>(`${this.baseURLOpen}${id}`)
+  getSentenceById(id: number, token: string): Observable<Sentence> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    return this.httpClient.get<Sentence>(`${this.baseURLSecured}${id}`,httpOptions)
   }
 
-  getSentenceSimpleById(id: number): Observable<Sentence> {
-    return this.httpClient.get<Sentence>(`${this.baseURLOpen}simple/${id}`)
-  }
+  // getSentenceSimpleById(id: number): Observable<Sentence> {
+  //   return this.httpClient.get<Sentence>(`${this.baseURLOpen}simple/${id}`)
+  // }
 
   updateSentence(id: number, sentence: Sentence): Observable<Object> {
     return this.httpClient.put(`${this.baseURLOpen}${id}`, sentence);
@@ -68,9 +73,9 @@ export class SentenceService {
     return this.httpClient.delete<Sentence>(`${this.baseURLOpen}${id}`)
   }
 
-  detailSentence(id: number): Observable<Sentence> {
-    return this.httpClient.get<Sentence>(`${this.baseURLOpen}simple/${id}`)
-  }
+  // detailSentence(id: number): Observable<Sentence> {
+  //   return this.httpClient.get<Sentence>(`${this.baseURLOpen}simple/${id}`)
+  // }
 
   getSecureContent(): Observable<Object> {
     this.token = localStorage.getItem('token') as string;
