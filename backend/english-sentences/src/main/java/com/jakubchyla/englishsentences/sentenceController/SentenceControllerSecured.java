@@ -19,16 +19,16 @@ public class SentenceControllerSecured {
     @Autowired
     private SentenceService sentenceService;
 
-    @GetMapping("/randomForUser")
+    @GetMapping("/random-for-user")
     public ResponseEntity<RandomDTO> getSentenceRandomForUser(String email) {
         RandomDTO randomDTO = sentenceService.findSentenceRandomForEmail(email);
         return new ResponseEntity<>(randomDTO, HttpStatus.OK);
     }
 
-        @GetMapping("/sentences")
-    public ResponseEntity<List<Sentence>> getSentence() {
-        List<Sentence> sentence = sentenceService.findAllSentence();
-        return new ResponseEntity<>(sentence, HttpStatus.OK);
+        @GetMapping("/sentences-logged")
+    public ResponseEntity<List<RandomDTO>> getSentence(String email) {
+        List<RandomDTO> sentenceList = sentenceService.findSentenceListForEmail(email);
+        return new ResponseEntity<>(sentenceList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

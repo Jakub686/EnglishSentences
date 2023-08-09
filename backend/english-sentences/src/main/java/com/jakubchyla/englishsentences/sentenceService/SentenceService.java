@@ -11,6 +11,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -63,6 +64,19 @@ public class SentenceService {
         Optional<User> userOptional = userRepository.findByEmail(email);
         RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), findFavSentence(sentence, userOptional.get().getId()));
         return randomDTO;
+    }
+
+    public List<RandomDTO>  findSentenceListForEmail(String email) {
+        List<RandomDTO> randomDTOList = new ArrayList<>();
+        List<Sentence> sentencesList = sentenceRepository.findAll();
+        Optional<User> userOptional = userRepository.findByEmail(email);
+
+        for(Sentence sentence : sentencesList){
+            RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), findFavSentence(sentence, userOptional.get().getId()));
+            randomDTOList.add(randomDTO);
+        }
+
+        return randomDTOList;
     }
 
     private Sentence getRandomSentence() {

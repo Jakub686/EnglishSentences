@@ -18,13 +18,13 @@ export class SentenceService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getSentenceList(token: string): Observable<Sentence[]> {
+  getSentenceList(email: string,token: string): Observable<RandomDTO[]> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${token}`
       })
     };
-    return this.httpClient.get<Sentence[]>(`${this.baseURLSecured}sentences`,httpOptions)
+    return this.httpClient.get<RandomDTO[]>(`${this.baseURLSecured}sentences-logged?email=${email}`,httpOptions)
   }
 
   getSentenceSimpleSearch(text: string): Observable<Sentence[]> {
@@ -41,7 +41,7 @@ export class SentenceService {
         'Authorization': `Bearer ${token}`
       })
     };
-    return this.httpClient.get<RandomDTO>(`${this.baseURLSecured}randomForUser?email=${email}`, httpOptions);
+    return this.httpClient.get<RandomDTO>(`${this.baseURLSecured}random-for-user?email=${email}`, httpOptions);
   }
 
   createSentenceSimple(sentence: Sentence): Observable<Object> {

@@ -12,7 +12,7 @@ import {AddToFav} from "../model/addToFav";
 })
 export class SentenceListComponent implements OnInit {
   search: string ='';
-  sentences: Sentence[] = [];
+  randomDTOS: RandomDTO[] = [];
   addToFavByUserDto: AddToFav = {sentenceId: 0, email: '', favorite: false};
   data: RandomDTO | any;
   randomDTO: RandomDTO | any;
@@ -32,16 +32,17 @@ export class SentenceListComponent implements OnInit {
   }
 
   onSubmit() {
-    this.getSentencesSearch(this.search);
+    // this.getSentencesSearch(this.search);
   }
 
-  private getSentencesSearch(text: string) {
-    this.sentenceService.getSentenceSimpleSearch(text).subscribe(data => {this.sentences = data})
-  }
+  // private getSentencesSearch(text: string) {
+  //   this.sentenceService.getSentenceSimpleSearch(text).subscribe(data => {
+  //     this.randomDTOS = data})
+  // }
 
   private getSentencesSimple() {
-    this.sentenceService.getSentenceList(this.token).subscribe(data => {
-      this.sentences = data;
+    this.sentenceService.getSentenceList(this.email, this.token).subscribe(data => {
+      this.randomDTOS = data;
     })
   }
 

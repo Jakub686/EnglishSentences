@@ -15,7 +15,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let sentence of sentences">
+  <tr *ngFor="let sentence of randomDTOS">
     <td class="rounded"> {{sentence.textEn}} </td>
     <td>
       <button *ngIf="role==='ADMIN'" class="btn-update" (click)="updateSentence(sentence.id)">update</button>
@@ -24,7 +24,7 @@
       </button>
       <button class="btn-detail" (click)="detailsSentence(sentence.id)" style="margin-left: 10px">detail</button>
     </td>
-    <td *ngIf="email!=='' && role === 'USER'" (click)="addToFav(sentence.id)" [class]="sentence.id ===1 ? 'fas fa-star text-yellow' : 'fas fa-star'"
+    <td *ngIf="email!=='' && role === 'USER'" (click)="addToFav(sentence.id)" [class]="sentence.favorite ? 'fas fa-star text-yellow' : 'fas fa-star'"
         style="margin-left: 10px; cursor: pointer;"></td>
   </tr>
   </tbody>
