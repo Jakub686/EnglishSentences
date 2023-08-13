@@ -85,10 +85,8 @@ public class SentenceControllerOpen {
     }
 
     @PatchMapping("/add-fav")
-    public ResponseEntity<AddToFav> addToFavByUser(@RequestBody AddToFav favDto) {
-        //TODO refactor
-        AddToFav fav = new AddToFav(favDto.email(), favDto.sentenceId(), favoriteService.addToFav(favDto));
-        return new ResponseEntity<>(fav, HttpStatus.OK);
+    public ResponseEntity<Boolean> addToFavByUser(@RequestBody AddToFav favDto) {
+        return new ResponseEntity<>(favoriteService.addToFav(favDto), HttpStatus.OK);
     }
 
 //    @PatchMapping("/{id}")

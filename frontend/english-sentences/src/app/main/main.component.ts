@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
   sentence: Sentence | any;
   randomDTO: RandomDTO | any;
   data: RandomDTO | any;
-  addToFavByUserDto: AddToFav = {sentenceId: 0, email: '', favorite: false};
+  addToFavByUserDto: AddToFav = {sentenceId: 0, email: '', favorite: true};
   token: string;
   email: string;
   role: string;
@@ -43,11 +43,12 @@ export class MainComponent implements OnInit {
       this.sentenceService.getSentenceRandomForUser(this.email, this.token).subscribe(data => {
         this.randomDTO = data;
       });
+      console.log('this.randomDTO.favorite ' + this.randomDTO.favorite)
     }
+
   }
 
   addToFav(randomDTOid: number) {
-    console.log(this.email)
     if (this.email !== undefined) {
       this.addToFavByUserDto.email = this.email;
       this.addToFavByUserDto.sentenceId = randomDTOid;
@@ -55,8 +56,7 @@ export class MainComponent implements OnInit {
 
       this.sentenceService.addToFav(this.addToFavByUserDto).subscribe(data => {
         this.data = data;
-        console.log(this.data)
-        this.randomDTO.favorite = this.data.favorite;
+        this.randomDTO.favorite = !this.randomDTO.favorite;
       });
     }
   }
