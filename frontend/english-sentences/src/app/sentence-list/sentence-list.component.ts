@@ -61,11 +61,12 @@ export class SentenceListComponent implements OnInit {
   }
 
   addToFav(randomDTOid: number) {
-    console.log(this.randomDTOS[randomDTOid].favorite)
+    console.log(randomDTOid)
     if (this.email !== undefined) {
       this.addToFavByUserDto.email = this.email;
       this.addToFavByUserDto.sentenceId = randomDTOid;
-      this.addToFavByUserDto.favorite = this.randomDTOS[randomDTOid].favorite;
+      // console.log(this.randomDTOS[randomDTOid].favorite)
+      // this.addToFavByUserDto.favorite = this.randomDTOS[randomDTOid].favorite;
 
       this.sentenceService.addToFav(this.addToFavByUserDto).subscribe(data => {
         this.data = data;
