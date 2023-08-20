@@ -54,25 +54,33 @@ public class SentenceService {
     public RandomDTO findSentenceRandom() {
         Sentence sentence = getRandomSentence();
 
-        RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(),false);
+        RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), false);
         return randomDTO;
     }
 
-    public RandomDTO findSentenceRandomForEmail(String email) {
-        Sentence sentence = getRandomSentence();
-
-        Optional<User> userOptional = userRepository.findByEmail(email);
-        RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), findFavSentence(sentence, userOptional.get().getId()));
-        return randomDTO;
+    public RandomDTO findSentenceRandomForEmail(String email, boolean fav) {
+        RandomDTO rndDTO;
+        do {
+            Sentence sentence = getRandomSentence();
+            Optional<Sentence> sentenceOptional = Optional.ofNullable(sentence);
+            if (sentenceOptional.get().getFavorite().isEmpty()) {
+                rndDTO =
+                        new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), false);
+            } else {
+                rndDTO =
+                        new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), true);
+            }
+        } while (fav != rndDTO.favorite());
+        return rndDTO;
     }
 
-    public List<RandomDTO>  findSentenceListForEmail(String email) {
+    public List<RandomDTO> findSentenceListForEmail(String email) {
         List<RandomDTO> randomDTOList = new ArrayList<>();
         List<Sentence> sentencesList = sentenceRepository.findAll();
         Optional<User> userOptional = userRepository.findByEmail(email);
 
-        for(Sentence sentence : sentencesList){
-            RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), findFavSentence(sentence, userOptional.get().getId()));
+        for (Sentence sentence : sentencesList) {
+            RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), findStatusFavSentence(sentence, userOptional.get().getId()));
             randomDTOList.add(randomDTO);
         }
 
@@ -91,7 +99,7 @@ public class SentenceService {
         return sentence;
     }
 
-    private boolean findFavSentence(Sentence sentence, Long userId) {
+    private boolean findStatusFavSentence(Sentence sentence, Long userId) {
 
         try {
             List<Favorite> favList = favoriteRepository.findByUserIdAndSentenceId(userId, sentence.getId());

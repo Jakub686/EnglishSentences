@@ -21,6 +21,7 @@ export class MainComponent implements OnInit {
   token: string;
   email: string;
   role: string;
+  fav = false;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private sentenceService: SentenceService) {
     this.token = localStorage.getItem('token') as string;
@@ -40,7 +41,7 @@ export class MainComponent implements OnInit {
     }
 
     if (this.email !== '') {
-      this.sentenceService.getSentenceRandomForUser(this.email, this.token).subscribe(data => {
+      this.sentenceService.getSentenceRandomForUser(this.email, this.fav, this.token).subscribe(data => {
         this.randomDTO = data;
       });
       console.log('this.randomDTO.favorite ' + this.randomDTO.favorite)
@@ -59,6 +60,12 @@ export class MainComponent implements OnInit {
         this.randomDTO.favorite = !this.randomDTO.favorite;
       });
     }
+  }
+
+  toggleFavorite() {
+    // Update this.fav when the checkbox state changes
+    // You can perform additional logic here if needed
+    console.log('Toggle switch state changed:', this.fav);
   }
 
 }

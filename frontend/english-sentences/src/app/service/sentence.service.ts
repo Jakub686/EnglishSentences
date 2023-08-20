@@ -35,13 +35,13 @@ export class SentenceService {
     return this.httpClient.get<RandomDTO>(`${this.baseURLOpen}random`);
   }
 
-  getSentenceRandomForUser(email: string, token: string): Observable<RandomDTO>{
+  getSentenceRandomForUser(email: string, fav: boolean, token: string): Observable<RandomDTO>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${token}`
       })
     };
-    return this.httpClient.get<RandomDTO>(`${this.baseURLSecured}random-for-user?email=${email}`, httpOptions);
+    return this.httpClient.get<RandomDTO>(`${this.baseURLSecured}random-for-user?email=${email}&fav=${fav}`, httpOptions);
   }
 
   createSentenceSimple(sentence: Sentence): Observable<Object> {

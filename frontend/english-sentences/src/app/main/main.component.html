@@ -16,8 +16,8 @@
           style="padding-right: 10px; cursor: pointer; font-size: 24px;"
         ></i>
 
-        <label class="switch">
-          <input type="checkbox" checked>
+        <label *ngIf="email !== '' && role === 'USER'" class="switch">
+          <input type="checkbox" [(ngModel)]="fav" (change)="toggleFavorite()">
           <span class="slider round"></span>
         </label>
       </td>

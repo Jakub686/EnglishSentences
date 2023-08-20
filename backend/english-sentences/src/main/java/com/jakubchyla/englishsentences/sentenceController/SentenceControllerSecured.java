@@ -20,8 +20,8 @@ public class SentenceControllerSecured {
     private SentenceService sentenceService;
 
     @GetMapping("/random-for-user")
-    public ResponseEntity<RandomDTO> getSentenceRandomForUser(String email) {
-        RandomDTO randomDTO = sentenceService.findSentenceRandomForEmail(email);
+    public ResponseEntity<RandomDTO> getSentenceRandomForUser(String email, Boolean fav) {
+        RandomDTO randomDTO = sentenceService.findSentenceRandomForEmail(email, fav);
         return new ResponseEntity<>(randomDTO, HttpStatus.OK);
     }
 
