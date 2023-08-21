@@ -14,16 +14,12 @@ import {UserService} from "../service/user.service";
 })
 export class LoginComponent {
   sentence: Sentence = {id: 0, textEn: "", textPl: ""};
-  userLogIn: UserLogIn = {email: '', password: '', role: ''};
+  userLogIn: UserLogIn = {email: 'root@gmail.com', password: 'root', role: ''};
   token: string = '';
 
   constructor(private sentenceService: SentenceService, private userService: UserService, private router: Router) {
   }
 
-  onSubmit() {
-    this.saveSentence();
-    this.goToSentenceList();
-  }
 
   authUser() {
     this.userService.authUser(this.userLogIn).subscribe(
@@ -37,14 +33,4 @@ export class LoginComponent {
     this.router.navigate(['/main']);
   }
 
-  saveSentence() {
-    this.sentenceService.createSentenceSimple(this.sentence).subscribe(data => {
-        console.log(data);
-      },
-      error => console.log(error));
-  }
-
-  goToSentenceList() {
-    this.router.navigate(['/sentences'])
-  }
 }

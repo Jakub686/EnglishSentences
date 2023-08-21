@@ -26,10 +26,10 @@ public class SentenceControllerOpen {
     @Autowired
     private FavoriteService favoriteService;
 
-    @PostMapping("/")
-    public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {
-        return new ResponseEntity<>(sentenceService.saveSentence(sentence), HttpStatus.CREATED);
-    }
+//    @PostMapping("/")
+//    public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {
+//        return new ResponseEntity<>(sentenceService.saveSentence(sentence), HttpStatus.CREATED);
+//    }
 
 //    @GetMapping("/sentences")
 //    public ResponseEntity<List<Sentence>> getSentence() {

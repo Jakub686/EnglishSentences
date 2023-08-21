@@ -32,6 +32,7 @@ export class SentenceListComponent implements OnInit {
 
   onSubmit() {
     // this.getSentencesSearch(this.search);
+    console.log(this.search)
   }
 
   // private getSentencesSearch(text: string) {

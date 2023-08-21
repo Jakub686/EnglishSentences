@@ -12,7 +12,7 @@
 .container1 {
   text-align: center;
   display: grid;
-  grid-template-columns: 155px 155px 170px 155px 155px;
+  grid-template-columns: 170px 170px 170px 170px 170px;
   grid-gap: 10px;
   justify-content: flex-start;
 }

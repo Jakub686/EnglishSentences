@@ -3,10 +3,10 @@
     <div class="grid-item">
       <a routerLink="main" routerLinkActive="active" class="nav-link">Start</a>
     </div>
-    <div class="grid-item">
+    <div *ngIf="!(email === null || email ==='')" class="grid-item">
       <a routerLink="sentences" routerLinkActive="active" class="nav-link">Sentences</a>
     </div>
-    <div class="grid-item">
+    <div *ngIf="!(email === null || email ==='')" class="grid-item">
       <a routerLink="create-sentence" routerLinkActive="active" class="nav-link">Add Sentence</a>
     </div>
 

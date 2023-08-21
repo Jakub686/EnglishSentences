@@ -44,8 +44,13 @@ export class SentenceService {
     return this.httpClient.get<RandomDTO>(`${this.baseURLSecured}random-for-user?email=${email}&fav=${fav}`, httpOptions);
   }
 
-  createSentenceSimple(sentence: Sentence): Observable<Object> {
-    return this.httpClient.post(`${this.baseURLOpen}`, sentence);
+  createSentenceSimple(sentence: Sentence, token: string): Observable<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    return this.httpClient.post(`${this.baseURLSecured}`, sentence, httpOptions);
   }
 
   getSentenceById(id: number, token: string): Observable<Sentence> {
