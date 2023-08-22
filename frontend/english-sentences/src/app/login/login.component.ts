@@ -26,11 +26,17 @@ export class LoginComponent {
       (data: any) => {
         console.log(data);
         this.token = data.token;
-
+        setTimeout(() => {
+          this.router.navigate(['/main']);
+        }, 100);
       },
       error => console.log(error)
     );
-    this.router.navigate(['/main']);
+
+
+
+
+
   }
 
 }

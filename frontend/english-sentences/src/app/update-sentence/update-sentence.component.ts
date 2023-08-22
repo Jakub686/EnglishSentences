@@ -30,7 +30,7 @@ export class UpdateSentenceComponent implements OnInit{
   }
 
   onSubmit(){
-    this.sentenceService.updateSentence(this.id, this.sentence).subscribe( data =>{
+    this.sentenceService.updateSentence(this.id, this.sentence, this.token).subscribe( data =>{
         this.goToSentenceList();
       }
       , error => console.log(error));

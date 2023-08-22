@@ -129,9 +129,7 @@ public class SentenceService {
     }
 
     public Sentence updateSentence(Sentence sentence) {
-        Sentence existingSentence = sentenceRepository.findById(sentence.getId()).orElse(null);
-        existingSentence.setTextEn(sentence.getTextEn());
-        return sentenceRepository.save(existingSentence);
+        return sentenceRepository.save(sentence);
     }
 
     public String testMethod(String input) {

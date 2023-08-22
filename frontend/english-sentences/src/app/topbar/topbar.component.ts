@@ -35,6 +35,9 @@ export class TopbarComponent implements OnInit {
 
   logout() {
     this.userService.logout();
-    this.router.navigate(['/main']);
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 100);
+
   }
 }

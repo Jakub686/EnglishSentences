@@ -66,8 +66,13 @@ export class SentenceService {
   //   return this.httpClient.get<Sentence>(`${this.baseURLOpen}simple/${id}`)
   // }
 
-  updateSentence(id: number, sentence: Sentence): Observable<Object> {
-    return this.httpClient.put(`${this.baseURLOpen}${id}`, sentence);
+  updateSentence(id: number, sentence: Sentence, token: string): Observable<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    return this.httpClient.put(`${this.baseURLSecured}${id}`, sentence, httpOptions);
   }
 
   addToFav(addToFavByUserDto:AddToFav ): Observable<AddToFav> {

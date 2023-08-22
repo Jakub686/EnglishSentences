@@ -25,7 +25,7 @@ public class SentenceControllerSecured {
         return new ResponseEntity<>(randomDTO, HttpStatus.OK);
     }
 
-        @GetMapping("/sentences-logged")
+    @GetMapping("/sentences-logged")
     public ResponseEntity<List<RandomDTO>> getSentence(String email) {
         List<RandomDTO> sentenceList = sentenceService.findSentenceListForEmail(email);
         return new ResponseEntity<>(sentenceList, HttpStatus.OK);
@@ -43,6 +43,11 @@ public class SentenceControllerSecured {
     @PostMapping("/")
     public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {
         return new ResponseEntity<>(sentenceService.saveSentence(sentence), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Sentence> updateSentenceUrlLink(@RequestBody Sentence sentence) {
+        return new ResponseEntity<>(sentenceService.updateSentence(sentence), HttpStatus.OK);
     }
 
 //    @GetMapping("/sentences")
