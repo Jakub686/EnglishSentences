@@ -60,17 +60,30 @@ public class SentenceService {
 
     public RandomDTO findSentenceRandomForEmail(String email, boolean fav) {
         RandomDTO rndDTO;
-        do {
-            Sentence sentence = getRandomSentence();
-            Optional<Sentence> sentenceOptional = Optional.ofNullable(sentence);
+        Sentence sentence = getRandomSentence();
+        Optional<Sentence> sentenceOptional = Optional.ofNullable(sentence);
+        boolean sentenceStatus;
+        if (!fav) {
             if (sentenceOptional.get().getFavorite().isEmpty()) {
-                rndDTO =
-                        new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), false);
+                sentenceStatus = false;
+                rndDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), sentenceStatus);
             } else {
-                rndDTO =
-                        new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), true);
+                sentenceStatus = true;
+                rndDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), sentenceStatus);
             }
-        } while (fav != rndDTO.favorite());
+        } else {
+            do {
+                sentence = getRandomSentence();
+                sentenceOptional = Optional.ofNullable(sentence);
+                if (!sentenceOptional.get().getFavorite().isEmpty()) {
+                    sentenceStatus = true;
+                    rndDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), sentenceStatus);
+                } else {
+                    sentenceStatus = false;
+                    rndDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), sentenceStatus);
+                }
+            } while (fav != sentenceStatus);
+        }
         return rndDTO;
     }
 
