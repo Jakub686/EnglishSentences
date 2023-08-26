@@ -104,8 +104,7 @@ public class SentenceService {
     private Sentence getRandomSentence() {
         List<Long> ids = sentenceRepository.findAllIds();
 
-        Random random = new Random();
-        int index = random.nextInt(ids.size());
+        int index = new Random().nextInt(ids.size());
         Long id = ids.get(index);
         Sentence sentence = sentenceRepository.findById(id).orElse(null);
         return sentence;
