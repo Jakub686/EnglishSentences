@@ -10,4 +10,7 @@ public interface SentenceRepository extends JpaRepository<Sentence, Long> {
     @Query("FROM Sentence WHERE textEn LIKE %?1%")
     List<Sentence> findByText(String textEn);
 
+    @Query("SELECT id FROM Sentence ORDER BY id ASC")
+    List<Long> findAllIds();
+
 }

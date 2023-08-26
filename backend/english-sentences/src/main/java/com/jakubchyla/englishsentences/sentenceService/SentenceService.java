@@ -59,6 +59,7 @@ public class SentenceService {
     }
 
     public RandomDTO findSentenceRandomForEmail(String email, boolean fav) {
+        //TODO: optional change into like sentence = sentenceRepository.findById(id).orElse(null);
         RandomDTO rndDTO;
         Sentence sentence = getRandomSentence();
         Optional<Sentence> sentenceOptional = Optional.ofNullable(sentence);
@@ -101,14 +102,12 @@ public class SentenceService {
     }
 
     private Sentence getRandomSentence() {
+        List<Long> ids = sentenceRepository.findAllIds();
+
         Random random = new Random();
-        Long id;
-        Sentence sentence;
-        do {
-            id = random.nextLong(findHighestId() + 1);// + 1 prevent zero
-            sentence = sentenceRepository.findById(id).orElse(null);
-        }
-        while (sentence == null);
+        int index = random.nextInt(ids.size());
+        Long id = ids.get(index);
+        Sentence sentence = sentenceRepository.findById(id).orElse(null);
         return sentence;
     }
 
