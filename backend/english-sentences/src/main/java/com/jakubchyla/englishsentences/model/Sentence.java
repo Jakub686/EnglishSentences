@@ -32,7 +32,6 @@ public class Sentence {
     @JoinColumn(name = "sentence_id", referencedColumnName = "id")
     private List<Favorite> Favorite;
 
-
 }
 
 

@@ -26,22 +26,6 @@ public class SentenceControllerOpen {
     @Autowired
     private FavoriteService favoriteService;
 
-//    @PostMapping("/")
-//    public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {
-//        return new ResponseEntity<>(sentenceService.saveSentence(sentence), HttpStatus.CREATED);
-//    }
-
-//    @GetMapping("/sentences")
-//    public ResponseEntity<List<Sentence>> getSentence() {
-//        List<Sentence> sentence = sentenceService.findAllSentence();
-//        return new ResponseEntity<>(sentence, HttpStatus.OK);
-//    }
-
-//    @GetMapping("/randomForUser")
-//    public ResponseEntity<RandomDTO> getSentenceRandomForUser(String email) {
-//        RandomDTO randomDTO = sentenceService.findSentenceRandomForEmail(email);
-//        return new ResponseEntity<>(randomDTO, HttpStatus.OK);
-//    }
 
     @GetMapping("/random")
     public ResponseEntity<RandomDTO> getSentenceRandom() {
@@ -49,29 +33,10 @@ public class SentenceControllerOpen {
         return new ResponseEntity<>(randomDTO, HttpStatus.OK);
     }
 
-    //TODO serach ma zwraca simple
-    @GetMapping("/search")
-    public ResponseEntity<List<Sentence>> findByText(@RequestParam String textEn) {
-        if (sentenceService.findByText(textEn) == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(sentenceService.findByText(textEn), HttpStatus.OK);
-        }
-    }
-
     @GetMapping("/simple")
     public ResponseEntity<List<SimpleDto>> simpleGetSentence() {
         return mapSentencesToSimpleDto(sentenceService.findAllSentence());
     }
-
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Sentence> getById(@PathVariable Long id) {
-//        if (sentenceService.getById(id) == null) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//        } else {
-//            return new ResponseEntity<>(sentenceService.getById(id), HttpStatus.OK);
-//        }
-//    }
 
     @GetMapping("/simple/{id}")
     public ResponseEntity<SimpleDto> simpleGetById(@PathVariable Long id) {
@@ -88,27 +53,6 @@ public class SentenceControllerOpen {
     public ResponseEntity<Boolean> addToFavByUser(@RequestBody AddToFav favDto) {
         return new ResponseEntity<>(favoriteService.addToFav(favDto), HttpStatus.OK);
     }
-
-//    @PatchMapping("/{id}")
-//    public ResponseEntity<UpdateDto> updateSentence(@PathVariable Long id, @RequestBody UpdateDto updateDto) {
-//        Sentence sentence = new Sentence();
-//        sentence.setId(id);
-//        sentence.setTextEn(updateDto.textEn());
-//        sentenceService.updateSentence(sentence);
-//        return new ResponseEntity<>(updateDto, HttpStatus.OK);
-//    }
-
-
-//    @PutMapping("/textpl/{id}")
-//    public ResponseEntity<UpdateUrlLinkDto> updateSentenceUrlLink(@PathVariable Long id, @RequestBody UpdateUrlLinkDto updateUrlLinkDto) {
-//       // String loginInfo = login;
-//        //System.out.println(loginInfo);
-//        Sentence sentence = new Sentence();
-//        sentence.setId(id);
-//        sentence.setTranslationToPl(updateUrlLinkDto.textPl());
-//        sentenceService.updateSentence(sentence);
-//        return new ResponseEntity<>(updateUrlLinkDto, HttpStatus.OK);
-//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Long> deleteArticle(@PathVariable("id") Long id) {

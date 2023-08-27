@@ -18,24 +18,29 @@ export class SentenceService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getSentenceList(email: string,token: string): Observable<RandomDTO[]> {
+  getSentenceList(email: string, token: string): Observable<RandomDTO[]> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${token}`
       })
     };
-    return this.httpClient.get<RandomDTO[]>(`${this.baseURLSecured}sentences-logged?email=${email}`,httpOptions)
+    return this.httpClient.get<RandomDTO[]>(`${this.baseURLSecured}sentences-logged?email=${email}`, httpOptions)
   }
 
-  getSentenceSimpleSearch(text: string): Observable<Sentence[]> {
-    return this.httpClient.get<Sentence[]>(`${this.baseURLOpen}search?textEn=${text}`)
+  search(text: string, token: string): Observable<RandomDTO[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    return this.httpClient.get<RandomDTO[]>(`${this.baseURLSecured}search?textEn=${text}`, httpOptions)
   }
 
-  getSentenceRandom(): Observable<RandomDTO>{
+  getSentenceRandom(): Observable<RandomDTO> {
     return this.httpClient.get<RandomDTO>(`${this.baseURLOpen}random`);
   }
 
-  getSentenceRandomForUser(email: string, fav: boolean, token: string): Observable<RandomDTO>{
+  getSentenceRandomForUser(email: string, fav: boolean, token: string): Observable<RandomDTO> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${token}`
@@ -59,7 +64,7 @@ export class SentenceService {
         'Authorization': `Bearer ${token}`
       })
     };
-    return this.httpClient.get<Sentence>(`${this.baseURLSecured}${id}`,httpOptions)
+    return this.httpClient.get<Sentence>(`${this.baseURLSecured}${id}`, httpOptions)
   }
 
   // getSentenceSimpleById(id: number): Observable<Sentence> {
@@ -75,7 +80,7 @@ export class SentenceService {
     return this.httpClient.put(`${this.baseURLSecured}${id}`, sentence, httpOptions);
   }
 
-  addToFav(addToFavByUserDto:AddToFav ): Observable<AddToFav> {
+  addToFav(addToFavByUserDto: AddToFav): Observable<AddToFav> {
     return this.httpClient.patch(`${this.baseURLOpen}add-fav`, addToFavByUserDto);
   }
 

@@ -1,6 +1,5 @@
 package com.jakubchyla.englishsentences.sentenceService;
 
-import com.jakubchyla.englishsentences.model.Favorite;
 import com.jakubchyla.englishsentences.model.Sentence;
 import com.jakubchyla.englishsentences.sentenceController.dto.RandomDTO;
 import com.jakubchyla.englishsentences.sentenceRepository.FavoriteRepository;
@@ -36,17 +35,6 @@ public class SentenceService {
         return sentenceRepository.findAll();
     }
 
-    public Long findHighestId() {
-        sentenceRepository.findAll();
-        List<Sentence> sentences = sentenceRepository.findAll();
-        Long highestId = sentences.stream()
-                .map(Sentence::getId) // map to extract the ids
-                .max(Long::compare) // find the maximum id
-                .orElse(null);
-
-        return highestId;
-    }
-
     public Sentence getById(Long id) {
         return sentenceRepository.findById(id).orElse(null);
     }
@@ -59,45 +47,34 @@ public class SentenceService {
     }
 
     public RandomDTO findSentenceRandomForEmail(String email, boolean fav) {
-        //TODO: optional change into like sentence = sentenceRepository.findById(id).orElse(null);
-        RandomDTO rndDTO;
-        Sentence sentence = getRandomSentence();
-        Optional<Sentence> sentenceOptional = Optional.ofNullable(sentence);
-        boolean sentenceStatus;
-        if (!fav) {
-            if (sentenceOptional.get().getFavorite().isEmpty()) {
-                sentenceStatus = false;
-                rndDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), sentenceStatus);
-            } else {
-                sentenceStatus = true;
-                rndDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), sentenceStatus);
-            }
-        } else {
-            do {
-                sentence = getRandomSentence();
-                sentenceOptional = Optional.ofNullable(sentence);
-                if (!sentenceOptional.get().getFavorite().isEmpty()) {
-                    sentenceStatus = true;
-                    rndDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), sentenceStatus);
-                } else {
-                    sentenceStatus = false;
-                    rndDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), sentenceStatus);
-                }
-            } while (fav != sentenceStatus);
-        }
+        Sentence sen = getRandomSentence(email, fav);
+        boolean isFavorite = isSentenceFav(email, sen);
+        RandomDTO rndDTO = new RandomDTO(sen.getId(), sen.getTextEn(), sen.getTextPl(), isFavorite);
+
         return rndDTO;
     }
+
+
+    private boolean isSentenceFav(String email, Sentence sen) {
+        if (sen.getFavorite() == null || sen.getFavorite().isEmpty())
+            return false;
+
+        User user = userRepository.findByEmail(email).get();
+        return sen.getFavorite().stream().anyMatch(favorite -> favorite.getUserId() == user.getId());
+    }
+
 
     public List<RandomDTO> findSentenceListForEmail(String email) {
         List<RandomDTO> randomDTOList = new ArrayList<>();
         List<Sentence> sentencesList = sentenceRepository.findAll();
         Optional<User> userOptional = userRepository.findByEmail(email);
 
-        for (Sentence sentence : sentencesList) {
-            RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), findStatusFavSentence(sentence, userOptional.get().getId()));
+        sentencesList.forEach(sen -> {
+            RandomDTO randomDTO =
+                    new RandomDTO(sen.getId(), sen.getTextEn(), sen.getTextPl(), findStatusFavSentence(sen, userOptional.get().getId())
+            );
             randomDTOList.add(randomDTO);
-        }
-
+        });
         return randomDTOList;
     }
 
@@ -110,26 +87,35 @@ public class SentenceService {
         return sentence;
     }
 
-    private boolean findStatusFavSentence(Sentence sentence, Long userId) {
-
-        try {
-            List<Favorite> favList = favoriteRepository.findByUserIdAndSentenceId(userId, sentence.getId());
-            if (favList.size() > 0) {
-                return true;
-            }
-            return false;
-        } catch (NullPointerException e) {
-            return false;
+    private Sentence getRandomSentence(String email, boolean fav) {
+        Long userId = getUserId(email);
+        List<Long> ids;
+        if (fav) {
+            ids = sentenceRepository.findAllFavSentencesIdsByUserId(userId);
+        } else {
+            ids = sentenceRepository.findAllIds();
         }
+
+        int index = new Random().nextInt(ids.size());
+        Long id = ids.get(index);
+        Sentence sentence = sentenceRepository.findById(id).orElse(null);
+        return sentence;
+    }
+
+    Long getUserId(String email) {
+        return userRepository.findByEmail(email).get().getId();
+    }
+
+    private boolean findStatusFavSentence(Sentence sentence, Long userId) {
+        return favoriteRepository.findByUserIdAndSentenceId(userId, sentence.getId())
+                .stream()
+                .findFirst()
+                .isPresent();
     }
 
     public List<Sentence> findByText(String text) {
         return sentenceRepository.findByText(text);
     }
-
-//    public Sentence dtoGetById(Long id) {
-//        return sentenceRepository.findById(id).orElse(null);
-//    }
 
     public void deleteSentence(Long id) {
         boolean exists = sentenceRepository.existsById(id);

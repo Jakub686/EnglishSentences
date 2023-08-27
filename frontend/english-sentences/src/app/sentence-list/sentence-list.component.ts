@@ -11,12 +11,12 @@ import {AddToFav} from "../model/addToFav";
   styleUrls: ['./sentence-list.component.css']
 })
 export class SentenceListComponent implements OnInit {
-  search: string ='';
+  search: string = '';
   randomDTOS: RandomDTO[] = [];
   addToFavByUserDto: AddToFav = {sentenceId: 0, email: '', favorite: false};
   data: RandomDTO | any;
 
-  token: string ;
+  token: string;
   role: string;
   email: string;
 
@@ -31,14 +31,14 @@ export class SentenceListComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.getSentencesSearch(this.search);
-    console.log(this.search)
+    this.getSentencesSearch(this.search);
   }
 
-  // private getSentencesSearch(text: string) {
-  //   this.sentenceService.getSentenceSimpleSearch(text).subscribe(data => {
-  //     this.randomDTOS = data})
-  // }
+  private getSentencesSearch(text: string) {
+    this.sentenceService.search(text, this.token).subscribe(data => {
+      this.randomDTOS = data;
+    });
+  }
 
   private getSentencesSimple() {
     this.sentenceService.getSentenceList(this.email, this.token).subscribe(data => {
