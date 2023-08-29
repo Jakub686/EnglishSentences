@@ -67,10 +67,6 @@ export class SentenceService {
     return this.httpClient.get<Sentence>(`${this.baseURLSecured}${id}`, httpOptions)
   }
 
-  // getSentenceSimpleById(id: number): Observable<Sentence> {
-  //   return this.httpClient.get<Sentence>(`${this.baseURLOpen}simple/${id}`)
-  // }
-
   updateSentence(id: number, sentence: Sentence, token: string): Observable<Object> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -87,11 +83,7 @@ export class SentenceService {
   deleteSentence(id: number): Observable<Sentence> {
     return this.httpClient.delete<Sentence>(`${this.baseURLOpen}${id}`)
   }
-
-  // detailSentence(id: number): Observable<Sentence> {
-  //   return this.httpClient.get<Sentence>(`${this.baseURLOpen}simple/${id}`)
-  // }
-
+  
   getSecureContent(): Observable<Object> {
     this.token = localStorage.getItem('token') as string;
     let token = this.token

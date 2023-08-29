@@ -54,7 +54,6 @@ public class SentenceControllerSecured {
             return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok(sentences);
-
     }
 
     @PostMapping("/")
@@ -72,5 +71,4 @@ public class SentenceControllerSecured {
 
         return ResponseEntity.ok(updated);
     }
-
 }
