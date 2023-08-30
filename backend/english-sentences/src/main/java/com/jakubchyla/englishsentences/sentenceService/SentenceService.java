@@ -72,14 +72,19 @@ public class SentenceService {
         sentencesList.forEach(sen -> {
             RandomDTO randomDTO =
                     new RandomDTO(sen.getId(), sen.getTextEn(), sen.getTextPl(), findStatusFavSentence(sen, userOptional.get().getId())
-            );
+                    );
             randomDTOList.add(randomDTO);
         });
         return randomDTOList;
     }
 
     private Sentence getRandomSentence() {
-        List<Long> ids = sentenceRepository.findAllIds();
+        Optional<List<Long>> optionalIds = sentenceRepository.findAllIds();
+        List<Long> ids = new ArrayList<>();
+
+        if (optionalIds.isPresent()) {
+            ids = optionalIds.orElse(new ArrayList<>());
+        }
 
         int index = new Random().nextInt(ids.size());
         Long id = ids.get(index);
@@ -89,17 +94,16 @@ public class SentenceService {
 
     private Sentence getRandomSentence(String email, boolean fav) {
         Long userId = getUserId(email);
-        List<Long> ids;
-        if (fav) {
-            ids = sentenceRepository.findAllFavSentencesIdsByUserId(userId);
-        } else {
-            ids = sentenceRepository.findAllIds();
-        }
+        Optional<List<Long>> optionalIds = fav ? sentenceRepository.findAllFavSentencesIdsByUserId(userId) : sentenceRepository.findAllIds();
+
+        List<Long> ids = optionalIds.orElse(new ArrayList<>());
+
+        if (ids.isEmpty())
+            return new Sentence();
 
         int index = new Random().nextInt(ids.size());
         Long id = ids.get(index);
-        Sentence sentence = sentenceRepository.findById(id).orElse(null);
-        return sentence;
+        return sentenceRepository.findById(id).orElse(null);
     }
 
     Long getUserId(String email) {

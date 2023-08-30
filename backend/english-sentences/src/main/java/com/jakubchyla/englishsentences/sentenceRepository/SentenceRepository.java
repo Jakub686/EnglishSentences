@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SentenceRepository extends JpaRepository<Sentence, Long> {
 
@@ -12,10 +13,10 @@ public interface SentenceRepository extends JpaRepository<Sentence, Long> {
     List<Sentence> findByText(String textEn);
 
     @Query("SELECT id FROM Sentence ORDER BY id ASC")
-    List<Long> findAllIds();
+    Optional<List<Long>> findAllIds();
 
     @Query("SELECT s.id FROM Sentence s JOIN s.Favorite f WHERE f.userId = :userId")
-    List<Long> findAllFavSentencesIdsByUserId(Long userId);
+    Optional<List<Long>> findAllFavSentencesIdsByUserId(Long userId);
 
 
 
