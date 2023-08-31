@@ -55,7 +55,7 @@ export class MainComponent implements OnInit {
       this.addToFavByUserDto.sentenceId = randomDTOid;
       this.addToFavByUserDto.favorite = this.randomDTO.favorite;
 
-      this.sentenceService.addToFav(this.addToFavByUserDto).subscribe(data => {
+      this.sentenceService.addToFav(this.addToFavByUserDto,this.token).subscribe(data => {
         this.data = data;
         this.randomDTO.favorite = !this.randomDTO.favorite;
       });

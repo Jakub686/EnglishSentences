@@ -76,14 +76,24 @@ export class SentenceService {
     return this.httpClient.put(`${this.baseURLSecured}${id}`, sentence, httpOptions);
   }
 
-  addToFav(addToFavByUserDto: AddToFav): Observable<AddToFav> {
-    return this.httpClient.patch(`${this.baseURLOpen}add-fav`, addToFavByUserDto);
+  addToFav(addToFavByUserDto: AddToFav, token: string): Observable<AddToFav> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    return this.httpClient.patch(`${this.baseURLSecured}add-fav`, addToFavByUserDto, httpOptions);
   }
 
-  deleteSentence(id: number): Observable<Sentence> {
-    return this.httpClient.delete<Sentence>(`${this.baseURLOpen}${id}`)
+  deleteSentence(id: number, token: string): Observable<Sentence> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    return this.httpClient.delete<Sentence>(`${this.baseURLSecured}${id}`, httpOptions)
   }
-  
+
   getSecureContent(): Observable<Object> {
     this.token = localStorage.getItem('token') as string;
     let token = this.token

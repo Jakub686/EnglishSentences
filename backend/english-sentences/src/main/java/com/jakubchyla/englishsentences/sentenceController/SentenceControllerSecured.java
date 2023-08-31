@@ -1,12 +1,15 @@
 package com.jakubchyla.englishsentences.sentenceController;
 
 import com.jakubchyla.englishsentences.model.Sentence;
+import com.jakubchyla.englishsentences.sentenceController.dto.AddToFav;
 import com.jakubchyla.englishsentences.sentenceController.dto.RandomDTO;
+import com.jakubchyla.englishsentences.sentenceService.FavoriteService;
 import com.jakubchyla.englishsentences.sentenceService.SentenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -18,10 +21,13 @@ public class SentenceControllerSecured {
     @Autowired
     private SentenceService sentenceService;
 
+    @Autowired
+    private FavoriteService favoriteService;
+
     @GetMapping("/random-for-user")
     public ResponseEntity<RandomDTO> getSentenceRandomForUser(String email, boolean fav) {
         RandomDTO randomDTO = sentenceService.findSentenceRandomForEmail(email, fav);
-        if (randomDTO == null)
+        if (randomDTO.id() == null)
             return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok(randomDTO);
@@ -56,6 +62,11 @@ public class SentenceControllerSecured {
         return ResponseEntity.ok(sentences);
     }
 
+    @PatchMapping("/add-fav")
+    public ResponseEntity<Boolean> addToFavByUser(@RequestBody AddToFav favDto) {
+        return new ResponseEntity<>(favoriteService.addToFav(favDto), HttpStatus.OK);
+    }
+
     @PostMapping("/")
     public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {
         Sentence savedSentence = sentenceService.saveSentence(sentence);
@@ -66,9 +77,16 @@ public class SentenceControllerSecured {
     public ResponseEntity<Sentence> updateSentenceUrlLink(@RequestBody Sentence sentence) {
         Sentence updated = sentenceService.updateSentence(sentence);
 
-        if (updated == null)
-            return ResponseEntity.notFound().build();
-
         return ResponseEntity.ok(updated);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Long> deleteArticle(@PathVariable("id") Long id) {
+        if (sentenceService.getById(id) == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            sentenceService.deleteSentence(id);
+            return new ResponseEntity<>(id, HttpStatus.OK);
+        }
     }
 }

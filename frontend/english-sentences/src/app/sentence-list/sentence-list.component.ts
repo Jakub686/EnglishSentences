@@ -51,7 +51,7 @@ export class SentenceListComponent implements OnInit {
   }
 
   deleteSentence(id: number) {
-    this.sentenceService.deleteSentence(id).subscribe(data => {
+    this.sentenceService.deleteSentence(id, this.token).subscribe(data => {
       this.getSentencesSimple();
       console.log(data);
     });
@@ -66,10 +66,9 @@ export class SentenceListComponent implements OnInit {
     if (this.email !== undefined) {
       this.addToFavByUserDto.email = this.email;
       this.addToFavByUserDto.sentenceId = randomDTOid;
-      // console.log(this.randomDTOS[randomDTOid].favorite)
-      // this.addToFavByUserDto.favorite = this.randomDTOS[randomDTOid].favorite;
 
-      this.sentenceService.addToFav(this.addToFavByUserDto).subscribe(data => {
+
+      this.sentenceService.addToFav(this.addToFavByUserDto, this.token).subscribe(data => {
         this.data = data;
       });
     }

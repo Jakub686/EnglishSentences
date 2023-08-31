@@ -54,7 +54,6 @@ public class SentenceService {
         return rndDTO;
     }
 
-
     private boolean isSentenceFav(String email, Sentence sen) {
         if (sen.getFavorite() == null || sen.getFavorite().isEmpty())
             return false;
@@ -70,9 +69,7 @@ public class SentenceService {
         Optional<User> userOptional = userRepository.findByEmail(email);
 
         sentencesList.forEach(sen -> {
-            RandomDTO randomDTO =
-                    new RandomDTO(sen.getId(), sen.getTextEn(), sen.getTextPl(), findStatusFavSentence(sen, userOptional.get().getId())
-                    );
+            RandomDTO randomDTO = new RandomDTO(sen.getId(), sen.getTextEn(), sen.getTextPl(), findStatusFavSentence(sen, userOptional.get().getId()));
             randomDTOList.add(randomDTO);
         });
         return randomDTOList;
