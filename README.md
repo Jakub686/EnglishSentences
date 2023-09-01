@@ -1,5 +1,4 @@
-
-🔴  # $\textcolor{red}{Application\ is\ working,\ but\ not\ finished\ yet}$
+# $\textcolor{red}{Application\ is\ working,\ but\ not\ finished\ yet}$
 
 
 
