@@ -5,6 +5,8 @@ $${\color{red}Red}$$
 $${\color{red}Application is working, but not finished yet}$$
 
 
+$\Large{hello}$$   #Bigger text size
+
 # EnglishSentences
 
 #### CRUD app, Angular + Springboot + PostgreSQL.
