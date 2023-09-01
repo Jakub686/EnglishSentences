@@ -1,6 +1,8 @@
 # 🔴🔴🔴$${\color{red}Application is working, but not finished yet}$$🔴🔴🔴
 
-$${\color{Application is working, but not finished yet}Red}$$
+$${\color{red}Red}$$
+
+$${\color{red}aRed}$$
 
 
 # EnglishSentences
