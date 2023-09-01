@@ -33,5 +33,5 @@ Project is created with:
 	
 	
 	
-## goals
+## Future goals
 Implement unit test, integration test, Flyway, deploy on AWS
