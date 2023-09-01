@@ -2,7 +2,7 @@
 
 $${\color{red}Red}$$
 
-$${\color{red}Application is working, but not finished yet}$$
+$\textcolor{olive}{\TeX} \ \textcolor{darkgray}{workaround \ found \ by \ Dassalem \ Mohammed \ Yasser}$
 
 
 $\Large{hello}$$   #Bigger text size
