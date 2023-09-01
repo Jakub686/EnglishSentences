@@ -32,6 +32,5 @@ Project is created with:
 * PostgreSQL
 	
 	
-	
 ## Future goals
 Implement unit test, integration test, Flyway, deploy on AWS
