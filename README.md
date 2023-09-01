@@ -2,7 +2,7 @@
 
 $${\color{red}Red}$$
 
-$\textcolor{red}{Application \is \  working,  \ but  \ not   \finished\ yet}}$
+$\textcolor{red}{Application \is \  working,  \ but  \ not   \finished\ yet}$
 
 
 $\Large{hello}$$   #Bigger text size
