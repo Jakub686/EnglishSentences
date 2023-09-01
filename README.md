@@ -2,7 +2,7 @@
 
 $${\color{red}Red}$$
 
-$\textcolor{olive}{TeX} \ found \ by \ Dassalem \ Mohammed \ Yasser}$
+$\textcolor{olive}{TeX}{ found \ by \ Dassalem \ Mohammed \ Yasser}$
 
 
 $\Large{hello}$$   #Bigger text size
