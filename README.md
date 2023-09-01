@@ -2,7 +2,7 @@
 
 $${\color{red}Red}$$
 
-$\textcolor{olive}{TeX}{ found \ by \ Dassalem \ Mohammed \ Yasser}$
+$\textcolor{red}{Application   is   working,   but   not   finished yet}}$
 
 
 $\Large{hello}$$   #Bigger text size
