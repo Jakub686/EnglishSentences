@@ -1,5 +1,7 @@
 # 🔴🔴🔴$${\color{red}Application is working, but not finished yet}$$🔴🔴🔴
 
+$${\color{red}Red}$$
+
 # EnglishSentences
 
 #### CRUD app, Angular + Springboot + PostgreSQL.
