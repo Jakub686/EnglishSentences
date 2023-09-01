@@ -1,4 +1,4 @@
-# 🔴  $${\color{red}Application is working, but not finished yet}$$  🔴
+# 🔴 $${\color{red}Application   is   working,   but   not   finished yet}$$  🔴
 
 $${\color{red}Red}$$
 
