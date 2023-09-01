@@ -2,7 +2,7 @@
 
 $${\color{red}Red}$$
 
-$${\color{red}a Red}$$
+$${\color{red}Application is working, but not finished yet}$$
 
 
 # EnglishSentences
