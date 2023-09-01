@@ -12,7 +12,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
-* [goals](#goals)
+* [Future goals](#goals)
 
 ## General info
 Main purpose of this application is to practice CRUD full stack technologies and help me with studying English by displaying random sentences. Logged in users have the ability to mark sentences as favorites, display random sentences, or their favorite. There are 3 roles: not logged, regular user and admin
