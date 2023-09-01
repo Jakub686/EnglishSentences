@@ -2,7 +2,7 @@
 
 $${\color{red}Red}$$
 
-$${\color{red}aRed}$$
+$${\color{red}a Red}$$
 
 
 # EnglishSentences
