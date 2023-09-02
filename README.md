@@ -34,3 +34,5 @@ Project is created with:
 	
 ## Future goals
 Implement unit test, integration test, Flyway, deploy on AWS
+
+* [ ] asterisk
