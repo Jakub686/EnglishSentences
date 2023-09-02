@@ -20,13 +20,12 @@ I used Java 17 features like records and streams. Login in is implemented by JWT
 
 
 
-Not log in
+Not log in. User can dislpey random sentences
 ![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/3ff07904-17af-4a8b-87f2-d3591d43ef66)
 
 
-
 Login in, User can use toggle swith to displey all sentences or only it's favorites sentences, olso can add to favorite but clicking a star.
-![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/4586cda4-18ad-4483-963d-71f43a4ebfab)
+![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/81f36f0d-575b-4f9b-bf48-784b7b4f0fa8)
 
 
 User sentences list, where can manegde favorite sentences, displey sentence details, and search sentences.
@@ -38,7 +37,6 @@ Admin, can delete, or update sentences.
 
 
 There are 2 roles of users.
-
 ![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/e66f0824-a4d3-4888-bda6-f36f4a4d2665)
 
 
