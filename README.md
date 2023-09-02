@@ -25,7 +25,7 @@ Not log in. User can dislpey random sentences
 
 
 Login in, User can use toggle swith to displey all sentences or only it's favorites sentences, olso can add to favorite but clicking a star.
-![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/81f36f0d-575b-4f9b-bf48-784b7b4f0fa8)
+![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/a21e0ee3-cf50-47a8-a43d-64530a6858e2)
 
 
 User sentences list, where can manegde favorite sentences, displey sentence details, and search sentences.
