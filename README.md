@@ -24,11 +24,11 @@ Not log in. User can dislpey random sentences
 ![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/3ff07904-17af-4a8b-87f2-d3591d43ef66)
 
 
-Login in, User can use toggle swith to displey all sentences or only it's favorites sentences, olso can add to favorite but clicking a star.
+Login in, User can use toggle switch to display all sentences or only its favorites sentences, also can add to favorite but clicking a star.
 ![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/a21e0ee3-cf50-47a8-a43d-64530a6858e2)
 
 
-User sentences list, where can manegde favorite sentences, displey sentence details, and search sentences.
+User sentences list, where can manege favorite sentences, display sentence details, and search sentences.
 ![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/5c2ebc4a-57b9-4deb-82c3-82ff3840f38e)
 
 
