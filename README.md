@@ -15,7 +15,7 @@
 * [Todos](#todos)
 
 ## General info
-Main purpose of this application is to practice CRUD full stack technologies and help me with studying English by displaying random sentences. Logged in users have the ability to mark sentences as favorites, display random sentences, or their favorite. There are 3 roles: not logged, regular user and admin
+Main purpose of this application is to practice CRUD full stack technologies and help me with studying English by displaying random sentences. Logged in users have the ability to mark sentences as favorites, display random sentences, or their favorites. There are 3 roles: not logged, regular user and admin
 I used Java 17 features like records and streams. Login in is implemented by JWT
 
 ![image](https://user-images.githubusercontent.com/80157748/224550411-4b913aa0-01ea-431c-85d7-f008cbfe166d.png)
