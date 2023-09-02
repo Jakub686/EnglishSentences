@@ -33,7 +33,7 @@ Project is created with:
 	
 	
 ## Todos
-Implement unit test, integration test, Flyway, deploy on AWS
+Technologies to implement
 
 * [x] login - JWT
 * [ ] unit tests
