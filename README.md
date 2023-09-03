@@ -6,6 +6,7 @@
 
 
 # EnglishSentences
+https://youtu.be/MrSG2Cq1Phk
 
 #### CRUD app, Angular + Springboot + PostgreSQL.
 
