@@ -1,6 +1,6 @@
 🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡
 
-# $\textcolor{red}{Application\ is\ working,\ but\ not\ finished\ yet\ !!!}$ 
+# $\textcolor{red}{Application\ works,\ but\ not\ finished\ yet\ !!!}$ 
 
 🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡
 
