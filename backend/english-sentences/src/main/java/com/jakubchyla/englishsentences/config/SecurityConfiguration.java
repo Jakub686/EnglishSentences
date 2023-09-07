@@ -32,6 +32,8 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers("/api/v1/open/**")
                 .permitAll()
+                .requestMatchers("/api/v1/demo-controller-open")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

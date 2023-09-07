@@ -40,10 +40,10 @@ public class SentenceService {
     }
 
     public RandomDTO findSentenceRandom() {
-        Sentence sentence = getRandomSentence();
+        Sentence sen = getRandomSentence();
 
-        RandomDTO randomDTO = new RandomDTO(sentence.getId(), sentence.getTextEn(), sentence.getTextPl(), false);
-        return randomDTO;
+        RandomDTO rndDTO = new RandomDTO(sen.getId(), sen.getTextEn(), sen.getTextPl(), false);
+        return rndDTO;
     }
 
     public RandomDTO findSentenceRandomForEmail(String email, boolean fav) {
@@ -75,7 +75,7 @@ public class SentenceService {
         return randomDTOList;
     }
 
-    private Sentence getRandomSentence() {
+     Sentence getRandomSentence() {
         Optional<List<Long>> optionalIds = sentenceRepository.findAllIds();
         List<Long> ids = new ArrayList<>();
 
