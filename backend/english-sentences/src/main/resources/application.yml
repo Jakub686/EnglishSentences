@@ -18,6 +18,10 @@ spring:
       banner:
         location: classpath:banner.txt
 
+security-config:
+  open: /api/v1/demo-controller-open
+
+
 #spring:
 #  datasource:
 #    url: jdbc:postgresql://localhost:5432/jwt_security

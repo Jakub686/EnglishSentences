@@ -17,12 +17,13 @@ public class SecurityConfiguration {
 
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
-//    private final LogoutHandler logoutHandler;
+    private final SecurityConfigProperties securityConfigProperties;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
+        String openEndpoint = securityConfigProperties.getOpen();
 
+        http
                 .cors() // Enable CORS configuration
                 .and()
                 .csrf()
@@ -32,7 +33,7 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers("/api/v1/open/**")
                 .permitAll()
-                .requestMatchers("/api/v1/demo-controller-open")
+                .requestMatchers(openEndpoint)
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -42,7 +43,6 @@ public class SecurityConfiguration {
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-        ;
 
         return http.build();
     }
