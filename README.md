@@ -55,6 +55,7 @@ Technologies to implement
 
 * [x] login - JWT
 * [ ] unit tests
-* [ ] flyway
+* [ ] flyway - migration
 * [ ] integration tests
+* [ ] docker
 * [ ] deploy
