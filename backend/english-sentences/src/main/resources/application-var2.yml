@@ -20,7 +20,7 @@ spring:
 
 security-config:
   open: /api/v1/demo-controller-open
-  testvar: mytestvar1
+  testvar: mytestvar2
 
 
 

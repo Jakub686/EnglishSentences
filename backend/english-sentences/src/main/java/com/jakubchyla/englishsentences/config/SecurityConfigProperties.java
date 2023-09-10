@@ -11,5 +11,6 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "security-config")
 public class SecurityConfigProperties {
     private String open;
+    private String testvar;
 
 }
