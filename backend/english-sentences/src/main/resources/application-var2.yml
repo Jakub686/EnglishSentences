@@ -19,15 +19,11 @@ spring:
         location: classpath:banner.txt
 
 security-config:
-<<<<<<< HEAD
-  testvar: mytestvar1
-=======
   open: /api/v1/demo-controller-open
-  testvar: mytestvar1
+  testvar: mytestvar2
 
 
 
->>>>>>> 8f185a3852a74ffe4b44d9fa127e221d323fbec9
 
 #spring:
 #  datasource:

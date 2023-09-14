@@ -17,7 +17,7 @@ https://youtu.be/MrSG2Cq1Phk
 
 ## General info
 Main purpose of this application is to practice CRUD full stack technologies and help me with studying English by displaying random sentences. Logged in users have the ability to mark sentences as favorites, display random sentences, or their favorites. There are 3 user states: not logged, regular user and admin
-I used Java 17 features like records and streams. Login in is implemented by JWT
+I used Java 17 features like records. Login in is implemented by JWT
 
 
 
@@ -25,7 +25,7 @@ Not log in. User can dislpey random sentences
 ![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/3ff07904-17af-4a8b-87f2-d3591d43ef66)
 
 
-Login in, User can use toggle switch to display all sentences or only its favorites sentences, also can add to favorite but clicking a star.
+Login in, User can use toggle switch to display all sentences or only its favorites sentences, also can add to favorite by clicking a star.
 ![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/a21e0ee3-cf50-47a8-a43d-64530a6858e2)
 
 
