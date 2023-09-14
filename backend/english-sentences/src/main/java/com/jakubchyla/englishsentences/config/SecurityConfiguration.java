@@ -21,7 +21,8 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        String openEndpoint = securityConfigProperties.getOpen();
+        String open1 = securityConfigProperties.getOpen1();
+        String open2 = securityConfigProperties.getOpen1();
 
         http
                 .cors() // Enable CORS configuration
@@ -33,7 +34,9 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers("/api/v1/open/**")
                 .permitAll()
-                .requestMatchers(openEndpoint)
+                .requestMatchers(open1)
+                .permitAll()
+                .requestMatchers(open2)
                 .permitAll()
                 .anyRequest()
                 .authenticated()
