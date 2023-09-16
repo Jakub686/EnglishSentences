@@ -10,12 +10,9 @@ import org.springframework.stereotype.Component;
 @Setter
 @ConfigurationProperties(prefix = "security-config")
 public class SecurityConfigProperties {
-<<<<<<< HEAD
+
     private String open1;
     private String open2;
-=======
-    private String open;
->>>>>>> 8f185a3852a74ffe4b44d9fa127e221d323fbec9
     private String testvar;
 
 }
