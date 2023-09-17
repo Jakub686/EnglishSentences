@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/english-sentences
+    url: jdbc:postgresql://localhost:5432/english-sentences-test
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
@@ -14,9 +14,18 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-    spring:
-      banner:
-        location: classpath:banner.txt
+#spring:
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+#    password:
+#    driverClassName: org.h2.Driver
+#  jpa:
+#    show-sql: true
+#    properties:
+#      hibernate.format_sql: true
+
+
 
 security-config:
   open1: /api/v1/secured/**
