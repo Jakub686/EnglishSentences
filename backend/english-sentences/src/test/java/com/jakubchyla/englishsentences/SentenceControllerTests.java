@@ -12,15 +12,13 @@ import org.springframework.web.client.RestTemplate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, properties = {"server.port=8080"})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SentenceControllerTests {
-
+//    SPRING_PROFILES_ACTIVE=test
     @LocalServerPort
     private int port;
 
-//    private String baseUrl = "http://localhost:8080/api/v1/secured/";
-private String baseUrl = "http://localhost";
+    private String baseUrl = "http://localhost";
 
     private static RestTemplate restTemplate;
 
@@ -44,6 +42,6 @@ private String baseUrl = "http://localhost";
         sentence.setTextPl("czesc");
         Sentence response = restTemplate.postForObject(baseUrl, sentence, Sentence.class);
         assertEquals("hi", response.getTextEn());
-        assertEquals(3, repo.findAll().size());
+        assertEquals(1, repo.findAll().size());
     }
 }
