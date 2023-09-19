@@ -19,6 +19,7 @@ spring:
         location: classpath:banner.txt
 
 security-config:
+#  open1: /api/v1/secured/**
   open: /api/v1/demo-controller-open
   testvar: mytestvar1
 

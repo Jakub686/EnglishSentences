@@ -89,4 +89,9 @@ public class SentenceControllerSecured {
             return new ResponseEntity<>(id, HttpStatus.OK);
         }
     }
+
+    @GetMapping("/")
+    public List<Sentence> findAllProducts() {
+        return sentenceService.findAllSentence();
+    }
 }

@@ -8,7 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -36,12 +39,20 @@ public class SentenceControllerTests {
     }
 
     @Test
-    public void testAddProduct() {
+    public void testAddSentence() {
         Sentence sentence = new Sentence();
         sentence.setTextEn("hi");
         sentence.setTextPl("czesc");
         Sentence response = restTemplate.postForObject(baseUrl, sentence, Sentence.class);
         assertEquals("hi", response.getTextEn());
         assertEquals(1, repo.findAll().size());
+    }
+
+    @Test
+    @Sql(statements = "INSERT INTO SENTENCES (id, text_en, text_pl) VALUES ('2', 'testEn', 'testPl')", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    public void testGetProducts() {
+        List<Sentence> products = restTemplate.getForObject(baseUrl, List.class);
+        assertEquals(2, products.size());
+        assertEquals(2, repo.findAll().size());
     }
 }
