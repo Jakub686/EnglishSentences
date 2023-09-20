@@ -49,10 +49,20 @@ public class SentenceControllerTests {
     }
 
     @Test
-    @Sql(statements = "INSERT INTO SENTENCES (id, text_en, text_pl) VALUES ('2', 'testEn', 'testPl')", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    public void testGetProducts() {
+    @Sql(statements = "INSERT INTO SENTENCES (id, text_en, text_pl) VALUES ('1', 'testEn', 'testPl')", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    public void testGetSentences() {
         List<Sentence> products = restTemplate.getForObject(baseUrl, List.class);
-        assertEquals(2, products.size());
-        assertEquals(2, repo.findAll().size());
+        assertEquals(1, products.size());
+        assertEquals(1, repo.findAll().size());
+    }
+
+    @Test
+    @Sql(statements = "INSERT INTO SENTENCES (id, text_en, text_pl) VALUES ('1', 'testEn', 'testPl')", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    public void testDeleteSentence(){
+        int recordCount=repo.findAll().size();
+        assertEquals(1, recordCount);
+        restTemplate.delete(baseUrl+"/{id}", 1);
+        assertEquals(0, repo.findAll().size());
+
     }
 }
