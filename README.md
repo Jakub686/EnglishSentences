@@ -47,7 +47,7 @@ Project is created with:
 * Java 17
 * SpringBoot 3
 * Angular 15
-* PostgreSQL
+* PostgreSQL / H2
 	
 	
 ## Todos
