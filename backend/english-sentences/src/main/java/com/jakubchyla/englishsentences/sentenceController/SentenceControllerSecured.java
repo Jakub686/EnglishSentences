@@ -24,13 +24,10 @@ public class SentenceControllerSecured {
     @Autowired
     private FavoriteService favoriteService;
 
-    @GetMapping("/random-for-user")
-    public ResponseEntity<RandomDTO> getSentenceRandomForUser(String email, boolean fav) {
-        RandomDTO randomDTO = sentenceService.findSentenceRandomForEmail(email, fav);
-        if (randomDTO.id() == null)
-            return ResponseEntity.notFound().build();
-
-        return ResponseEntity.ok(randomDTO);
+    @PostMapping("/")
+    public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {
+        Sentence savedSentence = sentenceService.saveSentence(sentence);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedSentence);
     }
 
     @GetMapping("/{id}")
@@ -41,6 +38,31 @@ public class SentenceControllerSecured {
 
         return ResponseEntity.ok(sentence);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Long> deleteArticle(@PathVariable("id") Long id) {
+        if (sentenceService.getById(id) == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            sentenceService.deleteSentence(id);
+            return new ResponseEntity<>(id, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/random-for-user")
+    public ResponseEntity<RandomDTO> getSentenceRandomForUser(String email, boolean fav) {
+        RandomDTO randomDTO = sentenceService.findSentenceRandomForEmail(email, fav);
+        if (randomDTO.id() == null)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(randomDTO);
+    }
+
+
+
+
+
+
 
     @GetMapping("/sentences-logged")
     public ResponseEntity<List<RandomDTO>> getSentence(String email) {
@@ -67,12 +89,6 @@ public class SentenceControllerSecured {
         return new ResponseEntity<>(favoriteService.addToFav(favDto), HttpStatus.OK);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<Sentence> saveSentence(@RequestBody Sentence sentence) {
-        Sentence savedSentence = sentenceService.saveSentence(sentence);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedSentence);
-    }
-
     @PutMapping("/{id}")
     public ResponseEntity<Sentence> updateSentenceUrlLink(@RequestBody Sentence sentence) {
         Sentence updated = sentenceService.updateSentence(sentence);
@@ -80,18 +96,4 @@ public class SentenceControllerSecured {
         return ResponseEntity.ok(updated);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Long> deleteArticle(@PathVariable("id") Long id) {
-        if (sentenceService.getById(id) == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        } else {
-            sentenceService.deleteSentence(id);
-            return new ResponseEntity<>(id, HttpStatus.OK);
-        }
-    }
-
-    @GetMapping("/")
-    public List<Sentence> findAllProducts() {
-        return sentenceService.findAllSentence();
-    }
 }

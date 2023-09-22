@@ -3,18 +3,18 @@
   justify-content: space-between;
 }
 
-.container2 {
-  display: flex;
-  justify-content: space-between;
-  grid-gap: 10px;
-}
-
 .container1 {
   text-align: center;
   display: grid;
   grid-template-columns: 170px 170px 170px 170px 170px;
   grid-gap: 10px;
   justify-content: flex-start;
+}
+
+.container2 {
+  display: flex;
+  justify-content: space-between;
+  grid-gap: 10px;
 }
 
 .grid-item {
