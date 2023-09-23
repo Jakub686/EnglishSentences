@@ -46,6 +46,7 @@ export class SentenceService {
         'Authorization': `Bearer ${token}`
       })
     };
+    console.log('random for user');
     return this.httpClient.get<RandomDTO>(`${this.baseURLSecured}random-for-user?email=${email}&fav=${fav}`, httpOptions);
   }
 

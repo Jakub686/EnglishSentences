@@ -36,8 +36,6 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers(open1)
                 .permitAll()
-                .requestMatchers(open2)
-                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
