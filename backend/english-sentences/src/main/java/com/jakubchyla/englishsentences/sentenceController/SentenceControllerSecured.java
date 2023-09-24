@@ -58,12 +58,6 @@ public class SentenceControllerSecured {
         return ResponseEntity.ok(randomDTO);
     }
 
-
-
-
-
-
-
     @GetMapping("/sentences-logged")
     public ResponseEntity<List<RandomDTO>> getSentence(String email) {
         List<RandomDTO> sentenceList = sentenceService.findSentenceListForEmail(email);
