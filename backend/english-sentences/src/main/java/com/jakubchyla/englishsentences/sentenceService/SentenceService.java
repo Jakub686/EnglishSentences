@@ -31,10 +31,6 @@ public class SentenceService {
         return sentenceRepository.save(sentence);
     }
 
-    public List<Sentence> findAllSentence() {
-        return sentenceRepository.findAll();
-    }
-
     public Sentence getById(Long id) {
         return sentenceRepository.findById(id).orElse(null);
     }
@@ -130,8 +126,7 @@ public class SentenceService {
         return sentenceRepository.save(sentence);
     }
 
-    public String testMethod(String input) {
-        return input + "hello world";
+    public String testMethod(){
+        return "hello";
     }
-
 }
