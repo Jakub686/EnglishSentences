@@ -71,7 +71,7 @@ public class SentenceService {
         return randomDTOList;
     }
 
-     Sentence getRandomSentence() {
+     public Sentence getRandomSentence() {
         Optional<List<Long>> optionalIds = sentenceRepository.findAllIds();
         List<Long> ids = new ArrayList<>();
 
