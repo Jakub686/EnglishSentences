@@ -1,10 +1,3 @@
-🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡
-
-# $\textcolor{red}{Application\ works,\ but\ not\ finished\ yet\ !!!}$ 
-
-🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡🟡
-
-
 # EnglishSentences
 https://youtu.be/MrSG2Cq1Phk
 
