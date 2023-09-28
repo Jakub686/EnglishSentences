@@ -28,16 +28,16 @@ class SentenceServiceTest {
 
 
     @Test
-    public void testFindByText() {
+    public void test_SentenceService_FindByText_WithValidText_ReturnsListWithOneSentence() {
 
         //given
-        Sentence sentence1 = new Sentence();
-        sentence1.setId(1L);
-        sentence1.setTextEn("Text1");
-        sentence1.setTextPl("Text1");
+        Sentence sentence = new Sentence();
+        sentence.setId(1L);
+        sentence.setTextEn("Text1");
+        sentence.setTextPl("Text1");
 
         //when
-//        when(sentenceRepository.findByText("Text1")).thenReturn(Arrays.asList(sentence1));
+        when(sentenceRepository.findByText("Text1")).thenReturn(Arrays.asList(sentence));
 
         //then
         List<Sentence> result = sentenceService.findByText("Text1");
@@ -46,7 +46,9 @@ class SentenceServiceTest {
     }
 
     @Test
-    public void testGetRandomSentence() {
+    public void testGetRandomSentence_whenValidIdsAreProvided_returnsRandomSentence() {
+
+        //given
         Long optionalLong1 = 1L;
         Long optionalLong2 = 2L;
         List<Long> optionalLongList = Arrays.asList(optionalLong1, optionalLong2);
@@ -57,12 +59,12 @@ class SentenceServiceTest {
         sentence.setTextEn("Text1");
         sentence.setTextPl("Text1");
 
+        //then
         when(sentenceRepository.findAllIds()).thenReturn(optionalIds);
         when(sentenceRepository.findById(1L)).thenReturn(Optional.of(sentence));
-
         Sentence result = sentenceService.getRandomSentence();
-        System.out.println(result);
 
+        //when
         assertEquals("Text1", result.getTextEn());
     }
 
