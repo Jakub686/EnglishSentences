@@ -34,7 +34,7 @@ class SentenceServiceTest {
     private UserRepository userRepository;
 
     @Test
-    public void test_findSentenceListForEmail_whenValid_returnsRandomDTOList() {
+    public void shouldFindSentenceListForEmail() {
 
         //given
         Sentence sentence1 = new Sentence();
@@ -68,13 +68,12 @@ class SentenceServiceTest {
     }
 
     @Test
-    public void test_SentenceService_FindByText_WithValidText_ReturnsListWithOneSentence() {
-
+    public void shouldFindSentenceByText() {
         //given
         Sentence sentence = new Sentence();
         sentence.setId(1L);
         sentence.setTextEn("Text1");
-        sentence.setTextPl("Text1");
+        sentence.setTextPl("Tekst1");
 
         //when
         when(sentenceRepository.findByText("Text1")).thenReturn(Arrays.asList(sentence));
@@ -83,10 +82,11 @@ class SentenceServiceTest {
         List<Sentence> result = sentenceService.findByText("Text1");
         assertEquals(1, result.size());
         assertEquals("Text1", result.get(0).getTextEn());
+
     }
 
     @Test
-    public void test_SentenceService_GetRandomSentence_whenValidIdsAreProvided_returnsRandomSentence() {
+    public void shouldReturnRandomSentence() {
 
         //given
         Long optionalLong1 = 1L;
