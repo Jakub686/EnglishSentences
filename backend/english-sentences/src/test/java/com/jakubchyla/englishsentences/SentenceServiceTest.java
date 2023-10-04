@@ -77,9 +77,9 @@ class SentenceServiceTest {
 
         //when
         when(sentenceRepository.findByText("Text1")).thenReturn(Arrays.asList(sentence));
+        List<Sentence> result = sentenceService.findByText("Text1");
 
         //then
-        List<Sentence> result = sentenceService.findByText("Text1");
         assertEquals(1, result.size());
         assertEquals("Text1", result.get(0).getTextEn());
 
