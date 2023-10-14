@@ -68,4 +68,13 @@ export class MainComponent implements OnInit {
     console.log('Toggle switch state changed:', this.fav);
   }
 
+  readText() {
+    if ('speechSynthesis' in window) {
+      const speech = new SpeechSynthesisUtterance(this.randomDTO.textEn);
+      window.speechSynthesis.speak(speech);
+    } else {
+      alert('Text-to-speech is not supported in your browser.');
+    }
+  }
+
 }

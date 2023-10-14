@@ -2,8 +2,9 @@
   <table>
     <tbody>
     <tr>
-      <td class="rounded"> En: {{randomDTO.textEn}} </td>
+      <td class="rounded">En: {{randomDTO.textEn}} </td>
     </tr>
+
     <tr>
       <td class="rounded">Pl: {{randomDTO.textPl}} </td>
     </tr>
@@ -25,7 +26,11 @@
     </tr>
     <tr>
       <td>
-        <button (click)="randomSentence()" class="random" style="margin-left: 10px">random sentence</button>
+        <button (click)="randomSentence()" class="random" style="margin-left: 1px">random sentence</button>
+        <button class="random" (click)="readText()">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+
       </td>
     </tr>
     </tbody>

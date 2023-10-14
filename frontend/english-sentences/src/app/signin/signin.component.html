@@ -1,30 +1,3 @@
-<!--<h2>Sign in</h2>-->
-
-<!--<form (ngSubmit)="saveUser()">-->
-<!--  <div class="grid-wrapper-main">-->
-<!--    <div class="rounded-input">-->
-<!--      <label>First name: </label>-->
-<!--      <input type="text" class="rounded" [(ngModel)]="userSignIn.firstname" name="username">-->
-<!--    </div>-->
-<!--    <div class="rounded-input">-->
-<!--      <label>Last name: </label>-->
-<!--      <input type="text" class="rounded" [(ngModel)]="userSignIn.lastname"-->
-<!--             name="password">-->
-<!--    </div>-->
-<!--    <div class="rounded-input">-->
-<!--      <label>Emial: </label>-->
-<!--      <input type="text" class="rounded" [(ngModel)]="userSignIn.email"-->
-<!--             name="password">-->
-<!--    </div>-->
-<!--    <div class="rounded-input">-->
-<!--      <label>Password: </label>-->
-<!--      <input type="text" class="rounded" [(ngModel)]="userSignIn.password"-->
-<!--             name="password">-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <button class="btn-submit" type="submit">Submit</button>-->
-<!--</form>-->
-
 <form (ngSubmit)="saveUser()">
   <div class="grid-wrapper-main">
     <div class="rounded-input">
@@ -43,41 +16,18 @@
       <input type="text" class="rounded" [(ngModel)]="userSignIn.email"
              name="email">
     </div>
-  </div>
 
-  <div class="rounded-input">
-    <label>password: </label>
-    <input type="text" class="rounded" [(ngModel)]="userSignIn.password"
-           name="password">
-  </div>
 
-  <button class="btn-submit" type="submit">Submit</button>
-</form>
-
-login
-
-<form (ngSubmit)="authUser()">
-  <div class="grid-wrapper-main">
     <div class="rounded-input">
-      <label>email: </label>
-      <input type="text" class="rounded" [(ngModel)]="userLogIn.email"
-             name="email">
+      <label>password: </label>
+      <input type="text" class="rounded" [(ngModel)]="userSignIn.password"
+             name="password">
     </div>
-  </div>
 
-  <div class="rounded-input">
-    <label>password: </label>
-    <input type="text" class="rounded" [(ngModel)]="userLogIn.password"
-           name="password">
   </div>
-
   <button class="btn-submit" type="submit">Submit</button>
 </form>
 
-
-
-<button (click)="getContent()" class="btn-submit">get content</button>
-{{token}}
 
 
 
