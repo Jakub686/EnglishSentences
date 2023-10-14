@@ -45,7 +45,7 @@ class SentenceServiceTest {
         Sentence sentence2 = new Sentence();
         sentence2.setId(2L);
         sentence2.setTextEn("Text2");
-        sentence2.setTextPl("Text2");
+        sentence2.setTextPl("Tekst2");
         List<Sentence> sentences = new ArrayList<>();
         sentences.add(sentence1);
         sentences.add(sentence2);
@@ -97,7 +97,7 @@ class SentenceServiceTest {
         Sentence sentence = new Sentence();
         sentence.setId(1L);
         sentence.setTextEn("Text1");
-        sentence.setTextPl("Text1");
+        sentence.setTextPl("Tekst1");
 
         //when
         when(sentenceRepository.findAllIds()).thenReturn(optionalIds);
