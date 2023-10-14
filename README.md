@@ -49,8 +49,8 @@ Project is created with:
 Technologies to implement
 
 * [x] login - JWT
-* [x] unit tests
+* [x] unit tests - Mockito
 * [x] flyway - migration
-* [x] integration tests
+* [x] integration tests - JUnit
 * [ ] docker
 * [ ] deploy
