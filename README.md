@@ -33,8 +33,12 @@ Admin, can delete, or update sentences.
 There are 2 roles of users.
 ![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/e66f0824-a4d3-4888-bda6-f36f4a4d2665)
 
-Integration Tests
+Integration tests
 ![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/a94b82aa-1931-43cb-8998-15e3b565882b)
+
+Unit tests
+![image](https://github.com/Jakub686/EnglishSentences/assets/80157748/7c984b13-bcdc-4b08-80f8-f685aaca23a2)
+
 
 
 ## Technologies
