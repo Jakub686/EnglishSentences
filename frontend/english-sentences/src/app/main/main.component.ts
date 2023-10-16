@@ -15,7 +15,7 @@ import {AddToFav} from "../model/addToFav";
 export class MainComponent implements OnInit {
 
   sentence: Sentence | any;
-  randomDTO: RandomDTO | any;
+  randomDTO: RandomDTO = {id: 0, textEn: '', textPl: '', favorite: true};
   data: RandomDTO | any;
   addToFavByUserDto: AddToFav = {sentenceId: 0, email: '', favorite: true};
   token: string;
@@ -34,17 +34,18 @@ export class MainComponent implements OnInit {
   }
 
   randomSentence() {
-    if (this.email === '') {
+    if (this.email === null) {
       this.sentenceService.getSentenceRandom().subscribe(data => {
         this.randomDTO = data;
+        console.log("here");
       });
     }
 
-    if (this.email !== '') {
+    if (this.email !== null) {
       this.sentenceService.getSentenceRandomForUser(this.email, this.fav, this.token).subscribe(data => {
         this.randomDTO = data;
       });
-      console.log('this.randomDTO.favorite ' + this.randomDTO.favorite)
+      console.log("here2");
     }
 
   }
@@ -55,7 +56,7 @@ export class MainComponent implements OnInit {
       this.addToFavByUserDto.sentenceId = randomDTOid;
       this.addToFavByUserDto.favorite = this.randomDTO.favorite;
 
-      this.sentenceService.addToFav(this.addToFavByUserDto,this.token).subscribe(data => {
+      this.sentenceService.addToFav(this.addToFavByUserDto, this.token).subscribe(data => {
         this.data = data;
         this.randomDTO.favorite = !this.randomDTO.favorite;
       });
