@@ -7,6 +7,7 @@ https://youtu.be/MrSG2Cq1Phk
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Todos](#todos)
+* [Setup](#setup)
 
 ## General info
 Main purpose of this application is to practice CRUD full stack technologies and help me with studying English by displaying random sentences. Logged in users have the ability to mark sentences as favorites, display random sentences, or their favorites. There are 3 user states: not logged, regular user and admin
@@ -49,6 +50,9 @@ Project is created with:
 * SpringBoot 3
 * Angular 15
 * PostgreSQL / H2
+
+## Setup
+docker run --name english-sentence-docker -p 5432:5432 -e POSTGRES_PASSWORD=root -d postgres
 	
 	
 ## Todos
