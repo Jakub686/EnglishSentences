@@ -1,5 +1,5 @@
-INSERT INTO sentences (id, text_en, text_pl, timestamp)
-VALUES
+insert into sentences (id, text_en, text_pl, timestamp)
+values
   (1, 'She obsessively cleaned her house.', 'Ona obsesyjnie sprzątała swój dom.', '2023-09-19 16:14:52.901'),
   (2, 'I have a cold', 'Jestem przeziębiony', '2023-09-19 16:14:52.901'),
   (3, 'It has started to become gloomy', 'Zaczęło robić się ponuro', '2023-09-19 16:14:52.901'),
@@ -55,5 +55,13 @@ VALUES
   (53, 'ease', 'łatwość', '2023-09-19 16:14:52.901'),
   (54, 'abbreviated', 'skrócony', '2023-09-19 16:14:52.901'),
   (55, 'blaze the trail', 'przetrzeć ścieżkę', '2023-09-19 16:14:52.901'),
-  (56, 'I came down with the flu last week.', 'W zeszłym tygodniu zachorowałem na grypę.', '2023-09-19 16:14:52.901')
+  (56, 'I came down with the flu last week.', 'W zeszłym tygodniu zachorowałem na grypę.', '2023-09-19 16:14:52.901'),
+  (57, 'It was sunny and raining at the same time.', 'Było słonecznie i padał deszcz jednocześnie..', '2023-09-19 16:14:52.901'),
+  (58, 'They got used to it.', 'Przyzwyczaili się do tego.', '2023-09-19 16:14:52.901'),
+  (59, 'The government doesnt care.', 'Rząd się nie przejmuje..', '2023-09-19 16:14:52.901'),
+  (60, 'They had to call their boss.', 'Musieli zadzwonić do swojego szefa.', '2023-09-19 16:14:52.901'),
+  (61, 'I came to the conclusion.', 'Doszedłem do wniosku.', '2023-09-19 16:14:52.901'),
+  (62, 'I get bored fast.', 'Nudzę się szybko.', '2023-09-19 16:14:52.901'),
+  (64, 'A blazer is more casual than a suit.', 'Garnitur jest bardziej formalny niż marynarka.', '2023-09-19 16:14:52.901'),
+  (65, 'Who was at fault.', 'Kto był winny?', '2023-09-19 16:14:52.901'),
   ;
