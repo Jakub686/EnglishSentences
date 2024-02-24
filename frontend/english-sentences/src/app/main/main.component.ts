@@ -34,10 +34,9 @@ export class MainComponent implements OnInit {
   }
 
   randomSentence() {
-    if (this.email === null) {
+    if (this.email === null || this.email === '' || this.email === undefined) {
       this.sentenceService.getSentenceRandom().subscribe(data => {
         this.randomDTO = data;
-        console.log("here");
       });
     }
 
@@ -45,7 +44,6 @@ export class MainComponent implements OnInit {
       this.sentenceService.getSentenceRandomForUser(this.email, this.fav, this.token).subscribe(data => {
         this.randomDTO = data;
       });
-      console.log("here2");
     }
 
   }

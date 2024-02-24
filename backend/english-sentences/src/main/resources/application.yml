@@ -27,31 +27,10 @@ security-config:
   testvar: mytestvar1
 
 
-#docker
-#spring:
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/postgres
-#    username: postgres
-#    password: root
-#    driver-class-name: org.postgresql.Driver
-#  flyway:
-#    enabled: true
-#    locations: classpath:db/migration
-#    baselineOnMigrate: true
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    show-sql: true
-#    properties:
-#      hibernate:
-#        format_sql: true
-#    database: postgresql
-#    database-platform: org.hibernate.dialect.PostgreSQLDialect
-#
-#    spring:
-#      banner:
-#        location: classpath:banner.txt
-#
-#security-config:
-#  open1: /api/v1/open/**
-#  testvar: mytestvar1
+#spring.datasource.url=jdbc:postgresql://postgres:5433/mydatabase
+#spring.datasource.username=myuser
+#spring.datasource.password=mypassword
+#spring.datasource.driver-class-name=org.postgresql.Driver
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.show-sql=true

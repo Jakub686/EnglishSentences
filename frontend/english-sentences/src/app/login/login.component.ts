@@ -14,7 +14,7 @@ import {UserService} from "../service/user.service";
 })
 export class LoginComponent {
   sentence: Sentence = {id: 0, textEn: "", textPl: ""};
-  userLogIn: UserLogIn = {email: 'root@gmail.com', password: 'root', role: ''};
+  userLogIn: UserLogIn = {email: 'root@gmail.com', password: '1234', role: ''};
   token: string = '';
 
   constructor(private sentenceService: SentenceService, private userService: UserService, private router: Router) {

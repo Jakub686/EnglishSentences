@@ -6,13 +6,7 @@ CREATE TABLE sentences (
     timestamp TIMESTAMP
 );
 
--- Create the foreign key constraint for the Sentence-Favorite relationship
-ALTER TABLE favorite
-ADD CONSTRAINT fk_sentence_id
-FOREIGN KEY (sentence_id)
-REFERENCES sentences(id);
 
--- Create the favorite table
 CREATE TABLE favorite (
     id BIGINT PRIMARY KEY,
     timestamp TIMESTAMP,
@@ -20,7 +14,12 @@ CREATE TABLE favorite (
     user_id BIGINT
 );
 
--- Create the user table
+ALTER TABLE favorite
+ADD CONSTRAINT fk_sentence_id
+FOREIGN KEY (sentence_id)
+REFERENCES sentences(id);
+
+
 CREATE TABLE _user (
     id BIGINT PRIMARY KEY,
     firstname VARCHAR(255),
